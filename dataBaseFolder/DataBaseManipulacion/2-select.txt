@@ -1,0 +1,22 @@
+
+Para escribir una consulta para recuperar informacion, utilizamos
+
+SELECT * FROM nombreTabla
+
+
+
+podemos especificar que columnas ver de estas tablas
+
+SELECT title, rating, premios, actores FROM nombreTabla
+
+                        //esto devuelve solo las columnas que especificamos 
+
+
+
+puedo modificar la forma de ver los datos en la vista, pero una consulta SELECT 
+
+nunca va a modificar, ejemplo
+
+SELECT title, rating * 10 , premios, actores FROM nombreTabla
+
+                            //aqui me multiplica los valores de rating * 10

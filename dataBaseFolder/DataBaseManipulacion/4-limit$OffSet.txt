@@ -1,0 +1,17 @@
+LIMIT
+
+nos permite decir que de todos los resultado nos interesa cierta cantidad,
+
+por ejemplo el podio o el top 10.
+
+nos va a indicar cuantos resultados vemos
+
+Y OFFSET cuantos salteamos
+
+ejemplo:
+
+
+SELECT * FROM peliculas
+ORDER BY rating
+LIMIT 5                 //cuantos resultados, si no escribimos OFFSET seran los primeros 5
+OFFSET 10               // saltea 10, es util para hacer paginas y mostrar algunos

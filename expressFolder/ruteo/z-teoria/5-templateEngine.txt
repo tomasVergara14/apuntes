@@ -1,0 +1,61 @@
+
+Un Template Engine  es un motor de plantillas que te permite que tus archivos HTML sean dinamicos.
+
+Podremos definir bloques de contenido que luego se iran rellenando con datos variables
+
+Sirve para reutilizar estructuras que varios archivos utilizan
+
+Es el encargado de manejar las vistas de la aplicación
+
+Hay muchos Template:
+
+- PUG
+- HANDLEBARS
+- MUSTACHE
+- EJS
+
+
+EJS es bastante comodo, tiene la misma sintaxis que un HTML
+
+Los archivos creados bajo EJS deben tener la extensión .ejs
+
+
+
+Si queremos instalarlo:
+
+1- npm install express --save
+
+2- express --view=ejs "nombre carpeta"
+
+
+Esto es si lo arrancamos de cero, pero si heredamos un proyecto o no lo hicimos de un principio, el comando es:
+
+1- npm instal ejs
+
+Este va a descargar todas las dependencias necesarias
+
+Luego hay que decirle a express que lo queremos utilizar. Para eso utilizamos el app.set()
+
+2- app.set('view engine', 'ejs') //Así le decimos de utilizar ejs
+
+
+Todos los documentos ejs van en una carpeta en una carpeta llamada "views", en caso de no querer llamar Así
+debería cambiar el comando por:
+
+app.set('views',  __dirname, 'nombre del archivo) // el dirname va a buscar la carpeta correspondiente  
+
+
+
+*****.SET*****
+
+Es un metodo que nos permite definir configuraciones de express.
+
+Recibe dos parametros que son strings
+
+para configurar el motor de plantilla el primer parametro: 'view engine'
+
+y como segundo el string del motor: 'ejs' 
+
+
+para configurar la carpeta que almacena las vistas que no sea 'view'
+le pasamos el string: 'view' y la ruta absoluta hacia esa carpeta: __dirname + 'carpetaRandom'

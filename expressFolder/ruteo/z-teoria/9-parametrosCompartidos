@@ -1,0 +1,52 @@
+
+Los motores de vista nos permiten compartir información desde los controladores a las vistas
+
+Si tenes un array de personas en un controlador y lo queres pasar, 
+
+se modifica el metodo controlador
+
+que ya esta manejando la peticion y usando el metodo .render
+
+En el primer parametro se pasa el nombre de la vista que queres renderizar
+
+en el segundo se pasa un objeto literal, que va a tener como nombre de propiedad algo coherente 
+y relacionado con el valor, que es el dato que quieras pasar a la vista (una variable)
+
+ejemplo:
+
+mostrarTodos: funcion(req, res){
+    
+    res.render('/listado', {listado: listado})
+};
+
+
+
+
+
+*****En la VISTA*****
+
+utilizando los tags de JS se itera sobre el array que se paso e imprimir los datos que se hagan falta
+
+se debe utilizar el nombre de la propiedad
+
+
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+     <h1> Listado </h1>
+     
+     <ul>
+        <% for (let i = 0 ; i < listado.length; i++) {%>
+            <li>
+                <%= listado[i] %>
+            <li>
+        <% } %>
+     </ul>
+
+  </body>
+</html>
+
+

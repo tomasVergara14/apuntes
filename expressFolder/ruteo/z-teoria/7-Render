@@ -1,0 +1,36 @@
+
+
+*****Primer vista*****
+
+La vista es la parte visual que se encarga de mostrar la información solicitada a los visitantes
+
+Se comunica con el controlador, y el controlador se comunica con los modelos.
+
+En el controlador tenemos una variable con los metodos para cada recurso.
+
+Para poder renderizar una vista debemos aclararle al controlador que vista queremos mostrar.
+
+Ese metodo tiene una funcion con un request y un response.
+
+El responde va a tener el metodo que queremos usar: .render
+
+
+*****RENDER*****
+
+es un metodo que se encuentra en el objeto response de la peticion
+
+El render va a recibir solo un string de la vista que queremos mostrar.
+
+No es necesario mostrar el nombre completo (o sea el .ejs), tampoco es necesario escribir
+la carpeta que la almacena si tenemos bien configurado el template engines en el entry point.
+
+ejemplo:
+
+*controlador
+
+let controlador = {
+    listado: function(req, res){
+        res.render('productos') //Le estamos diciendo que muestre la view llamada producto.
+    }
+}
+

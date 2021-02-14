@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>listado</title>
+</head>
+<body>
+    <%-include('partials/header')%>
+
+    <form action="/" method="GET">
+        <button type="submit" >Inicio</button>
+    </form>
+
+    <ul>
+        <% for (let i = 0 ; i < usuarios.length ; i ++){%>
+
+            <li> <%= usuarios[i].name %> </li>
+            <br>
+            <form action="/list/delete/<%=usuarios[i].id %>?_method=DELETE" method="POST">
+                <button type="submit" >delete</button>
+            </form>
+            <br>
+
+        <%}%>
+    </ul>
+
+
+    
+</body>
+</html>

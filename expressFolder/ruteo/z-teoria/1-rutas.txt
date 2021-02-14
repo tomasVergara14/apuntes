@@ -1,0 +1,140 @@
+Como organizar mejor las rutas.
+
+Usar Express generator
+
+
+
+***Instalarlo***
+
+
+
+1-  npm install ejs --save
+
+
+
+
+***Aclarar que motor vamos a utilizar***
+
+
+
+
+2- express --view=ejs
+
+
+
+
+***Instalar NPM***
+
+
+
+
+3- npm install
+
+
+
+
+No incluye la carpeta de controladores ni tampoco sus archivos, hay que crearlos de forma manual.
+
+va a traer una carpeta de ROUTES
+
+Esta carpeta administra las rutas, es un modulo que vamos a exportar. 
+Por cada pagina que queramos crear un nuevo archivos .js
+
+
+
+
+
+*****ROUTES*****
+
+
+
+En la carpeta routes guardaremos un archivo JS por cada recurso que administre los request
+que tengan que ver con ese recurso
+
+Cada archivo va a ser un modulo que hay que exportar, para luego llamarlo en el entry point
+
+En la ultima linea se utiliza el:
+
+Module.exports = router
+
+
+
+En la pagina de cada ruta debemos:
+Primero:
+
+
+
+- const express = require('express');
+
+
+
+Luego:
+
+
+
+- const router = express.Router();
+
+
+
+Por cada ruta que desees crear, va a tener una estructura parecida a esta:
+
+
+
+router.get('/', function (req, res){
+    // codigo
+})
+
+router.get('/:idProducto', function (req, res){             // aca se saca el '/productos'
+    //codigo                                                  ya que se usa en el entry point
+})                  
+
+
+
+Es muy importante que al final del archivo exportes el modulo:
+
+
+
+module.exports = router;
+
+
+
+
+****App.js****
+
+
+
+Una vez lo hayamos exportado, vamos al entry point (App.js) y vamos a:
+
+
+
+- Requerir a express y utilizarlo el metodo Router () en una constante llamada app:
+
+
+
+const express = require('express');
+const app = express.Router();
+
+
+
+
+- Luego vamos a requerir el archivo de la carpeta routes:
+
+
+
+const IndexRoute = require('./routes/index');
+
+const productosRoute = require ('./routes/productos)
+
+
+
+
+- Vamos a utilizar el metodo 'use' y decirle como primer parametro 
+lo que sera el nombre del recurso y como segundo parametro 
+que lo busque en la variable donde lo requerimos al archivo
+
+
+app.use('/', IndexRoute)
+
+app.use('/productos', productosRoute)   // aca indicamos que todas las rutas que comiencen con 
+                                            /productos van a ser buscadas en productosRoute
+

@@ -1,0 +1,10 @@
+body {
+  padding: 50px;
+  font: 34px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgba(3, 3, 189, 0.596);
+  color: rgb(153, 255, 0);
+}
+
+a {
+  color: #00B7FF;
+}

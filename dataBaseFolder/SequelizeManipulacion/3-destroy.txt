@@ -1,0 +1,50 @@
+DESTROY
+
+
+el metodo .destroy() sirve para eliminar un registro.
+
+recibe un objeto con un atributo where para identificar el atributo que queremos eliminar
+
+ejemplo:
+
+
+Usuario.destroy({
+    where:{                                 //nunca olvidar agregar una condicion
+        id: 1                                 si no se borra toda la tabla
+    }
+})
+
+
+
+
+pasos:
+
+
+1- En la pagina de detalle agrego el boton para eliminar, con un form que viaje por DELETE
+
+Y va a viajar a /titulo/delete/idPelicula
+
+
+2- Luego en las rutas se agrega una ruta que vaya a:
+
+router.delete('/titulo/delete/:id', tituloControlador.delete)
+
+
+
+3- En el controlador creo el metodo .delete()
+
+allí llamamos a la base de datos al modelo que estemos trabajando y al metodo .destroy, ejemplo:
+
+
+delete:function(req,res){
+
+    db.titulo.destroy({
+        where:{                                   // lleva un where si o si, si no borra todo
+            id: req.params.id                       va a borrar el id que llega por url
+        }   
+    })
+
+    res.redirect('/titulo')
+}
+
+Primero se borran las relaciones y luego las filas

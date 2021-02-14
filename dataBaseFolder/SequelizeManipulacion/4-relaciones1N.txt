@@ -1,0 +1,137 @@
+
+Relaciones 1:N
+
+
+Sequelize tiene funciones para informar una relacion entre tablas
+
+
+-belongsTo:
+    "pertene a", indica que una pelicula tiene una pelicula
+
+    En el modelo de Pelicula.js se puede utilizar el belongsTo para crear una relacion con
+
+    la tabla de genero.
+
+    se pasa como parametro primero, el modelo a asociar y como segundo parametro, un objeto literal
+
+    con la propiedad "as" indicando el nombre que le estamos dando a la relacion  y la propiedad
+
+    foreign key, donde explicitamos el nombre de la clave foranea en la base de datos 
+
+    ejemplo:
+
+
+    Pelicula.belongsTo(Genero,{
+        as:'genero',
+        foreignKey: 'genre_id'
+    })
+
+
+
+-hasMany:
+    "tiene muchos", sirve por ejemplo para indicar que un genero tiene muchas peliculas
+
+    tambien se debe aclarar la relacion del lado de la tabla de generos, ejemplo:
+
+
+    Genero.hasTo(Pelicula,{
+        as:'peliculas',
+        forignKey: 'genre_id'
+    })
+
+    se escribe parecido, primero el modelo, luego un objeto con as y un foreignKey
+
+
+
+Para definir las relaciones en sequelize, le vamos a explicar como se relacionan nuestras tablas
+
+debemos configurar nuestros modelos,
+
+en cada modelo debemos agregar, despues del define,
+
+
+Peliculas.associate = function(models){             //aquí se definen las relaciones
+    Pelicula.belongsTo(models.Generos,{             //el primer parametro es con quien se relaciona
+        as: 'generos'                               //como llamo esa relacion
+        foreignKey: 'genre_id'                      // es la columna que une esas dos tablas
+
+    })
+}
+
+debo hacer lo mismo en el modelo de genero 
+
+
+Genero.associate = function(models){ 
+        Genero.hasMany(models.Peliculas,{
+        as: 'peliculas'
+        foreignKey: 'genre_id'
+    })
+}
+
+
+
+Luego en nuestro controlador para mostrar la lista de nuestras peliculas, en el metodo que trae
+
+todas las peliculas debemos aclarar que queremos que traiga la relacion tambien
+
+findAll puede recibir configuraciones (muchos metodos tienen configuraciones), le agregamos
+
+la configuracion:
+
+
+list: function(req,res){
+    db.Peliculas.findAll({
+        include:[{association: "generos"}]
+    })
+}
+
+
+luego en nuestra vista vamos  a imprimir tambien los generos ademas del nombre generos, ej:
+
+
+<%= peliculas[i].title %> - <%= peliculas[i].generos.name %>
+
+
+esto puede devolver error si hay alguna pelicula sin name, entonces debemos hacer una validacion
+
+
+<% if(peliculas[i].generos) {%>
+
+    <%= peliculas[i].title %> - <%= peliculas[i].generos.name %>
+
+<% } %>
+
+
+
+**Playground**
+
+crear tanto el objeto principal como su relación.
+
+En este caso tenemos un modelo Producto que le pertenece a un usuario (el creador).
+
+Nuestro objetivo va a ser crear un producto cuyo nombre sea "Falcon 9" y crear en el mismo método un usuario asociado a ese producto, que tenga como nombre "Elon" y como apellido "Musk".
+
+Para lograr esto debemos usar el método create del modelo Producto. El primer parámetro de este método va a ser un JSON con las columnas a insertar en la table producto (nombre) y a su vez, un atributo con el nombre de la relación y las columnas a insertar en dicha relación. Para nuestro caso el nombre de la relación es "creador" y las columnas a insertar son nombre y apellido.
+
+Por úlitmo, el método create va recibir como segundo parámetro un JSON con el atributo include que va a tener como valor la constante
+
+
+
+const Usuario = sequelize.define('usuarios',{
+    nombre: Sequelize.STRING,
+    apellido: Sequelize.STRING,
+});
+
+const Producto = sequelize.define('productos',{
+    nombre: Sequelize.STRING,
+    usuario_id: Sequelize.INTEGER,
+});
+
+const Creador = Producto.belongsTo(Usuario, { as: 'creador' });
+
+Producto.create( {nombre: 'Falcon 9', creador: {
+    nombre: 'Elon',
+    apellido: 'Musk'}
+    }, 
+    {include: [Creador]}
+    )

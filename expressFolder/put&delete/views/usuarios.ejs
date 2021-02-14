@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>listado</title>
+</head>
+<body>
+    <h1>Listado de usuarios</h1>
+
+    <% for(let i = 0 ; i < lista.length ; i ++) {%>
+        <li> <%= lista[i] %> </li>
+        <br>
+        <form action="/register/delete/<%= lista[i] %>?_method=DELETE" method="POST">
+            <button type="submit" >Borrar</button>
+        </form>
+        <br>
+    <% } %>
+    
+</body>
+</html>

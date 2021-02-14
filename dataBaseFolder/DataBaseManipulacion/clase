@@ -1,0 +1,88 @@
+SELECT *  FROM nombreTabla 
+WHERE id = 1 
+LIMIT 1                         //conviene porque asi evitamos que siga buscando
+                                    para la performance y el pagina de un sitio
+
+
+
+Al hacer un ORDER BY con un DESC y una categoria de desempate, aclarar ASC o DESC en el 
+
+desempate
+
+la sintaxis es bastante estricta
+
+- primero SELECT
+- columna, si hay mas tengo que agregar " , " y en la ultima no puede haber
+- FROM - WHERE - ORDER - LIMIT  (Esta es la forma correcta)
+
+
+cuando borro un registro ese id nunca mas se vuelve a utilizar, ejemplo:
+
+
+id: 20 nombre: pepito
+
+id: 21 nombre: pepita
+
+id: 22 nombre: pepiti
+
+
+
+al borrar id: 21, quedaria:
+
+
+id: 20 nombre: pepito
+
+id: 22 nombre: pepiti           // el 21 no se puede utilizar mas
+
+
+lo que se hace es un UPDATE
+
+
+UPDATE users
+
+SET delete_at = '2021-01-01'
+
+WHERE id = 1                    // aca se deja un registro de que existio y la fecha
+
+
+
+
+UPDATE products
+SET delete_at = '2021-01-01'
+WHERE id = 1
+
+SELECT id, price FROM products product
+WHERE id = 1 AND deleted_at IS NOT NULL
+ORDER BY price DESC, visits_count ASC
+LIMIT 10
+
+
+
+INSERT
+
+products { id, title, price, stock}
+
+INSERT INTO products 
+VALUE (tengo que llenar todos los valores en el orden correcto)
+
+en caso de que no tenga un valor como el id, debo colocar NULL
+en caso de que sea un horario puedo utilizar NOW(),
+se generara automaticamente
+
+INSERT INTO products (title, price)
+VALUE ('tinto', 4521)
+
+
+por ejemplo si hiciera una columna de created_at en una tabla, en la configuaracion puedo meter una funcion NOW () en el campo default/expression
+
+
+si quiero traer ciertos productos de una tabla, puedo usar la funcion IN() ejemplo
+
+tengo 3 id 11, 25, 64
+
+utilizo:
+
+SELECT * FROM products 
+WHERE id IN(11, 25, 64)
+
+

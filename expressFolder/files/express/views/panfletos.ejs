@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>panfletos</title>
+</head>
+<body>
+    <ul>
+        <% for (let i = 0; i < panfletitos.length ; i ++) {%>
+
+            <li> <%=panfletitos[i] %> </li>
+            <br>
+
+            <form action="/panfletos/delete/<%= panfletitos[i]%>?_method=DELETE" method="POST">
+                <button type="submit" >delete</button>
+            </form>
+            <br>
+
+        <% } %>
+        <li></li>
+    </ul>
+    
+</body>
+</html>

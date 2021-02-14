@@ -1,0 +1,111 @@
+
+SEQUALIZE
+
+
+Te permite conectarte de forma sencilla a una base de datos relacional con codigo
+
+en JS 
+
+
+vas a poder manipular datos que estan dentro de la base de datos
+
+
+Es un ORM - OBJECT RELATIONAL MAPPER 
+
+es un modelo de programacion que te va a permitir representar las entidades de una
+
+base de datos, en forma de objetos, en el programa que estes desarrollando
+
+nos ayuda a conectarnos a bases de datos com Postgres, MySQL, MariaDB, SQLite, 
+
+Microsoft SQL server y mas
+
+
+
+con SEQUALIZE podemos sustituir las querys que vimos, por funciones de JS
+
+
+te permite manipular los datos:
+
+-crear tablas y columnas
+-insertar
+-borrar
+-actualizar
+
+
+
+**Primero debemos instalar los paquetes:
+
+
+            npm install -g sequelize sequelize-cli
+
+
+**seguido de:
+
+
+            npm install --save mysql2
+
+
+
+**Una vez instalados los paquetes debemos crear un archivo en la raiz del proyecto:
+
+
+            .sequelizerc 
+
+
+
+**dentro de este escribir lo siguiente:
+
+
+            const path = require('path')
+
+            module.exports = {
+
+                Config: path.resolve('./database/config', config.js),
+                'models-path': path.resolve('./src/database/models'),
+                'seeders-path': path.resolve('./src/database/seeders'),
+                'migrations-path': path.resolve('./src/database/migrations'),
+            }
+
+
+
+**luego para que sequelize cree todas las carpetas y archivos que necesitamos para comenzar
+
+a trabajar debemos correr el siquiente comando:
+
+
+
+            sequelize init
+
+
+
+
+
+Luego vamos a tener que configurar la conexion con la base de datos
+
+dentro de las carpetas que creo sequelize, tenemos el archivo config.js
+
+dentro de config.js encontramos un JSON con credenciales por defecto que debemos reemplazar
+
+por las nuestras 
+
+en la configuracion de password, si no tengo contraseña no es lo mismo "" que null,
+
+"" JS lo toma como un valor, debemos colocar null
+
+Para que no nos de error, a todo el JSON que nos crea sequelize debemos asignarlo asincronico
+
+module.exports
+
+
+
+OBJETO DB
+
+
+Al final del archivo index.js ubicado en /database/models/index.js, encontramos
+
+la exportacion del objeto DB 
+
+este sera al que llamemos cada vez que queramos utilizar sequelize para consultar a 
+
+nuestra base de datos

@@ -1,0 +1,46 @@
+
+*****Rustas parametrizadas*****
+
+
+
+Se utiliza una estructura similar a la de las rutas, 
+Pero con los " : " vamos a indicar que un parametro es variable.
+
+Seguido de los " : " va el nombre que represente el dato que estara llegando al URL, ejemplo:
+
+
+
+
+router.get("/productos/:idProducto", function (req, res){
+    //codigo
+});
+
+
+
+Cuando esta escrito así es un parametro OBLIGATORIO.
+
+Cuando al final tiene un " ? " significa que puede ingresar el valor o no, es OPTATIVO.
+
+
+
+
+*****PARAMS*****
+
+
+
+Es una propiedad del objeto literal REQ.
+
+Nos permite capturar los valores parametrizados.
+
+Cada propiedad tendra el nommbre que definimos en el path, ejemplo:
+
+
+
+router.get("/producto/:idProducto", function (req, res){
+
+    let detalles = req.params.idProducto;
+
+    console.log(detalles);
+})
+
+

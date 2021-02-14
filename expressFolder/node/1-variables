@@ -1,0 +1,38 @@
+Variables
+
+Son espacios de memoria en la computadora donde podemos almacenar distintos tipos de datos
+
+En JS existen 3 tipos de variables:
+
+- let
+- var
+- const
+
+
+Para declarar una variable usamos la palabra reservada (let, var o const) ,
+
++ el operador de asignacion que es el " = ",
+
++ el nombre que le asignamos
+
+
+Es de buena practica que las variables tengan formato camelCase (mayuscula separa)
+
+JS es un lenguaje que hace diferencia entre minusculas y mayusculas
+
+
+Siempre guarda el ultimo valor que le asignamos, o sea se va pisando
+
+
+La principal diferencia entre var, let y const:
+
+- let solo es accesible en el bloque de codigo en el que fue declarada, 
+
+los bloques de codigos son determinados por las {}
+
+- var es global
+
+- const esta solo disponible en el bloque de codigo declarado, pero una vez asignado un valor 
+no se cambia
+
+- las variables con const suelen declararse en mayusculas (buena practica)

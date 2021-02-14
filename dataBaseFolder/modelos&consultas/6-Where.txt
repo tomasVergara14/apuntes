@@ -1,0 +1,73 @@
+
+
+WHERE & OPERADORES
+
+
+Cuando queremos datos especificos para eso se aplican condiciones a nuestra consulta
+
+en sequelize se utiliza el WHERE para esto, pero se pasa un objeto que tenga nuestras condiciones
+
+a filtrar y obtenga un resultado especifico
+
+
+la condicion puede ser la columna y el valor que queremos buscar. ejemplo:
+
+
+db.Peliculas.findAll({
+
+    where:{
+        
+        apellido:'Perez'
+    
+    }
+
+})                          // esto me devolvera todos los apellidos = a Perez
+
+
+
+si quisiera que me devuelva solo un resultado, deberia usar findOne que devuelve el primer
+
+resultado que matchee con las condiciones que buscamos. ejemplo:
+
+
+db.Peliculas.findOne({
+    where:{
+        name:'titanic'
+    }
+}).then(function(pelicula){
+    console.log(pelicula)
+})
+
+
+
+Si queremos buscar algo como una lista de peliculas que tengan tal letra, en SQL usamos LIKE
+
+en sequelize utilizamos OPERADORES
+
+Primero se importan los operadores de sequelize de la siguiente forma:
+
+
+const Op = Sequelize.Op 
+
+
+y a partir de ahí podemos utilizar los operadores que queramos en la columna de datos. ejemplo
+
+
+db.Peliculas.findAll({
+    where:{
+        apellido: { [db.Sequelize(Aca va el alias sino).Op.like]: '%s%'}           // los apeliidos que contengan 's'
+    }
+})
+
+
+ejemplo:
+
+
+db.Peliculas.findAll({
+    where:{
+        rating: { [db.Sequelize.Op.gt]: 8 }             //esto indica un rating >= 8
+    }
+}).then(function(peliculasTop){
+    console.log(peliculasTop);
+})
+

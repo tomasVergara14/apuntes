@@ -1,0 +1,38 @@
+
+Promise.all()
+
+a veces necesitamos que dos o mas promesas se resuelvan para realizar cierta accion,
+
+para esto se usa promise.all()
+
+
+Este contendra un array de promesas que una vez se hayan resuelto, un .then()
+
+se ejecutara con los resultados de las mismas
+
+
+Lo primero que debemos hacer es guardar en variables las promesas que necesitamos obtener
+
+ejemplo:
+
+
+let promesaPelicula = obtenerPeliculas();       //Promesa de pelicula 
+
+
+let promesaGeneros = obtenerGeneros();          //Promesa de generos
+
+
+
+luego se utiliza el metodo promise.all() que contendra  un array con las promesas
+
+que guardamos  anteriormente
+
+
+promise.all([promesaPelicula, promesaGeneros])
+
+    .then(function([resultadoPeliculas, resultadoGeneros]){
+
+        console.log(resultadoPeliculas, resultadoGeneros)
+
+    })                                          // el then se ejecutara si ambas 
+                                                 promesas se cumplen

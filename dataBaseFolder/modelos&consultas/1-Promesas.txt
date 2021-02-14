@@ -1,0 +1,108 @@
+
+Promesas
+
+Son funciones que nos permiten ejecutar codigo asincronico de forma eficiente
+
+
+JavaScript funciona de forma asincronica, que pedido que pueden tardar en el tiempo, no bloquean
+
+la ejecución, pero sin la seguridad de que el pedido a la base de datos se haya finalizado.
+
+
+
+Un pedido asincronico son instrucciones que se realizan mediante un cb, una promesa o un evento
+
+lo que hace posible que la respuesta sea procesada en otro momento
+
+
+
+Lo vuelve mas performante, no se bloquea la ejecucion
+
+
+
+la funcion asincronica va a devolver un resultado o no, mientras tanto el codigo se sigue 
+
+ejecutando, ejemplo:
+
+
+
+obtenerUsuarios()
+
+    .then(function(data){                       //funcion asincronica 
+
+        console.log(data);
+
+    });
+
+
+console.log('Se sigue ejecutando')              //Codigo que se sigue ejecutando mientras
+                                                  la promesa  se ejecuta 
+
+
+
+Las funciones van a recibir su parametro y un callback, ya que en el cb va el codigo asincronico
+
+el cb es la consecuencia, todo lo que quiero que suceda posterior al pedido, lo meto adentro
+
+del cb
+
+
+
+
+        Promesas anidadas
+
+
+a veces los .then() suelen tener promesas dentro. Para resolverlo necesitamos tener otro .then()
+
+ejemplo:
+
+
+obtenerUsuarios()
+    
+    .then(function(data){
+
+        return filtrardatos(data)
+    })
+
+    .then(function(datafiltrada){
+
+        console.log(datafiltrada)
+
+    })
+
+
+Es importante recordar que los .then() deben retornar la data procesada para que pueda ser usada 
+
+por otro .then()
+
+
+
+
+        Catch
+
+
+En caso de no obtener un resultado se genera un error. para esto usamos .catch() que encapsula
+
+cualquier error que pueda generarse a traves de las promesas. Dentro de este metodo decidimos 
+
+que hacer con el error. El mismo es recibido dentro del parametro del cb del .catch()
+
+ejemplo:
+
+
+obtenerUsuarios()
+
+    .then(function(data){
+
+        console.log(data)
+    
+    });
+
+    .catch(function(error){
+
+        console.log(error)
+        
+    })
+
+
+

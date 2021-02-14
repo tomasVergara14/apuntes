@@ -1,0 +1,61 @@
+
+El metodo classList
+
+nos muestran las clases de una etiqueta 
+
+
+- usando el .classList.add() nos permite agregar al elemento que tengamos señalado 
+
+una clase nueva
+
+
+let cita = document.querySelector('.cita');
+
+cita.classList.add('italicas')
+
+
+<p class= 'cita' ></p>
+
+<p class= 'cita italicas' ></p>
+
+
+
+- Con el .classList.remove nos permite quitarle una clase existente al elemento que 
+
+tengamos señalado
+
+
+cita.classList.remove('italicas')
+
+<p class= 'cita italicas' ></p>
+
+<p class= 'cita' ></p>
+
+
+
+- Con el .classList.toggle() revisamos si existe una clase en el elemento seleccionado, 
+
+de ser así la remueve, si no la agrega
+
+cita.classList.toggle('italicas')
+
+<p class= 'cita' ></p>
+
+<p class= 'cita italicas' ></p>
+
+
+
+- Con el .classList.contains() nos permite preguntar si un elemento tiene una clase determinada
+
+devuelve un valor booleano, es muy util para hacer operaciones logicas con if/else
+
+
+cita.classList.contains('box')      //retorna false
+
+cita.classList.contains('cita')     //retorna true
+
+
+
+Lo mas practico es tener ya una clase con las propiedades definidas, una clase en la hoja de 
+
+estilos, y con estos metodos utilizarlos en el front

@@ -1,0 +1,57 @@
+
+Para hacer que una pagina web cambie sin la necesidad de hacer otro pedido al servidor y
+
+que vuelva a cargarse la pagina
+
+
+
+JS nos permite tener interacciones con la pagina del lado del frontend modificando el html sin
+
+la necesidad de ir al servidor y volver
+
+
+para modificar el contenido de nuestro html con JS utilizamos:
+
+-Window:
+    representa la ventana, al navegador donde estamos con nuestra pagina web, nos da una interfaz
+
+    para operar con el navegador, el alto, el ancho, hasta en que web estamos, que dice en la barra de navegacion
+
+
+
+-Document:
+
+    DOM (document object model) es la representacion que hace JS de lo que tenemos en el html
+
+    ya esta definida en el navegador, solo hay que utilizarla.
+
+
+
+Los dos son nativos de JS 
+
+al escribir en la consola del navegador:
+
+window  //devuelve la ubicacion en la cual estas, la barra de navegacion 
+
+        al desplegar las propiedades y metodos que te permiten relacionarte con la ventana
+
+        innerHeight: para saber la longitud de alto
+
+        innerWidth: para saber la longitud de ancho
+
+        ejemplo window.innerHeight      //al dar enter me retorna la longitud de alto
+
+        window.location         //nos devuelve un objeto con mucha informacion como 
+                                el host donde estamos
+                                el nombre del host  
+                                en donde estamos
+                                de donde venimos
+                                el nombre del path
+                                el protocolo
+
+
+el objeto window es para trabajar con la ventana del navegador y el objeto document es para 
+
+trabajar con el contenido del documento 
+
+

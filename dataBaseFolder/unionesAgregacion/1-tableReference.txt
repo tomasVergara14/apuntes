@@ -1,0 +1,43 @@
+Lo mas importante al traer informacion de varias tablas es entender como se relacionan y 
+
+como estan armadas estas tablas.
+
+
+Reverse engineer
+
+una vez ya armadas las tablas, nos va a permitir ver el diagrama relacional
+
+- en database 
+
+o
+
+- ctrl + r
+
+
+una vez que ya tenemos el EER diagram podemos hacer las consultas y ver las referencias
+
+
+un ejemplo:
+
+se quiere consultar una tabla donde estan los datos de los clientes y otra tabla donde estan
+
+los datos de las ventas a esos clientes
+
+
+   clientes ----------------- ventas
+
+  -id (PK)                  - id(PK)
+  -nombre                   - fecha
+  -apeliido                 - local
+                            - cliente_id (FK) //esta es la que nos importa
+
+
+
+La consulta seria:
+
+SELECT clientes.id, clientes.nombre, ventas.fecha   //selecciono el id y nombre de clientes
+                                                     y la fecha de la tabla ventas
+FROM clientes, ventas                               //se consulta sobre las tablas clientes
+                                                     ventas
+WHERE clientes.id = ventas.cliente_id;              // se filtra para que solo devuelva los
+                                                    resultados que queremos.

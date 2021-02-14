@@ -1,0 +1,63 @@
+
+
+*****MODELO DE VISTA CONTROLADORES*****
+
+
+Es un patron de diseño,
+
+Es un esquema de trabajo, una serie de reglas que permiten simplicar el codigo y
+encarar mejor la solución de diferentes situaciones a lo largo del desarrollo
+
+Un conjunto de reglas que definen la arquitectura de un sistema
+
+Es una forma de trabajo
+
+
+
+La comunicacion es por 3 componentes logicos, cada uno con una responsabilidad diferente:
+
+- MODELOS
+
+- VISTAS 
+
+- CONTROLADORES
+
+Cada una cumple un rol especifico y actua de forma independiente y esta aislado de las otros debemos
+
+
+
+*****VISTA*****
+
+
+Es la capa con la que interactua el cliente
+
+Interfaz grafica
+
+lo que ve el usuario
+
+
+
+
+*****MODELO*****
+
+
+Relaciona los datos de la aplicacion
+
+Se encarga de hacerle las consultas a la base de datos
+
+La logica del Negocio
+
+
+
+*****CONTROLADORES*****
+
+
+Responde a las acciones o peticiones que realiza el cliente a traves de las vistas
+
+Se encarga de elegir la vista a mostras
+
+Interactua con vistas y MODELOS
+
+
+
+Las VISTAS no se relacionan con los MODELOS

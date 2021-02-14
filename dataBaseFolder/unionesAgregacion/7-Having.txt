@@ -1,0 +1,17 @@
+
+Having
+
+cumple la misma funcion que el WHERE, pero el WHERE al usar el GROUP BY queda inutil ya que
+
+se agrupan los datos y se deja de usar filas.
+
+El HAVING se usa para filtrar datos de estos grupos y se puede utilizar junto con las funciones
+
+de agregacion, ejemplo.
+
+
+SELECT COUNT(cliente_id), pais
+FROM clientes
+GROUP BY pais
+HAVING COUNT(cliente_id) > 3
+                            // devolvera los grupos de paises con mas de 3 clientes

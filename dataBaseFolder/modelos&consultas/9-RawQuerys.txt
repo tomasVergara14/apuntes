@@ -1,0 +1,49 @@
+
+Son consultas sin formato, una forma de manipular datos en sequelize mediante consultas SQL
+
+
+primero debemos corroborar que este conectada a la base de datos
+
+debemos requerir db en nuestro controlador, ejemplo:
+
+
+let db = require('../models/index.js)
+
+
+la funcion .query() de sequelize recibe una consulta SQL como parametro y se debe acceder al
+
+objeto sequelize para poder llegar a ella 
+
+
+db.sequelize.query('SELECT * FROM tabla')
+
+
+el retorno de esto sera un array de 2 posiciones, y nuestros resultados van a estar en la primera
+
+posicion. Luego en el .then() definimos que hacemos. ejemplo:
+
+
+db.sequelize.query('SELECT * FROM tabla')
+    .then(resultados=>{
+        let usuarios = resultados[0]
+        console.log(usuarios)
+    })
+
+
+
+
+
+
+const dbConfig = require('../config/database');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('config');
+
+const borrar = (req, res) => {
+	sequelize.query('DELETE FROM peliculas WHERE id = ' + req.params.id)
+		.then(function(){
+			res.send("Producto elimiado con éxito")
+		})
+		.catch(function(){
+			res.send("Error al eliminar el producto")
+		})
+}

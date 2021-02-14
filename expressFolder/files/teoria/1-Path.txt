@@ -1,0 +1,74 @@
+Path
+
+Segun el sistema operativo las rutas se van a ver diferentes, para eso esta el paquete Path
+
+
+El paquete path viene en node.js solo se debe requerir en el archivo que queremos utilizarlo
+
+
+const path = require('path');
+
+
+
+Es un paquete con multiples metodos en el, que nos pueden ser muy utiles.
+
+Metodos:
+
+
+
+-Join: Es un metodo que nos permite describir de manera sencilla una ruta de un archivo 
+
+        y las carpetas.
+        
+        ejemplo:
+
+        let carpeta = path.join(´//C:', 'Usuario', 'Directorio', 'archivo.json')
+
+
+        Va a devolver \\C:\usuarios\directorio\archivo.json
+
+
+
+
+-Basename: el metodo path.basename('nombreArchivo') nos devuelve la ultima porcion de una ruta
+
+        por ejemplo:
+
+         en \\C:\usuarios\directorio\archivo.json
+
+         nos devuelve  archivo.json
+
+
+
+
+-Dirname: el metodo path.dirname('nombreArchivo') nos permite conocer el nombre de las carpetas
+
+        donde se encuentra el archivo. Recibe una ruta como parametro y devuelve las carpetas
+
+        lo opuesto a basename
+
+        por ejemplo:
+
+        en \\C:\usuarios\directorio\archivo.json
+
+        devuelve \\C:\usuarios\directorio
+
+
+
+-Extname: el metodo path.extname('nombreArchivo') nos permite conocer el nombre de la extension
+
+        del archivo que ingresamos 
+        
+        ejemplo:
+
+        en \\C:\usuarios\directorio\archivo.json
+
+        nos devuelve .json
+
+
+
+-Resolve: el metodo path.resolve() si no le ingresamos un valor nos va a devolver la ruta 
+
+        donde estamos parados ahora
+
+

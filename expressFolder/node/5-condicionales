@@ -1,0 +1,33 @@
+Condicionales  IF/ ELSE/ ELSE IF
+
+Nos permiten evaluar condiciones y realizar diferentes acciones segun el resultado de esas 
+evaluaciones
+
+tipos:
+
+- Condicionales simples:
+    if ( condicion a cumplir ) { codigo a ejecutar si se da la condicion }
+
+
+- Condicionales con bloque Else 
+    if ( condicion a cumplir ) { 
+        codigo a ejecutar si se da la condicion 
+    } else {
+        codigo a ejecutar si es falsa la condicion
+    }
+
+
+- Condicionales con bloque else if:
+    
+    if ( condicion a cumplir ) { 
+        
+        codigo a ejecutar si se da la condicion 
+    
+    } else if ( otra condicion ) {
+        
+        codigo a ejecutar si se cumple la otra condicion
+    
+    } else {
+        
+        codigo a ejecutar si es falsa la condicion
+    }

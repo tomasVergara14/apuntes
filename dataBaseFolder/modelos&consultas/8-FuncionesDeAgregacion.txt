@@ -1,0 +1,39 @@
+
+
+Sirven para traer datos como suma, redondeo, promedio, maxima y minima 
+
+
+-Count:
+    El metodo .count().then(resultado=>{console.log(' Tenemos ${resultado} usuarios')})
+
+                                                    //contamos y devolvemos 1 valor
+
+
+
+    usando .count() + el where obtenemos una suma de los resultados que cumplan la condicion
+
+    db.Usuarios.count({
+        where:{
+            admin: true
+        }
+    }).then(resultado=> {console.log(' Tenemos ${resultado} administradores)})
+
+
+
+-MAX:
+    Trae el valor maximo de un atributo, ejemplo:
+
+
+   
+    db.Usuarios.max('edad').then(resultado=> {console.log(' El usuario mas grande tiene ${resultado})})
+
+
+
+-SUM:
+    Trae la suma de todos los valores de un atributo 
+
+     db.Usuarios.sum('saldo).then(resultado=> {console.log(' El total del saldo es ${resultado})})
+
+
+
+

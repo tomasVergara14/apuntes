@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Detalle usuario</title>
+</head>
+<body>
+    <h1>Detalle del usuario <%= buscar %></h1>
+
+    <form action="/usuarios/detail/<%= buscar %>/edit?_method=PUT" method="POST" >
+        <button type="submit" > Editar</button>
+    </form>
+
+
+    
+</body>
+</html>

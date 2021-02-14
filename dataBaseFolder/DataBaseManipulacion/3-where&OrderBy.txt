@@ -1,0 +1,81 @@
+
+El WHERE nos va a servir para hacer filtros en nuestras tablas de las filas
+
+nos permite filtrar algunas filas, dadas algunas condiciones
+
+ejemplo:
+
+SELECT * FROM movies
+WHERE rating > 5            // me devuelve las peliculas cuyo dato de rating sea > a 5
+
+
+en la sintaxis para decir que algo es igual se usa el " = ", para decir que algo
+
+es ditinto se usa " != " o " <> "
+
+
+operadores:
+
+- =     igual
+- >     mayor
+- <     menor
+- >=    mayor o igual
+- <=    menor o igual
+- !=    diferente
+- <>    diferente
+
+- IS NULL   es nulo
+- BETWEEN   entre dos valores
+- IN        lista de valores
+- LIKE      se ajusta a ""
+
+
+y si queremos agregar otra condicion agregamos un AND
+
+ejemplo:
+
+SELECT * FROM movies
+WHERE rating > 5 
+AND awards > 3              // mostrara las peliculas con un rating mayor a 5 y que ademas
+                                tengan mas de 3 premios
+
+
+si queremos filtrar poniendo un condicional agregamos un OR
+
+ejemplo:
+
+SELECT * FROM movies
+WHERE rating > 5
+OR awards > 3                // mostrara las peliculas que tengan un rating > 5 y tambien
+                                mostrara a las que tengan mas de 3 premios
+
+
+
+El WHERE se escribe una sola vez, el AND y el OR puedo escribirlo cuantas veces quiera o 
+
+necesite
+
+
+
+El ORDER BY nos va a permitir ordenar esos datos que obtuvimos
+
+sintaxis
+
+SELECT titulos, primer_nombre, rating FROM movies
+WHERE rating < 3
+ORDER BY primer_nombre              //aqui ordenos alfabeticamente segun la columna elegida
+
+
+si quisieramos hacerlo al reves
+
+SELECT titulos, primer_nombre, rating FROM movies
+WHERE rating < 3
+ORDER BY primer_nombre DESC         // el DESC hara que vaya al reves, de la Z a la A y numericamente decreciente
+
+
+
+aqui se puede dar un empate si dos personas se llaman igual, para desempatar:
+
+SELECT titulos, primer_nombre, rating FROM movies
+WHERE rating < 3
+ORDER BY primer_nombre DESC , rating        //ahora si empatan lo definira el rating

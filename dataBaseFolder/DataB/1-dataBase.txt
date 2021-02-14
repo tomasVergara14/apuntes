@@ -1,0 +1,76 @@
+
+Base de Datos
+
+un conjunto de datos pertenecientes a un mismo contexto organizados para un proposito
+
+Nos permiten:
+
+- almacenar
+- acceder
+- manipular
+- analizar
+
+
+Es una pieza de software que nos permite almacenar informacion
+
+Nos dan soluciones robustas, mas veloces
+
+
+Si tenes varios proectos o necesitas fragmentar la informacion podes tener mas de 1 base de datos
+
+
+Esta alojada en un servidor
+
+para conectarse hay que tener en cuenta:
+
+1- NOMBRE BASE DE Datos
+
+2- TIPO DE BASE DE DATOS
+
+3- DIRECCION IP DONDE SE ENCUENTRA
+
+4- USUARIO
+
+5- CONTRASEÑA
+
+6- PUERTO
+
+
+El puerto la ubicación dentro de un servidor 
+
+Esto sirve para ver donde esta la base de datos, para conectarse a ella vamos a usar:
+
+- Sitema gestor de base de datos
+
+
+Existen relacionable:
+
+- Mysql
+- Oracle
+- DB2
+- Postgresql
+
+Existen no relacionables:
+
+- Mong
+- Redis
+- Cassandra
+
+
+Los sistemas SQL
+
+Structured query language
+
+Vamos a utilizar Mysql
+
+dentro de Mysql vamos a encontrar tablas, la informacion se almacena tipo excel, en una grilla
+
+Cada columna representa los atributos/campos de cada dato
+
+y cada fila representa un registro o dato concretramente
+
+Todas las tablas en los bases de datos tienen una "clave primaria"
+
+la clave primaria es un dato unico para cada una de las filas, es lo que permite distinguir
+
+univocamente una fila de la otra, no se repite en otras filas

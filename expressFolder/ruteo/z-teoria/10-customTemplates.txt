@@ -1,0 +1,30 @@
+
+
+
+*****Custom Templates*****
+
+
+Detectar cuales son las porciones de codigo que vamos a tener repetidas en todos 
+
+los archivos del proyecto.
+
+Ejemplo: un head, barra de navegacion, un footer
+
+cada una de esas se va a convertir en un archivo nuevo que va a incluir solo esa porcion 
+
+de codigo
+
+
+Debemos almacenar esa porcion de odigo en una nueva carpeta dentro de views - partials - head
+
+vamos a tener que cortar el pedazo de codigo que queramos modularizar y pegarlo en el archivo 
+nuevo con el nombre de porcion de codigo que representa
+
+Utiliza la extensión .ejs
+
+Para disponer del codigo que queremos modularizar debemos utilizar la funcion:
+
+<%-include('./partials/head') %>
+
+Esto nos permite no repetir tanto, ser mas organizados y modularizar
+

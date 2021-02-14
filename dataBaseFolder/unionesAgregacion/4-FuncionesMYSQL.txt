@@ -1,0 +1,130 @@
+Las funciones de MYSQL
+
+
+
+- CONCAT: Se usa para concatenar dos o mas expresiones, ejemplo:
+
+SELECT CONCAT('Hola' , ' ', 'a', ' ', 'todos')
+
+                                        //nos devuelve 'Hola a todos'
+
+
+
+
+
+-COALESCE: Se usa para obtener la primer respuesta que no es NULL o introducir un valor para
+
+        que no quede NULL, ejemplo:
+
+
+SELECT  title, COALESCE(name, 'No tiene genero') 
+FROM movies
+LEFT JOIN genres ON genres.id = id_genres
+
+
+                                //nos devuelve los titulos y generos
+                                 en caso de no tener genero aparece la frase "No tiene genero"
+
+
+
+
+
+
+-NOW(): Nos permite tener la fecha y hora actual.
+
+
+-DATEDIFF: Para devolver la diferencia entre dos fechas, tomando como granularidad el inter
+
+valo especificado, ejemplo:
+
+
+SELECT title, DATEDIFF(NOW(), release_date)
+FROM movies
+
+                                //Nos devuelve la diferencia en días de las dos fechas
+
+
+
+
+
+-EXTRACT: Se usa para extraer partes de una fecha, ejemplo
+
+SELECT EXTRACT(SECOND FROM '2020-12-15 21:01:55')
+
+                                //Nos devuelve 55
+
+
+SELECT EXTRACT(DAY FROM '2020-12-15 21:01:55')
+
+                                //Nos devuelve 15
+
+Podemos usarlo para:
+                    - SECOND
+                    - MINUTE
+                    - HOUR
+                    - DAY
+                    - WEEK
+                    - MONTH
+                    - QUARTER
+                    - YEAR
+
+
+
+
+-DATE_FORMAT: Nos permite formatear la fecha para que podamos verla como queramos, ejemplo:
+
+
+SELECT title, DATE_FORMAT(release_date, "%d/%m/%Y")
+FROM movies
+                                // te devuelve en formato 15/12/2020
+
+
+
+
+
+
+-REPLACE: La utilizamos para reemplazar una secuencia de caracteres por otra en un string
+
+ejemplo:
+
+
+
+SELECT REPLACE(title, "Harry", "Juanito") //aqui metemos primero la columna, luego el valor
+
+                                            a reemplazar y por ultimo porque lo reemplazamos
+
+
+                                            nos devuelve "Juanito potter y la pieda filosofal"
+
+
+
+
+
+-LENGTH: Nos permite utilizar el largo de caracteres de un string, es muy util al ser usado en
+
+el WHERE, ejemplo:
+
+
+SELECT title
+FROM movies
+WHERE LENGTH(title) > 10
+
+                                        // Nos devuelve los titulos con mas de 10 caracteres
+
+
+
+
+
+
+-CASE: Se usa para evaluar condiciones, ejemplo:
+
+SELECT id, title, rating
+CASE
+    WHEN rating < 4 THEN 'Mala'
+    WHEN rating < 6 THEN 'Regular'
+    WHEN rating < 8 THEN 'Buena'
+    WHEN rating < 9.5 THEN 'Excelente'
+    ELSE 'Tenes que verla si o si'
+END
+FROM movies
+ORDER BY rating

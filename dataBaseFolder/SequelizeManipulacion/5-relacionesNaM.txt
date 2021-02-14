@@ -1,0 +1,109 @@
+
+Relaciones Muchos a muchos
+
+
+Para eso sequelize nos ofrece la funcion belongsToMany
+
+
+ejemplo, una relacion entre peliculas y actores, muchos actores en una pelicula y muchas peliculas
+
+por actor 
+
+
+Para relacionarlas debemos tener los modelos de cada tabla armada.
+
+En el modelo Pelicula en el associate:
+
+
+Pelicula.associate = function(models){             
+    
+    Pelicula.belongsTo(models.Generos,{             
+        as: 'generos'                               
+        foreignKey: 'genre_id'                      
+
+    }),
+
+    Peliculas.belongsToMany(models.Actores,{        //primer parametro indicamos a que modelo se
+                                                        asocia, el segundo es un objeto de configuracion
+ 
+        as:'actores',                               //se introduce el alias con el que lo vamos a usar
+
+        through:'actor_movie'                       // a traves de que tabla pivot los relacionamos
+
+        foreignKey: 'movie_id'                      //nombre de la columna en la tabla pivot que hace referencia al modelo actual
+                                                        al encontrarme en peliculas.js debo usar movie_id
+        otherKey: 'actor_id'                        //nombre de la columna en la tabla pivot que hace referencia a la conexion
+                                                        la otra clave foranea
+        timestamps: false                           //no tiene created_at o updated_at
+    })
+
+}
+
+
+
+luego en el findByPK podemos incluir esta relacion
+
+
+Pelicula.findByPK(1,{
+    include:['actores'],
+    raw: true,                                      //esto incluye las configuraciones que hicimos
+    nest: true                                         antes
+}).then(results=>console.log(results))
+
+
+para que esto funcione se debe repetir en el modelo de actores
+
+
+en el modelo de actores.js 
+
+
+Actores.associate = function(models.Peliculas){ 
+        Actores.belongsToMany(models.Peliculas,{
+        
+        as: 'peliculas'
+        
+        through: 'actor_movie'
+
+        foreignKey: 'actor_id',                     // estas sobre el modelo actores, por eso se trabaja
+                                                        sobre esa foreignKey
+        otherKey: 'movie_id',                       // la otra ahora es movie_id
+        
+        timestamps: false
+    })
+}
+
+
+Si quisieramos agregar un sublistado de actores en la vista que muestra el listado de peliculas
+
+deberiamos incluir en el findAll en el array include {association:actores}
+
+
+ejemplo:
+
+list: function(req,res){
+
+    Peliculas.findAll({
+        include:[{association:"generos"}, {association: actores}]
+    })
+}
+
+
+
+luego apara mostrarlo en la vista, vamos a la vista de la lista
+
+y hacemos un for debajo de cada pelicula
+
+ejemplo:
+
+<ul>
+    <% for(let j =0; j < peliculas[i].actores.length; j ++)% {>
+
+        <li>
+
+            <%= peliculas[i].actores[i].first_name %>
+
+        </li>
+
+    <% } %>
+
+</ul>

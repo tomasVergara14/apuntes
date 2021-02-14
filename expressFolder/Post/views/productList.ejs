@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>productos</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <h1>Lista</h1>
+
+    <% for(let i = 0; i < productos.length; i ++) { %>
+
+        <li> <a href="/product/detail/product/<%= productos[i] %>"><%= productos[i] %></a> </li>
+
+    <% } %>
+
+    <h2>Buscar</h2>
+    <form action="/product/buscar" method="GET">
+        <input type="text" name="buscar">
+        <input type="submit" value="buscar">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,82 @@
+ademas de poder hacer consultas con table reference tambien se pueden hacer consultas a
+
+distintas tablas y unir esos resultados con JOINS
+
+Cumplen la misma funcion pero:
+
+- proveen cierta flexibilidad adicional
+
+- su sintaxis es mucho mas utilizada 
+
+- presentan una mejor performance
+
+
+El INNER JOIN hara una cruza entre dos tablas, si seguimos con el ejemplo de clientes y ventas
+
+si un cliente no tuviese ninguna venta el INNER JOIN no traeria resultado  de ese cliente
+
+
+
+El LEFT JOINT no excluye resultados de alguna de las dos tablas, si hubiese un cliente sin 
+
+ventas podríamos incluirlo con LEFT o RIGHT JOINT, de esa forma se recuperan datos de la tabla
+
+que este a la izquierda o derecha respectivamente
+
+seria:
+
+
+antes:
+
+
+SELECT clientes.id, clientes.nombre, ventas.fecha
+
+FROM clientes, ventas 
+
+WHERE clientes.id = ventas.cliente_id;
+
+
+
+ahora seria:
+
+
+SELECT clientes.id, clientes.nombre, ventas.fecha       //los datos que queremos recuperar
+
+FROM clientes                                           //tabla de la izquierda
+
+INNER JOIN ventas ON clientes.id = ventas.cliente_id;   // Tabla de la derecha y condicion 
+                                                        a cumplir, osea clave primaria con
+                                                        la clave foranea
+
+                                                        Donde antes escribiamos WHERE ahora
+                                                        es ON
+
+
+
+Podemos incluir otras tablas tambien, ejemplo:
+
+SELECT clientes.id, clientes.nombre, ventas.fecha
+
+FROM clientes
+
+INNER JOIN ventas ON clientes.id = ventas.cliente_id
+
+INNER JOIN productos ON productos.id = ventas.productos_id  // aqui consultamos por varias
+                                                                tablas
+
+                            
+
+
+
+
+
+
+
+
+ejemplo payground, promedio de tiempo de canciones de un album:
+
+
+SELECT AVG(milisegundos)
+FROM canciones
+INNER JOIN albumes ON id_album = albumes.id
+AND albumes.id = 4

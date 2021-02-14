@@ -1,0 +1,64 @@
+
+La variable document tiene un metodo llamado querySelector y querySelectorAll
+
+Estos metodos nos permiten especificar donde queremos hacer un cambio 
+
+recibe un string e indica el selector de css del elemento DOM que estamos buscando
+
+
+es importante declarar una variable para almacenar el dato que nos devuelva 
+
+
+una vez ejecturado el querySelector,  Dentro de los parentesis , vamos a escribir un Selector
+
+de css, para indicar que etiqueta queremos modificar. ejemplo
+
+
+document.querySelector('form')
+
+document.querySelector('.clase-especial') //el punto indica clase
+
+
+el querySelector solo nos trae el primer resultado que matchee con la etiqueta indicada
+
+
+
+si queremos seleccionar todos debemos utilizar querySelectorAll  //nos devuelve un array con todas
+
+las etiquetas con la etiqueta o clase que indicamos, nos devuelve un NODE LIST
+
+ejemplo:
+
+
+let elHi = document.querySelector('H1')     //Selecciona la etiqueta H1
+
+console.log(elHi)       //nos devuelve por consola en le navegador la etiqueta h1 
+
+
+
+Deberiamos usar un archivo donde hagamos nuestras querys, poder linkearlo a varios archivos
+
+y hacer validaciones en caso de que esas etiquetas no existan en el archivo donde lo linkeamos
+
+
+let losParrafos = document.querySelectorAll('p')        // devuelve un node list con todos los losParrafos
+
+
+puedo recorrerlo ya que se comporta como array
+
+for( const elParrafo of losParrafos ){
+
+    console.log(elParrafo)
+}
+
+
+
+tambien podemos buscar elementos con getElementById() recibe un string con unicamente el nombre
+
+del id del elemento de DOM que estamos buscando 
+
+
+Si anteponemos un # en el string le indicamos que es un id
+
+
+tambien esta getElementByClassName()

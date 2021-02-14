@@ -1,0 +1,40 @@
+Manipulacion de tablas
+
+
+comandos:
+
+-insert : para agregar filas
+
+sintaxis
+
+INSERT INTO nombreTabla VALUES 
+(aqui se agregan todos los valores de los datos en orden como aparece en la tabla)
+
+
+si no quieramos agregar todos los campos tenemos que aclararlo, ejemplo
+
+INSERT INTO nombreTabla (id, title, premios, duracion, date, datosQueSiQueremos) VALUES
+(datosQueAclaramos)
+
+
+
+- delete: para borrar filas
+
+sintaxis
+
+DELETE FROM nombreTabla
+WHERE premios<1
+
+muchas veces hay que entrar en configuaraciones para poder llevar a cabo esta sintaxis
+
+
+
+- update: para modificar filas
+
+sintaxis
+
+UPDATE nombreTabla
+SET premios =               //aqui elegimos que columna modificar
+WHERE premios<4             // aqui filtramos y decimos que solo en las filas
+                                muuuy importante poner el WHERE si no borramos todo
+

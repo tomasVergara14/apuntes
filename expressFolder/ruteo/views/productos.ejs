@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>productos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>juegueee</h1>
+    <p>Welcome to Jurasic Park</p>
+    <% for(let i = 1; i <= 10; i ++) {%>
+      <label for="text" name="hobbies"> hobbies <%= i %></label>
+      <% if( i % 2 == 0) {%>
+      <input class="par" type="text" name="hobbies" id="hobbies">
+      <% } else { %>
+        <input class="impar" type="text" name="hobbies" id="hobbies">
+      <% } %>
+      <br>
+    <%}%>
+  </body>
+</html>

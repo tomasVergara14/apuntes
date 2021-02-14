@@ -1,0 +1,38 @@
+Hash
+
+Las funciones de hash nos permiten almacenar información de manera encriptada
+
+Si me registro en un sitio web, se ve un hash, no texto plano
+
+
+- si yo tengo un hash no puedo recuperar la contraseña original
+
+- si el usuario se quiere loguear, y se puede comparar la contraseña que escribio 
+
+    con el hash almacenado y verificar que haya una coincidencia.
+
+
+primero se debe instalar el paquete bcrypt 
+
+npm install bcrypt --save
+
+
+luego lo requerimos en una constante
+
+
+const bcrypt = require('bcrypt')
+
+
+
+para transformar un string en un hash es utilizar la funcion:
+
+
+bcrypt.hashSync('elTextoAEncriptar', 10 )  
+
+
+- el primer parametro es el texto que deseamos encriptar
+
+- El segundo es la cantidad de "sal" que deseamos agregar (agregar un componente azaroso)
+
+    lo nomral es 10 o 12
+

@@ -1,0 +1,52 @@
+Como utilizar JS en frontend
+
+
+para declarar la vinculacion entre html y JS debemos usar la etiqueta <script></script>
+
+como si fuese el link de css
+
+
+escribiendo la etiqueta sin atributos, tenemos la posibilidad de escribir entre la apertura y 
+
+el cierre, codigo JS, y es ejecutado sin problema, se lo conoce como JS en linea (no es recomendable)
+
+
+
+lo que mas se utiliza es <script src='Se indica donde esta el archivo que vinculamos'>
+
+con la etiqueta y el atributo src no podemos escribir codigo dentro de la apertura y cierre
+
+tambien puede tomar el atributo type='text/javascript'  (no es obligatorio)
+
+
+
+
+2 tipos:
+
+- vinculacion en linea / interna:
+
+            no se recomienda tanto, ya que para reutilizar el codigo deberiamos copiar y pegar
+
+            el mismo bloque de codigo en donde lo queramos usar, vuelve el trabajo inmantenible
+
+            y sin performance
+
+            En el html se implementa la etiqueta <script></script>, todo lo que se escriba dentro
+
+            se ejecuta como codigo de JS siempre y cuando sean de JS (no particulares de Node)
+
+
+
+- vinculacion externa:
+
+            Nos permite linkear nuestro archivo html con un archivo JS externo, el archivo lo creamos en una carpeta
+
+            que creamos dentro de la carpeta public.
+
+            dentro del archivo .js no es necesario que utilicemos las etiquetas <script>
+
+
+
+una buena practica es agregar las etiquetas <script> (vinculacion) con nuestro archivo js
+
+al final del body, de manera que el documento ya este cargado para cuando se lea el

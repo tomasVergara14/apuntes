@@ -1,0 +1,53 @@
+
+Lo primero que debemos hacer es modelar la base de datos
+
+entender la estructura donde va a estar almacenada
+
+se usa un diagrama relacional
+
+te permiten entender todas las tablas de la base de datos.
+
+
+Para comenzar a modelar, se hace un rectangulo por cada tabla:
+
+
+ejemplo:
+
+3 tablas: 
+
+- genero
+- peliculas
+- actores
+
+
+cada tabla va a tener sus columnas/ campos que van a contener los distintos tipos de datos
+
+por ejemplo en pelicula:
+
+- id (PK)           //en negrita
+- titulo
+- rating
+
+
+entonces en el diagrama relacional vamos a ver un rectangulo, con el titulo de la tabla y 
+
+por debajo laos titulos de las columnas, en negrita va a tener el PK (primary key) que va
+
+a ser la clave unica
+
+
+a estos diagramas relacionales le vamos a llamar entidades  que seran representacion de 
+
+un objeto o cosa en la vida real. Para los nombres de las tablas usamos sustantivos en plural
+
+
+
+los Atributos son las caracteristicas que van a definir cada columna, van a ser las columnas
+
+si fuese una tabla de excel
+
+
+La PK o Primary Key o clave unica es un campo o una combinacion de campos que identifica a cada
+
+fila de una tabla de forma unica. No puede haber dos filas que tengan la misma PK en una tabla
+

@@ -1,0 +1,93 @@
+
+*****CONTROLADORES*****
+
+Son pequeñas porciones de codigo que se encargan de atender los pedidos del cliente
+
+Son una capa adicional que porveen escalabilidad  y mayor control sobre el codigo
+
+
+
+Se debe crear una carpeta llamada Controllers
+
+Dentro se va a crear un controlador por cada recurso de la aplicacion
+
+un controlador es un modulo de Node, así que se exporta y luego se requiere 
+
+Hay que crear los archivos segun el recurso, ejemplo: productosController.js
+
+
+Un controlador es un objeto literal con diferentes metodos dentro. 
+Cada uno de los metodos va a responder a un request en particular 
+
+
+Dentro de productosController.js vamos a crear una variable con cualquier nombre,
+ejemplo: 
+
+let controlador = {}
+
+
+luego se exporta:
+
+module.exports = controlador
+
+
+Luego se crea un metodo para cada request, ejemplo: Listado, crear, borrar, estructura
+
+
+
+la propiedad de cada metodo, sera una funcion
+
+Así nos queda irganizado nuestro codigo:
+
+
+En app.js solo el:
+
+        const express = require('express);
+        const app = express ()
+
+        const rutasProducto = require('./routes/productos)
+
+
+        app.use('/nombreDeRuta', rutasProducto )
+
+
+en routes se requiere express, se usa el metodo Router de express en una variable,
+luego se usa la variable .get
+
+Luego se requiere el controlador y se le asigna a una variable,
+
+En el primer parametro del .get se utiliza el nombre de a donde sse quiere ir, y en el segundo
+se ingresa la variable donde se requirio el controlador
+
+
+
+        
+        const express = require('express');
+        const router = express.Router;
+
+
+        const productosController = require('../controller/productosController)
+        
+         router.get('/:idProducto', productosController);
+
+        module.exports = router;
+
+
+En controlador solo la variable con los metodos para cada request.
+y luego se exporta
+
+
+
+        let controlador: {
+            detalle: function (req, res){
+                //codigo
+            },
+            crear: function (req, res) {
+                //codigo
+            },
+            comentarios: function (req, res){
+                //codigo
+            }
+        };
+
+        module.exports = controlador;

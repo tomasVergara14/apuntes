@@ -1,0 +1,12 @@
+File System
+
+
+Es un paquete de Node, que se utiliza para leer y escribir en los archivos
+
+ya viene incluido en node, solo hay que requerirlo
+
+
+const fs = require('fs')
+
+
+

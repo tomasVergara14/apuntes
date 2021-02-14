@@ -1,0 +1,74 @@
+
+Tipos de datos en Mysql
+
+
+al crear las tablas, las columnas viene asociada a un tipo de datos.
+
+cada tipo de dato tiene un tamaño determinado  y cuanta mas precision tengamos, mas rapido 
+
+y mas performante va a funcionar Mysql
+
+los tipos de datos son:
+
+
+***Numericos***
+
+- INT: 0 a 4294967295
+
+- TINYINT: 0 a 255
+
+- SMALLINT: 0 a 65535
+
+- BIGINT: numero extensos, 0 a 18446744073709551615 
+
+- Decimal: para numeros con coma es el recomendado
+
+- Float: tambien permite decimales pero no es recomendado
+
+- Booleano: por detras como 0 o 1, pero se recomienda Tinyint indicando (0 = false 1 = true)
+
+
+
+***Texto***
+
+- Char: viene de la mano de un numero con la cantidad exacta de caracteres que va a tener el
+        
+        texto. Tiene pocos usos. ejemplo: codigo postal
+
+- Varchar: viene con un numero asociado pero indica el numero maximo de caracteres, por 
+
+        ejemplo para el nombre podemos indicar que no va a superar los 100 caracteres
+
+- Text: no tiene restricciones pero no es muy performance
+
+
+
+***Fecha***
+
+- Date: para aclarar solo fechas, pero debemos escribirlo como string con el formato:
+
+        "YYYY-MM-DD"
+
+- Time: para aclarar solo horarios en el formato:
+
+        HH:MM:SS
+
+- Datetime: para aclarar ambas cosas
+
+
+
+
+Todos estos datos pueden tener Restricciones  o CONSTRAINTS
+
+
+- se puede aclarar que una columna es PK o FK
+
+- que no permite datos nulos NOTNULL, estas no pueden quedar vacias, es importante tildar
+
+esta columna si quiero que un campo no pueda quedar vacio
+
+- UNIQUE, indica columnas que no se pueden repetir a pesar de no ser la clave primaria (PK)
+
+- Default y/o Auto_increment como si fuese una columna id que se va a ir autoincrementandose
+
+en cada una de las filas 

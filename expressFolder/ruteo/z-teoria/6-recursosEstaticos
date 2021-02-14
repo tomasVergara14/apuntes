@@ -1,0 +1,16 @@
+
+Son aquellos recursos publicos que manejamos dentro de nuestra aplicacion (img, videos, archivos)
+
+Para disponer libremente de estos hace falta aclararle a express donde van a estar almacenados.
+
+ejemplo:
+
+app.use(express.static(__dirname + '/public'))
+
+Con esa línea le estamos dando a express acceso libre a todo lo que se encuentra en la carpeta
+public
+
+Para requerir alguno de los archivos estaticos, solo debemos aclarar la ruta hacia dicho recurso
+
+ejemplo: <img src='/images/logo.png'>
+

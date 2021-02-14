@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Usuarios</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <h1>Usarios</h1>
+
+    <ul>
+        <% for(let i = 0; i < list.length ; i ++){ %>
+
+            <li> <a href="/usuarios/detail/<%= list[i] %>"><%= list[i] %></a>  </li>
+
+            <form action="/usuarios/delete/<%= list[i] %>?_method=DELETE" method="POST">
+                <button type="submit" >Delete</button>
+            </form>
+
+        <% } %>
+    </ul>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+Funciones
+
+Es un bloque de codigo que podemos invocar todas las veces que necesitemos
+
+Puede realizar una tarea especifica y retornar un valor
+
+Nos permite agrupar el codigo que vayamos a utilizar muchas veces
+
+Para declararla se utiliza:
+
+- palabra reservada " function " 
+
+- El nombre de la funcion
+
+- Los parametros dentro de parentesis, si no lleva escribimos los parentesis vacios
+
+- En el cuerpo va la logica de la funcion entre llaves {}, es decir lo que queremos que ocurra
+
+- El retorno, usamos la palabra " return "
+
+
+La forma de invocar o ejecutar una funcion es escribirla y abrir y cerrar parentesis
+
+
+Los parametros son las variables que escribimos cuando definimos una funcion
+
+Los argumentos son los valores que  enviamos cuando invocamos  la funcion
+
+
+El scope es el alcance que tiene una variable, son definidos por las funciones:
+
+- Local, si una variable es declarada dentro de una funcion, fuera de esta no existe
+
+- Global, cuando se declara una variable fuera de una funcion, se la puede utilizar fuera de 
+la funcion
+

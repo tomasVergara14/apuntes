@@ -1,0 +1,212 @@
+
+
+*****HTTP*****
+
+
+Es un protocolo que define las reglas y codigos de comunicacion necesarios para entendernos
+
+HYPER TEXT TRANSFER PROTOCOL 
+
+Gestiona transacciones web entre cliente y servidor
+
+cada vez que un cliente hace un pedido a un servidor este viene acompañado por un metodo o verbo
+
+Un metodo es una funcion que implementa una serie de procesos logicos que define que sucedera
+cuando se accede a un recurso
+
+
+
+*****GET*****
+
+Para peticiones al servidor
+
+solo recuperan datos, no modifican
+
+solo las rutas que usen el metodo get podran ser accedidas desde la URL o desde un enlace, el resto por formularios
+
+toda la info es visible en la URL del navegador
+
+pueden ponerse como favoritos o ser cacheados
+
+
+
+Estas peticiones son las mas comunes
+
+Ejemplo:
+
+*En Routes*
+
+router.get('/', porductosController.mostrarTodos)
+
+*En Controller* //usa el metodo render aca
+
+let controller = {
+    mostrarTodos: function(req,res) {
+        //logica del metodo
+    }
+}
+
+
+para obtener informacion de la URL tenemos que hablar del QUERY STRING
+
+Es una cadena de consulta, una cadena string
+
+cadena de texto que contiene información dinamica que puede ser utilizada en los controladores
+para buscar contenido
+
+Esta formado por claves y valores separados por '  &  '
+
+comienza con un ' ?  ' despues de la ruta
+
+El query string puede ser agregado a los favoritos, puede hacerse un permalink
+
+la URL guarda la configuracion necesaria para mostrar la informacion relacionada
+
+Para acceder a la información del Query string se usa una propiedad del request llamada QUERY
+
+Es una propiedad perteneciente al request,
+
+es un objeto literal, clave:valor
+
+se utiliza para los formularios, te brinda la información que es enviada en el request.
+
+ejemplo:
+
+ let resultadoBusqueda = req.query."nombre del input del formulario"
+
+
+
+
+
+
+
+
+
+*****POST*****
+
+Para enviar datos al servidor
+
+sirve para crear registros dentro de la aplicacion
+
+mucho mas seguro que Get
+
+La informacion esta oculta, no se ve en la URL
+
+No se pueden poner como favoritos ni cacehados
+
+Se suele utilizar para enviar información sensible del usuario o crear un nuevo recurso
+
+En un contexto donde quisieramos agregar un nuevo producto a la lista o un nuevo usuario
+necesitariamos dos rutas
+
+//ruta que envia el formulario de la vista -- Get --
+
+router.get('/', porductosController.lista);
+
+//ruta que procesa la informacion del formulario -- POST --
+
+router.post('crear', porductosController.crear);
+
+
+Los nombres de las rutas pueden ser iguales pero lo que importa es el metodo utilizado
+
+
+Las peticiones que se hacen por post, son las que se hacen a traves de formularios
+necesitan tener seteados:
+
+- METOD = "POST"
+-action = "URL a donde va"
+
+
+Express generator nos da dos lineas de codigo muy importantes:
+
+app.use(express.urlencoded({ extended: false}) )
+app.use(express.json());
+
+Es para que todo lo que llegue de un formulario sea transformado en objeto literal y a su vez
+poder convertir esa info en un JSON
+
+
+En el Request encontramos la propiedad BODY, un objeto literal que contendra toda la informacion
+del formulario
+
+El nombre de la clave de ese objeto sera el atributo "name" de cada input del formulario
+
+el valor sera el dato que se haya ingresado en campo
+
+
+Es necesario hacer un redireccionamiento despues de implementada la logica, usando el metodo
+.redirect
+
+Ejemplo:
+
+res.redirect('A donde queremos que redireccione')
+
+
+
+*****PUT*****
+
+Para reemplazar datos actuales en un servidor
+
+se usa  para modificar de forma segura
+
+No se crea un nuevo registro, se modifica uno ya existente
+
+Se ejecuta sobre el router de la aplicacion, y recibe los dos parametros convencionales
+
+Seguramente neceistas primero una ruta .get para ver el registro
+
+va a ser necesario pasar un parametro en la ruta que  represente un identificador unico para
+registro que se esta por modificar
+
+se suele usar el :id
+
+Para asegurar la compatibilidad se debe instalar un paquete de Node:
+
+MethodOverride.
+
+     npm install method-override --save
+
+
+se requiere en app.js y se utiliza con metodo app.use
+
+
+const methodOverride = require('method-override');
+
+app.use(methodOverride('_method'))
+
+
+los datos se envian en un formulario similar a POST
+
+<form action='/productos/:id/actualizar?_method=PUT' method='POST' >
+
+    //codigo
+
+</form> 
+
+en un contexto donde quisieramos modificar un dato de nuestra aplicacion necesitariamos dos rutas
+
+una que muestre el formulario de edicion y otra que se encarge de procesar la informacion
+
+en ambas rutas debemos definir un parametro que nos ayude a identificar el elemento unico a modificar
+
+ejemplo:
+
+router.get('/productos/:idProducto/editar', porductosController.lista);
+
+router.put('/productos/:idProducto/', porductosController.editar)
+
+
+*****DELETE*****
+
+Es para borrar un registro ya existente
+
+
+
+*************
+
+No todos los navegadores soportan el metodo PUT o DELETE
+
+Para actualizar o eliminar un registro ya existente
+
+Los metodos son muy parecidos al metodo POST, el request debe venir de un formulario

@@ -1,0 +1,60 @@
+
+Las funciones de agregacion realizan calculos sobre un conjunto de datos y devuelven un 
+
+unico resultado.
+
+Excepto COUNT, el resto de funciones ignoran los valores NULL
+
+
+
+
+-COUNT: Devolvera la cantidad de filas/registros que cumplan con la condicion, ejemplo:
+
+
+SELECT COUNT(*)
+FROM movies;
+                                // va a devolver el número de filas que tiene movies
+
+
+
+
+
+
+-AVG: Es el promedio, averege, devolvera el promedio de una columna de valores, ejemplo:
+
+
+SELECT AVG(rating) 
+FROM movies;
+                                //Devolvera el promedio del rating
+
+
+
+
+
+-SUM: Esla suma de las columnas  con valores numericos, ejemplo:
+
+
+SELECT SUM( length)
+FROM movies
+                                //Devolvera la suma de las duraciones de las peliculas
+
+
+
+
+
+-MIN: Devolvera el valor minimo de una columna con valores, ejemplo:
+
+SELECT MIN(rating)
+FROM movies
+                                //Devolvera el rating de la pelicula menos ranqueada
+
+
+
+
+-MAX: Devolvera el valor maximo de una columna con valores, ejemplo:
+
+SELECT MAX(rating)
+FROM movies
+                                //Devolvera el rating de la pelicula mejor ranqueada.
+
+

@@ -1,0 +1,128 @@
+para que el config sea seteable en todas las compus
+
+debemos descargar un paquete:
+
+npm install dotenv
+
+
+luego se requiere en nuestro archivo de config:
+
+	require('dotenv').config() 		//asi tal cual
+
+
+en el module.exports ={
+	username: process.env.USERNAME_DB
+	password: process.env.PASSWORD_DB
+	database: process.env.NAME_DB
+	port: process.env.PORT_DB
+
+
+}
+
+
+luego en el archivo ".env"
+
+USERNAME_DB = "root"
+PASSWORD_DB = 		//si es null no ponga nada porque dotenv toma todo como texto
+NAME_DB = "azvi_db"
+PORT_DB = 3306
+
+
+
+
+cuando es una tabla pivot  = belongsToMany
+
+
+puede confundir:
+
+hasOne/belongsTo
+hasMany/belongsTo
+
+
+un ejemplo tiene 
+
+un perfil pertenece a un usuario (1-1) "hasOne"
+
+un usuario tiene muchos domicilios(1-M) "hasMany" 
+
+un carrito tiene muchos productos (1-M) 
+un producto pertenece a muchos carritos (1-M)
+
+
+como configurar un modelo n:m
+
+tengo un modelo, la definicion de sus columnas
+
+
+timestamps: true,
+createdAt : 'created_at'
+updatedAt : 'updated_at'
+
+
+
+las relaciones, la definicion conviene que este donde quiero empezar
+por ejemplo si requiero db.movie allí la relacion debe estar aclarada con su nombre,
+la asociacion me permite tomar datos de los dos modelos
+
+
+db.Movie.findAll({})
+cuando no hay alias puedo usar el nombre del modelo
+
+yo puedo filtrar que quiero que me traiga con:
+attributes:['id', 'first_name', 'last_name']
+
+si quiero que me traiga los actores ordenados por rating por ejemplo puedo hacer:
+
+db.Movie.findAll({
+	include:[
+	association:''
+	attributes:[]
+	]
+	},{			// esto funciona en hasMany
+	association:'',		
+	limit: //va  a decir cuantos devuelve
+	order: // el orden en que los devuelve
+	attributes: []
+	}
+	
+)
+
+
+para agregar un modelo a otro
+
+
+db.modelo.findByPk(req.params.id)
+	.then(movie => {console.log(movie)}
+
+	// insert into actor_movie (movie_id, actor_id)
+	//vallue (3, id1) //lo mismo par id2 y id3
+	movie.addStaff([id1, id2, id3])
+
+esto sirve para relacionar dos id (actor y movie)
+
+
+
+si queremos agregar datos a una pivot se debe crear el modelo de la tabla pivot
+
+para agregar datos por la pivot es cambiar el thought 
+
+
+movie.belongsToMany(models.Actor, {
+	as:'staff',
+	throught: models.Staff, //aqui se llama el modelo staff
+	foreingKey: 'movie_id',
+	otherKey: 'actor_id'
+)
+
+
+
+para hacer un soft delete debo crear:
+
+deletedAt: 'deleted_at'
+paranoid: true 	//se comporta de forma paranoica
+
+
+si quiero traer los datos borrados en nuestro sequelize, es con el paranoid: false
+
+
+router.post('/', function(req,res){})

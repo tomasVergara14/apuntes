@@ -1,0 +1,21 @@
+Esto aplica cuando queremos aplicar un middleware y que solo sea en algunas rutas
+
+lo primero es crear el middleware, darle su logica,
+
+luego en el archivo de routas, requerimos ese middleware que creamos.
+
+Dentro de la ruta que lo vamos a utilizar ponerlo como segundo parametro
+
+
+
+//playground
+
+const express = require('express');
+const router = express.Router();
+const OldController = require('../controllers/OldController');
+
+function redirigir (req,res,next){
+    res.redirect('/')
+}
+
+router.get('/ruta-en-desuso', redirigir , OldController.index);

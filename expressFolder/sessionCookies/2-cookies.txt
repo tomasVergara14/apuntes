@@ -1,0 +1,98 @@
+
+Cookies
+
+te permiten:
+
+- tener informacion que se guarda en todas las paginas
+
+- que sea por usuario
+
+- que no se pierda esa informacion al cerrar elñ navegador
+
+
+las Cookies son archivos que podemos guardar en el navegador del usuario
+
+
+yo digo en cuanto tiempo van a expirar y desaparecen despues del tiempo que indico y no 
+
+cuando se cierra el navegador
+
+
+
+tienen un limite de espacio y es un poco insegura, se utiliza cuando de verdad queremos 
+
+que la informacion se mantenga despues de haberse cerrado el navegador
+
+
+
+guardamos informacion en la computadora del usuario y cuando ese usuario pide una pagina 
+
+podemos leer que guardamos en las cookies y operar en base a eso 
+
+
+
+al querer guardar una cookie debemos usar el response y el metodo .cookie , debemos aclarar
+
+el nombre de lo que estamos guardando y el valor 
+
+ejemplo:
+
+
+res.cookie('colorPreferido', ''rojo)
+
+
+
+para leer la cookie en otro pedido utilizamos el request y la propiedad cookie como si 
+
+fuese un  objeto de lectura y el nombre de donde la almacenamos antes
+
+ejemplo:
+
+req.cookie.colorPreferido   //obtenemos 'rojo' 
+
+
+
+
+
+//playground
+
+***Setear cookie
+
+
+var express = require('express');
+var cookieParser = require('cookie-parser');
+
+var app = express();
+app.use(cookieParser());
+
+const index (req, res) => {
+	//Escribí tu código acá
+
+	res.cookie('ultimoAcceso', new Date())
+}
+
+
+
+
+***Preferencias del usuario
+
+
+var express = require('express');
+var cookieParser = require('cookie-parser');
+
+var app = express();
+app.use(cookieParser());
+
+const index = (req, res) => {
+	let estilo;
+
+	if(req.cookie.estilo != undefined){
+		let estilo = req.cookie.estilo
+	}else{
+		let estilo = "default"
+	}
+
+	res.render('/', {estilo: estilo});
+
+	//Código del controlador
+}

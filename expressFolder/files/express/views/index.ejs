@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <%-include('partials/header')%>
+
+    <ul>
+
+      <% for(let i = 0 ; i < categorias.length ; i ++){ %>
+        <li> <a href="/product/detail/<%= categorias[i] %>"> <%= categorias[i] %></a> </li>
+
+      <% } %>
+      
+    </ul>
+
+    <form action="/register" method="GET">
+      <button type="button" > <a href="/register">Registrate</a> </button>
+    </form>
+
+  </body>
+</html>

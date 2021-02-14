@@ -1,0 +1,53 @@
+Como empezamos a hacer una db
+
+ nombre: ecommerce_dh     //el nombre en minusculas, sin espacios, guion bajo para separar
+
+ 
+ tablas: los sustantivos que se nos ocurran de nuestra pagina (usuarios, productos, etc)
+
+ 
+ query: busquedas, los calificativos son querys
+
+ 
+ verbos: operaciones
+
+
+
+ ejemplo:
+
+ precio de un producto
+
+ {atributo} de una {entidad}
+
+ o sea una categoria de una entidad
+
+
+
+
+ primero comenzar con las tablas mas independientes para comenzar (productos, usuarios)
+
+ hay una que no va a depender de nada, pero muchas de las que se crean despues van a depender
+
+ de esa 
+
+
+
+ creamos una tabla y lo primero es colocar columna id
+
+
+ id: INT AUTO INCREMENTAL , PRIMARY KEY, NOT NULL, UNSIGNED (comienza en 0 para arriba)
+
+
+ se usa datos exactos, tipo dato numerico, puede ser incremental, no puede cambiar y puede ser
+
+ incremental
+
+
+ en la password tener en cuenta el limite de caracteres por el hash
+
+
+ en la base de datos no se guardan imagenes/archivos, se guardan rutas para encontrarla
+
+
+
+Si hay muchos datos null en tu tabla, es posible que haya dos tablas.

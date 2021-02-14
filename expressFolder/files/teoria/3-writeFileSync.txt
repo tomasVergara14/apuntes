@@ -1,0 +1,41 @@
+WriteFileSync
+
+
+Es un metodo que nos va a permitir escribir archivos
+
+ya viene en el paquete fileSystem
+
+recibe dos parametros:
+
+- El primer parametro un string donde se va a almacenar lo que escribamos.
+
+- El segundo lo que vayamos a escribir o cargar
+
+WriteFileSync sobrescribe las cosas, o sea las pisa.
+
+Para guardar objetos debemos volverlo primero JSON.
+
+
+ejemplo:
+
+
+//se guardan los datos del formulario
+
+let usuarios = {
+    
+    name:req.body.name,
+    email: req.body.email
+}
+
+
+//se vuelven de objeto a JSON
+
+let usuariosJson = JSON.stringfy(usuarios)
+
+
+//se escriben como archivo
+
+fs.writeFileSync('archivo.Json', usuariosJson);  //primer parametro donde va guardado
+
+                                                    segundo que se guarda 
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>loguin</title>
+</head>
+<body>
+
+    <h1>Ingresa</h1>
+
+    <% if (typeof errors != 'undefined') { %>
+
+        <p style="color: tomato;" >ERROR</p>
+
+        <ul>
+            <% for (let i = 0 ; i < errors.length ; i++ ) {%>
+
+                <li>
+                    <%= errors[i].msg %>
+                </li>
+            <% } %>
+        </ul>
+
+    <% } %>
+
+    <form action="/usuarios/login" method="POST">
+        <input type="email" name="email">
+        <label for="email">email</label>
+        <br>
+        <input type="password" name="password">
+        <label for="password">password</label>
+        <br>
+        <button type="submit" >send</button>
+    </form>
+    
+</body>
+</html>

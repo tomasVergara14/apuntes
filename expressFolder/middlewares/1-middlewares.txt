@@ -1,0 +1,70 @@
+Express toma al req y al res como objetos, recibe un objeto de pedido y devuelve 
+
+un objeto de respuesta.
+
+toda peticion requiere de una serie de pasos  para ser procesada. Express divide esos pasos
+
+en funciones denominadas middlewares.
+
+funciones que se ejecutan entre el pedido y la respuesta 
+
+
+las rutas que requieran de middlewares ademas del req y res, necesitaran de un tercer parametro
+
+que es la funcion next() 
+
+next permite la ejecucion en cadena de todas las funciones  necesarias que deberan ejecutarse
+
+antes de enviar una respuesta al cliente 
+
+
+con los middlewares podemos aislar codigo que nos permita resolver un escenario en particular
+
+e implementarlo donde sea necesario, evitando asi repetir codigo
+
+
+se agrega una capa de seguridad, si la funcion que definimos como middleware no retorna lo
+
+esperado se corta la ejecucion en cadena y devolvera una respuesta seteada para esos casos
+
+
+
+
+
+Para alivianar el problema y organizar mejor el codigo
+
+se separa el problema grande en pequeñas funciones con claras responsabilidades.
+
+ejemplo:
+
+- seguridad
+- dejar registro
+- data base
+
+
+Cada uno va a manejar una parte especifica e interactuan entre ellos, y pasan el pedido y 
+
+respuesta.
+
+
+Express divide esta responsabilidad en funciones, cada una con un claro objetivo y responsabilidad
+
+
+Por ejemplo en autenticacion, debería tener en cuenta 3 cosas:
+
+1- El pedido - el objeto que representa, se analiza la info que llega 
+
+2- la respuesta - el objeto respuesta, segun lo que pase, la respuesta se modifica
+
+3- Next - al hacer next, hacemos que se ejecute la siguiente funcionalidad en cadena
+
+
+ejecuta una lista de funciones, una lista de funciones en cadena
+
+
+Estas funciones se llaman middlewares, ya que se encuentra entre el pedido y la respuesta
+
+El middleware puede devolver una respuesta para cortar la cadena tambien
+
+
+Por cada de funcionalidad especifica que queremos utilizar podemos utilizar un middleware

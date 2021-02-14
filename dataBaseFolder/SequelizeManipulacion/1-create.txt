@@ -1,0 +1,42 @@
+
+Ademas de consultas, sequelize nos permite insertar datos
+
+Para insertar datos en una tabla, utilizamos el metodo CREATE
+
+
+Es un metodo que le pertenece a los modelos de nuestra base de datos, para acceder a .create()
+
+primero debemos llamar al modelo, ejemplo:
+
+
+const db = requier('../database/models')    //aca se requiere la conexion a la db 
+
+db.Usuario.create( {                         // .create() recibe un objeto literal que debe 
+                                                contener como KEY el mismo nombre del campo
+        name: 'Manuel',                         a escribir en la DB y como valor contenido
+        username:'manolito12',                  lo que queramos almacenar en el
+        password:'Nardonkpo'
+    
+    }
+);
+
+
+-bulkCreate()
+
+
+Es un metodo que permite ingresar varios registros de datos, así no es necesario hacer varios
+
+create, ejemplo:
+
+
+db.Usuario.bulkCreate([
+    {name: 'Manuel',
+    username:'manolito12',
+    password:'Nardonkpo'
+    },
+    
+    {name: 'lucas',
+    username:'yoli2512',
+    password:'facunidit'
+    }
+])

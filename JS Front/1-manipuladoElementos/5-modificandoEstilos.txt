@@ -1,0 +1,30 @@
+
+La propiedad style nos permite leer y sobreescribir las reglas del css que se aplican sobre un
+
+elemento que hayamos seleccionado
+
+
+var titulo = document.querySelector('H1')
+
+titulo.style.color = 'gray'     //ahi modificamos el color del h1 a gris
+
+
+la sintaxis de las propiedades de 2 palabras se escriben una despues de la otra con mayuscula
+
+
+se escribe la etiqueta que queremos modificar 
+
+.style
+
+.propiedad que queremos modificar
+
+
+Podemos trabajar tambien con el confirm, ejemplo:
+
+
+var confirmarCambios = confirm('¿Quere cambiar el color del titulo?')   // al recargargar la pagina me consulta
+
+if(confirmarCambios){
+
+    titulo.style.color = 'red'      // si confirmo me acepta los cambios dentro del if
+}

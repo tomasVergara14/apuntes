@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+
+//playground 
+
+
+***Validando que la url sea segura
+
+const express = require('express');
+const router = express.Router();
+const favoritosController = require('../controllers/favoritosController');
+const { check, validationResult, body } = require('express-validator');
+
+router.post('/favoritos',  [
+    body('url').custom(function(value){
+        return value.indexOf('https') !== -1
+    })
+],favoritosController.guardar);
+
+
+
+
+
+***Validando que no haya errores
+
+
+const express = require('express');
+const router = express.Router();
+const { check, validationResult, body } = require('express-validator');
+
+const userController = {
+  login: (req, res) => {
+    const errores = validationResult(req);
+
+    if( !errores.isEmpty()){
+      res.render('/', {errores:errores.array()})
+    }
+
+    if (req.body.name == 'admin' && req.body.pass == 123) {
+    	res.redirect('/dashboard');
+    }
+  }  
+}

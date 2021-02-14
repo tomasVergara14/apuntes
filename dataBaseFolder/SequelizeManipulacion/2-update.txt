@@ -1,0 +1,88 @@
+UPDATE
+
+
+es un metodo de sequelize para actualizar los datos de un registro ya creado 
+
+en la base de datos
+
+
+
+Se debe pasar un objeto con la informacion que se actualiza, es importante que cada atributo
+
+debe tener el mismo nombre que la columna 
+
+
+por ejemplo quireo actualizar el mail:
+
+
+Usuario.update({
+    email:'bsd@gmail.com'
+},{
+    where:{ id:4}       //es muy importante especificar el registro que estamos modificando
+})                         si no se pueden actualizar todos los datos de la base de datos
+
+
+
+
+Los pasos parar modificar los datos serian:
+
+
+1- crear la ruta para que el usuario vea el dato a modificar, ejemplo
+
+**routes**
+
+router.get('/edit/:id', moviesController.edit)
+
+
+2- ir al controlador y crear el metodo .edit
+
+**controlador**
+
+edit: function(req,res){
+
+    db.Pelicula.findByPK(req.params.id)         //esto es para encontrar la pelicula que queremos
+        .then(function(pelicula){               editar por PK, usando el params (llega por url)
+
+            res.render('editarPelicula',{pelicula:pelicula})
+        })                           
+    
+}
+
+
+3- se hace la vista editarPelicula.ejs
+
+esta se parece bastante al formulario para crear peliculas, se modifica que va direccionado
+
+a /edit/id y que el campo value ya va a estar relleno con el valor de la pelicula que quiera
+
+modificar 
+
+
+4- luego se hace una ruta por POST a la misma direccion pero 
+
+con el metodo moviesController.update
+
+
+5- en la vista debemos recordar que  el post debe enviar a /edit/id de la peli a modificar
+
+6-  el moviesController.update va a ser:
+
+
+update: function(req,res){
+
+    db.Pelicula.update({                            // lleva algo muy parecido a la creacion
+                                                    se crea un objeto literal con todas las columnas
+        title:req.body.title,                       que queremos actualizar de la db 
+        rating:req.body.rating,
+        awards:req.body.awards,
+        released_date: req.body.released_date,
+        length: req.body.lenght
+    },{
+        where:{
+            id: req.params.id                       //muy importante no olvidarse el where
+        }                                              si no se modifican todos los campos
+    })
+
+    res.redirect('/movies/edit' + req.params.id)    // se redirecciona al formulario de edicion
+}                                                      con el id que nos llega por params
+

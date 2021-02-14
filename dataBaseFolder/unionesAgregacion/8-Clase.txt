@@ -1,0 +1,74 @@
+Clase:
+
+
+Comandos:
+
+- INNER JOIN
+- LEFT / RIGHT JOIN
+- GROUP BY
+- HAVING
+- DISTINCT
+
+
+FUNCIONES DE STRINGS:
+
+- CONCAT()
+- REPLACE()
+- LENGTH()
+
+
+FUNCIONES DE LOGICA:
+
+- COALESCE()
+
+FUNCIONES DE FECHA:
+
+- DATEDIFF()
+- EXTRACT()
+- NOW ()
+
+FUNCIONES DE AGREGACION:
+
+- MIN()
+- MAX()
+- SUM ()
+- AVG()
+- COUNT()
+
+OPERADOR:
+
+- CASE()
+
+
+
+Tipos DE datos
+
+strings:
+
+-CHAR
+-VARCHAR
+-TEXT
+-LONGTEXT
+-SMALLTEXT
+-ENUM
+
+booleanos:
+
+-TINYINT(1 )  //0 - 1
+
+number:
+
+-INT 
+-BIGINT
+-DECIMAL(t,d)
+
+array:
+
+-relacion uno a muchos
+
+objeto:
+
+-relacion uno a uno
+
+
+

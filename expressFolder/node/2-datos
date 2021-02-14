@@ -1,0 +1,23 @@
+tipos:
+
+- Numericos: los decimales se separan con un " . "
+
+- String: cadenas de caracteres, se puede usar '' o ""
+
+- Logicos o booleanos: true o false
+
+- Objetos: Son colecciones de datos, y en su interior pueden existir todos los otros,
+se declaran con {}
+
+- Array: colecciones de datos que se declaran con [], son un tipo especial de objetos
+
+
+Los tipos de datos especiales le permiten a JS  determinar estados especiales  que pueden tener
+los datos
+
+- NaN (Not a Number)
+
+- Null: Valor nulo, para indicar un valor vacio o desconocido
+
+- Undefined: las variables tienen un valor indefinido hasta que se le asigna uno
+

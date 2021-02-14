@@ -1,0 +1,8 @@
+Si queremos modificar el contenido de una etiqueta HTML vamos a utilizar la propiedad innerHTML
+
+
+let parrafo = document.querySelector('p')
+
+parrafo.innerHTML = 'nuevo texto'       //reemplaza el texto viejo
+
+parrafo.innerHTML += 'agrego texto'     //deja el texto viejo y agrega nuevo

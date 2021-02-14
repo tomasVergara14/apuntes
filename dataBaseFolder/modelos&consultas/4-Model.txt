@@ -1,0 +1,151 @@
+
+En los patrones MVC los modelos contienen unicamente los datos puros de la aplicacion
+
+no contiene logica que describa como pueden presentarse los datos a un usuario 
+
+este puede acceder a la capa de almacenamiento  de datos 
+
+Lo ideal es que el modelo sea independiente del sistema de almacenamiento
+
+
+Un modelo es la representacion de nuestra tabla en codigo 
+
+Con esto obtenemos recursos que nos permiten realizar consultas e interacciones con las
+
+bases de datos de manera simplificada utilizando sequelize
+
+
+
+Siempre creamos un modelo para nuestra base de datos. La ruta donde almacenamos es
+
+/database/models
+
+
+- los modelos son archivos js, por lo tanto van con esa extension .js
+
+- los nombres de los modelos deben estar escritos en UppercamelCase y en singular 
+
+ejemplo:
+
+    - Pelicula.js
+    - Genero.js
+
+
+
+Un modelo es una funcion que debemos definir para luego exportarla con module.exports
+
+esta funcion recibe dos parametros 
+
+en primer lugar recibe el objeto - sequelize para podes acceder a su metodo .define()
+
+en segundo lugar traemos al objeto DataTypes que nos data la posibilidad de decirle a
+
+nuestras columnas que tipo de dato permitiran
+
+
+***DEFINE***
+
+
+El metodo define() nos permite definir asignaciones entre un modelo y una tabla.
+
+recibe 3 parametros.
+
+El primer es un alias que identifica el modelo 
+
+El segundo es un objeto con las configuraciones de las columnas en la base de datos 
+
+El tercero es otro objeto con configuraciones adicionales (parametros opcionales)
+
+
+Lo que devuelva define sera almacenado en una variable con el nombre del modelo para
+
+luego ser retornada por la funcion que creamos
+
+
+const Pelicula = sequelize.define(alias, cols, config);
+return Pelicula
+
+
+
+***ALIAS***
+
+
+el primer parametro del define
+
+es un alias que se utiliza para identificar el modelo, suele utilizarse el mismo 
+
+nombre que el modelo pero en formato STRING. ejemplo:
+
+
+const Pelicula = sequelize.define('Pelicula', cols, config);
+
+
+
+***COLS***
+
+el segundo parametro
+
+es un objeto que nos permite definir que tipo de datos deben recibir las columnas
+
+en la base de datos, ejemplo:
+
+
+cols = {
+
+    id:{
+        type: DataTypes.INTEGER
+    },
+    name:{
+        type: DataTypes.STRING
+    },
+    admin:{
+        type: DataTypes.BOOLEAN
+    }
+
+}
+
+
+ejemplo de DataTypes:
+
+    -STRING         VARCHAR-255
+    -STRING(400)    VARCHAR-400
+
+    -INTEGER        INTEGER
+    -BIGINT         BIGINT
+    -FLOAT          FLOAT
+    -DOUBLE         DOUBLE
+    -DECIMAL        DECIMAL
+
+    -DATE           DATE
+
+
+
+***TIMESTAMPS***
+
+
+No son obligatorios pero la amyoria de las tablas suelen tenerlo y forman parte del standar
+
+    - created_at
+    - updated_at
+    - deleted_at
+
+Son campos que guardan la informacion de fecha de creacion, edicion y de eliminacion
+
+
+
+***Configuraciones adicionales***
+
+
+en el tercer parametro podemos configurar el nombre
+
+si tenemos bien configurado el modelo y tabla no habria problema, pero en caso de que no
+
+podemos aclarar el nombre . ejemplo:
+
+
+const Pelicula = sequelize.define('Pelicula',{
+    //configuraciones de la pelicula
+},{
+    tableName: 'movies', //si el nombre no esta bien relacionado modelo-tabla,
+    timestamps: false,  // en caso de que no tenga timestamps
+})

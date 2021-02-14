@@ -1,0 +1,23 @@
+
+Group By 
+
+
+Se usa para agrupar los registros de la tabla resultante de una consulta por una o mas columnas
+
+ejemplo:
+
+SELECT marca
+FROM autos
+GROUP BY marca; 
+                                    //nos devuelve los grupos de marcas de auto
+
+
+
+al agrupas perdemos los detalles de cada fila, pero es muy util para funciones de agregacion
+
+ejemplo:
+
+
+SELECT genero.nombre, AVG(duracion)
+FROM peliculas
+INNER JOIN generos ON generos.id = id_genero

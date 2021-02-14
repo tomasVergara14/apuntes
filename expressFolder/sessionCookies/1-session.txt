@@ -1,0 +1,92 @@
+Session 
+
+
+es compartir distinta informacion entre las paginas y distinguirla por usuario
+
+Es una configuracion por computadora, se guarda del lado del cliente
+
+es una forma de diferenciar las configuraciones de cada usuario
+
+
+Si el usuario va a otra comútadora u a otro navegador, las configuraciones que habia elegido
+
+las pierde
+
+
+Se cierra el naevgador y la informacion se borra
+
+
+Se aplica mediante el paquete express-session 
+
+
+
+
+se debe instalar con:
+
+
+npm install express-session --save
+
+
+
+
+luego lo requerimos con require('express-session);
+
+
+const express-session = require('express-session)
+
+
+
+y en app lo utilizamos para todas las paginas con:
+
+app.use(session({secret:'secreto que quiera'}))
+
+
+
+
+luego lo podemos utilizar en determinado controlador
+
+
+por ejemplo:
+
+
+
+si quisiera definir el idioma:
+
+req.session.idioma = 'español'
+
+
+
+y si lo quisiera leerlo haria:
+
+let idioma = req.session.idioma
+
+
+
+me permite guardar informacion mientras navego en diferentes paginas y esa informacion no 
+
+se pierde
+
+
+ejemplo simple para contar visitas:
+
+router.get('/pruebasession', function(req,res){
+
+    if(req.session.numeroVisitas == undefined){
+        req.session.numeroVisitas == 0
+    }
+
+    req.session.numeroVisitas++
+
+    res.send('session tiene el numero: ' + req.session.numeroVisitas)
+})
+
+
+
+//esta otra no va a seguir contando solo va a mostrar el numero que si cuenta la anterior
+
+router.get('/mostrarsession', function(req,res){
+    res.send('session tiene el numero: ' + req.session.numeroVisitas)
+})
+
+
+

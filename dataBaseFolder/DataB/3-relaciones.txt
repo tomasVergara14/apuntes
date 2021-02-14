@@ -1,0 +1,64 @@
+
+Relaciones
+
+Siguiendo el ejemplo de peliculas, teniendo 3 tablas (peliculas, actores, generos)
+
+En las base de datos tenemos distintos tipos de relaciones:
+
+- uno a uno
+- uno a muchos
+- muchos a muchos
+
+
+las mas utilizadas son uno a muchos y muchos a muchos
+
+
+Por ejemplo, un genero tiene muchas peliculas, pero una pelicula a un solo genero
+
+en el diagrama relacional:
+
+se modifica la tabla del que son muchos, en este caso peliculas,
+
+se agrega un nuevo campo que va a representar el genero de la misma "genero_id", se ingresa
+
+genero_id ya que no se ingresa el nombre del genero, si no el id que es la clave primaria (PK)
+
+
+Siempre en relaciones entre tablas utilizamos claves primarias para hacer referencia.
+
+
+En el diagrama relacional, se agrega el atributo "genero_id" en la columna peliculas y
+
+se escribe en negrita con (FK) que es una clave Foreana (foreing key)
+
+
+y en el diagrama relacional se agrega un palito en la conexion en la columna 
+
+que es una (genero) y se agregan 3 en la que son muchas (peliculas)
+
+
+
+En la relacion muchos a muchos, por ejemplo muchos actores en muchas peliculas
+
+en este caso debemos hacer una tabla intermedia, ejemplo : peliculas_actores
+
+
+En esta tabla nueva vamos a tener:
+
+- id
+- peliculas_id
+- actores_id
+
+Que cada una va a representar un valor en las tablas de peliculas y de actores, 
+
+ambos Atributos ( peliculas_id, actores_id) representan claves foraneas en dichas columnas
+
+y en el diagrama relacional, esa tabla intermedia recibe 3 palitos de cada tabla y emite 1
+
+por tabla
+
+
+Esta representacion en los diagramas relacionales se llama cardinalidad
+
+
+

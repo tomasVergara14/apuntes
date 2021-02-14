@@ -1,0 +1,188 @@
+Los arrays son colecciones de datos, para manipular esos datos podemos utilizar los metodos
+
+Son funciones que nos permiten manipular los datos
+
+Metodos:
+
+
+- Push: permite agregar datos al final de un array, ejemplo
+
+    colores = ['rojo', 'blanco', 'negro']
+
+    colores.push('azul', 'amarillo') 
+
+    console.log(colores) // devuelve ['rojo', 'blanco', 'negro', 'azul', 'amarillo']
+
+
+
+- Pop: permite sacar el ultimo elemento y almacenarlo en otra variable, ejemplo
+
+    nombres = ['yoli', 'flor', 'paula', 'agus', 'lu']
+
+    let elUltimo = nombres.pop();
+
+    console.log(elUltimo) // devuelve 'lu'
+
+
+
+-Shift: permite sacar el primer elemento del array
+
+    notas = [10,4,2,5,3,6]
+
+    notas.shift()
+
+    console.log(notas) // devuelve 4,2,5,3,6
+
+
+
+
+-Unshift: permite agregar al principio del array un elemento
+
+    notas = [10,4,2,5,3,6]
+
+    notas.unshift(5)
+
+    console.log(notas)  // devuelve 5,10,4,2,5,3,6
+
+
+
+-IndexOf: Se aplica sobre el array y recibe como parametro un string, la cual va a ser buscada
+    
+    dentro del array, si está lo que se busca retorna el indice en el cual se posiciona,
+    
+    si no esta lo que se busco, devuelve -1, ejemplo
+
+
+    let colores = [ 'rojo', 'azul', 'amarillo', 'verde']
+
+    colores.IndexOf('verde') // devuelve 3 (posicion de verde en el array)
+
+    
+    Si no lo  encuentra devuelve " -1 "
+
+
+
+-lastIndexOf: igual que indexOf solo que de atras para adelante
+
+
+
+-Join: te permite unificar todos los valores del array  separarlos por una coma. Asi volverlo
+
+    un unico string. Podemos pasar como parametro cualquier separador como string. 
+    
+    Pueden ser almacenado en otra variable ejemplo:
+
+
+    let dias = ['lunes'. 'martes', 'miercoles', 'jueves', 'viernes', 'sabados']
+
+    dias.join('-') // devuelve un string 'lunes-martes-miercoles-jueves-viernes-sabados'
+
+
+
+
+un callback es una función que se pasa como parametro de otra funcion, ejemplo:
+
+let yoli( function( ){
+    //logica del codigo 
+})
+
+
+
+-Map:  se ejcuta sobre un array y recibe como parametro un callback, ese callback recorre 
+
+    uno a uno cada elemento del array, tomando como parametro cada uno de los estos elementos
+
+    y retorna un array nuevo con la misma cantidad de elementos que el original
+
+    ejemplo:
+
+    
+    let numeros = [2, 4, 6, 5]
+
+    let dobleNumeros = numeros.map( function( unNumero ){
+        return unNumero * 2 
+    })
+
+    console.log(dobleNumeros) // 4, 8, 12, 10 
+
+
+
+-Filter: filtrara los elementos de un array dependiendo la logica que se implemente, toma
+
+    todos los elementos de un array y devuelve solo los que cumplan la condicion definida
+
+    se ejecuta sobre un array y recibe como parametro un callback, dentro del callback
+    
+    pondras la condicion a cumplir: ejemplo:
+
+
+    let numeros = [4, 12, 20, 6, 8, 17]
+
+    let mayores = numeros.filter(function (cumple){
+
+        return cumple >= 10
+    })  
+
+    console.log(mayores)  // 12, 20, 17
+
+
+
+-Reduce: Tiene como finalidad reducir a la minima expresion el array dado, 
+        
+        retornando solo un valor
+
+        Recibe dos parametros, un acumulador y el valor del indice que recorre
+
+        ejemplo:
+
+        let sumatoria = numeros.reduce(function (acumulador, valorNumero){
+
+            return acumulador + numero
+        
+        })  // va recorriendo el array y sumando el valor de ese indice al acumulador, hasta
+
+              recorrerlo todo
+
+
+
+-ForEach: recibe como parametro un callback que recorre el array, pero no devuelve nada
+
+        solo itera sobre el array.
+
+        ejemplo:
+
+        let peliculas= ['duro de matar','duro de matar 2','duro de matar 3']
+
+        let titulos = peliculas.forEach(function (pelicula){
+
+            console.log(pelicula)
+        
+        })      //va a devolver cada valor individual del array peliculas
+
+
+
+-Find: Es un metodo similar al .filter(), debe cumplir con una condicion pero a diferencia
+
+        de .filter() (que devuelve un array con todos los elementos que cumplan la condicion)
+
+        el metodo .find() te devuelve el primer valor que la cumple en ese array
+
+        ejemplo:
+
+        let cinco = numeros.find(esta => esta == 5) //Si esta el cinco va a devolverlo
+
+
+
+
+-Every: el metodo .every() va a corroborar que todos los elementos de dicho array cumplan
+
+        la condicion que se establecio. Si la cumplen va a devolver true, si no false
+
+
+
+
+-Some: el metodo .some() es similar al metodo .every() solo que no es necesario que todos los
+
+        elementos cumplan, con que un elemento cumpla la condicion ya devuelve true
+
+         

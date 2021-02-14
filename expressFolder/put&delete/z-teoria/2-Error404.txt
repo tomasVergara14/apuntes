@@ -1,0 +1,35 @@
+
+Error 404
+
+
+
+ Es un codigo de estado que se envía desde el servidor al navegador, o sea a un usuario
+
+ que intenta acceder a un recurso especifico de un sitio web, e indica que ese recurso no se
+
+ encuentra, entonces no es posible visualizarlo
+
+
+ Para devolver una respuesta estandarizada en express, vamos a utilizar un metodo en app
+
+
+ vamos a usar el metodo:
+
+ app.use()  con un parametro que va a tener una funcion callback que va a tener 3 argumentos:
+
+
+ -  req
+ -  res
+ -  next (el paso siguiente a implementar este callback)
+
+
+ ejemplo:
+
+ app.use(function (req,res,next){
+     
+     res.status(404).render('non-found')
+
+ })     //  aca le decimos que si el status es 404 (o sea no lo encuentra) 
+            va a comunicar la vista 'non-found'
+
+            podes modificar la vista a renderizar

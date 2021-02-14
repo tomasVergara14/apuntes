@@ -1,0 +1,90 @@
+
+FIND
+
+
+El equivalente en sequelize al SELECT es el ' find '
+
+
+tiene algunas variaciones:
+
+- findAll: 
+        es como buscar todo
+
+        es equivalente a SELECT * from table
+
+        Para especificar la tabla donde queremos los datos, se usan los modelos.
+
+        
+        Para utilziar la funcion se debe importar el modelo que queramos y almacenarlo en una
+
+        variable. ejemplo:
+
+        
+        const Peliculas = require('model/peliculas.js')
+
+        
+        Para ver todas las peliculas almacenadas en ese modelo es:
+
+        Peliculas.findAll()  // es lo mismo que SELECT * FROM Peliculas
+
+
+        ejemplo:
+
+
+        const db = require('../database/models')
+
+        db.Peliculas.findAll()
+
+            .then(function(pelicula){
+                
+                console.log(pelicula);
+            
+            })
+
+        
+        los pedidos a base de datos son asincronicos, no sabemos cuanto va a tardar en devolver
+
+        los resultados, asi que vamos a tener que escribir un .then donde le vamos a indicar 
+
+        la consecuencia de lo que queremos hacer, los resultados no se pueden usar fuera del .then
+
+
+
+
+-findOne: permite que busquemos resultados que coincidan con atributos indicados en el objeto
+
+        literal que recibe el metodo. ejemplo:
+
+        
+        db.Peliculas.findOne({
+            
+            where: {
+            
+                name: 'Tony'
+            
+            }
+        
+        }).then(function(pelicula){
+            
+            console.log(pelicula)
+        
+        })
+
+
+
+
+
+
+-findByPK: Recibe como parametro un id y nos devuelve el registro identificado por ese registro
+
+        ejemplo:
+
+
+        db.Peliculas.findByPK(15)
+
+            .then(function(pelicula){
+
+                console.log(pelicula)
+            
+            })
+

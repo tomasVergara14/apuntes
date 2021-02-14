@@ -1,0 +1,49 @@
+
+Es comun que ordenemos la lista de productos por algun dato qeu nosotros queramos, podemos
+
+lograr estos filtros con:
+
+
+- Order By:
+        es una forma de ordenar el resultado de la busqueda  a traves de una columna elegida
+
+        va dentro de las consultas, ejemplo:
+
+        Peliculas.findAll({
+            where:{
+                rating: { [db.Sequelize.Op.gt]: 8}
+            },
+            order:[
+                ['rating', 'DESC']              // El order va dentro de un array porque puede 
+                                                contener varias condiciones
+            ]                                   el primer parametro es la columna
+                                                el segundo es el sentido en el que va
+        })
+
+
+
+- Offset:
+        sirve para omitir varios resultados, utilizado para mostras en las paginas los resultados
+
+
+
+
+- LIMIT:
+        sirve para limitar el numerp de resultados obtenidos 
+
+        similar, se comparte un objeto literal pero contiene un dato entero para marcar el limite,
+
+        ejemplo:
+
+        
+        Peliculas.findAll({
+            where:{
+                rating: { [db.Sequelize.Op.gt]: 8}
+            },
+            order:[
+                ['rating', 'DESC']  
+                                                
+            ],
+            limit: 5                            //marca que solo reciba 5 resultados, sirve con
+                                                findAll ya que findOne solo busca el primer resultado
+        })

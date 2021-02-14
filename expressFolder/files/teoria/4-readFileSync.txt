@@ -1,0 +1,22 @@
+Read File Sync 
+
+Es un metodo que nos permite leer archivos para así utilizarlos y guardarlos
+
+Se debe aclarar el encoding 'utf-8' 
+
+ejemplo:
+
+
+let leerArchivos = fs.readFileSync('nombreArchivo.json', {encoding: 'UTF-8'})
+
+// Esto va a leer el archivo json que tenemos, en donde se van a guardar los datos que subamos
+
+
+luego debemos volver ese archivo json a un objeto
+
+ejemplo:
+
+let usuarios = JSON.parse(leerArchivos);
+
+de esta forma podemos utilizarlo en nuestras vistas ya que tiene todas las propiedad de objeto
+

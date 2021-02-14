@@ -1,0 +1,44 @@
+Operadores
+
+Nos permiten manipular el valor de las variables, realizar operaciones y comparar valores
+
+tipos:
+
+- De asignacion: " = " asignan el valor de la derecha a la variable de la izquierda
+
+- Aritmeticos: Nos permiten hacer operaciones matematicas, devuelven el valor de dicha operaciones
+        Suma: a + b
+        Resta: a - b
+        Multiplicacion: a * b 
+        Division: a / b 
+        Incremento: a++
+        Decremento: a--
+        Modulo: a % b //Nos devuelve el resto de una division ejemplo 15 % 5 = 0 
+
+Los operadores Aritmeticos siempre devolveran el resultado numerico  de la operacion
+
+
+- De comparacion simple: // Puede tomar como igual un 10 (numerico) a '10' (string)
+        Igualdad: a == b
+        Desigualdad: a != b 
+
+
+- De comparacion estricta: //tiene que ser el mismo tipo de dato
+        Igualdad estricta: a === b 
+        Desigualdad estricta: a !== b
+
+
+- De comparacion: Compara dos valores, devuelve un booleano (true o false)
+        Mayor que: a > b 
+        Mayor o igual que: a >= b
+        Menor que: a < b 
+        Menor o igual que: a <= b
+    
+
+- Logicos: permiten combinar booleanos, el resultado tambien es booleano
+        AND:"&&"   (a > b) && (c == d)
+        OR:"||"    (a < b) || (c <= d)
+        NOT:"!"    !(a < b)
+
+
+- De concatenacion: Podemos sumar dos variables y dara un dato de tipo string

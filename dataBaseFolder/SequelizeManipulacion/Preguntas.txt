@@ -1,0 +1,25 @@
+Problemas con el createAt y updateAt
+
+code: 'ER_BAD_FIELD_ERROR',
+    errno: 1054,
+    sqlState: '42S22',
+    sqlMessage: "Unknown column 'createdAt' in 'field list'",
+    sql: 'SELECT `id`, `name`, `ranking`, `active`, `createdAt`, `updatedAt` FROM `genres` AS `genres`;',    
+    parameters: undefined
+  },
+  original: Error: Unknown column 'createdAt' in 'field list'
+      at Packet.asError (C:\Digital House\prueba\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Query.execute (C:\Digital House\prueba\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (C:\Digital House\prueba\node_modules\mysql2\lib\connection.js:425:32)      
+      at PacketParser.onPacket (C:\Digital House\prueba\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (C:\Digital House\prueba\node_modules\mysql2\lib\packet_parser.js:75:16)  
+      at Socket.<anonymous> (C:\Digital House\prueba\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:315:20)
+      at addChunk (_stream_readable.js:295:12)
+      at readableAddChunk (_stream_readable.js:271:9)
+      at Socket.Readable.push (_stream_readable.js:212:10) 
+
+
+
+
+release_date formato

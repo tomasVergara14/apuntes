@@ -1,0 +1,9 @@
+Arrays
+
+Nos permiten generar una coleccion de datos ordenados
+
+Se utilizan [] para el inicio y fin de un array y " , " para separar los elementos
+
+Dentro podemos almacenar la cantidad de elementos que queramos, no importa el tipo de dato tampoco
+
+Cada dato ocupa una posicion conocida como "indice", arranca en el indice 0

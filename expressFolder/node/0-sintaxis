@@ -1,0 +1,25 @@
+Las comillas invertidas o TEMPLATES LITERALS
+
+`${}`
+
+- Nos permiten concatenar e interpolar cadenas de texto
+
+ejemplo:
+
+let name = 'juan'
+let apellido = 'marquez'
+
+
+let nombreCompleto = `El nombre completo es ${name} ${apellido}`
+
+console.log(nombreCompleto) // va a devolver el nombre completo es juan marquez
+
+
+- Tambien nos permiten utilizar las comillas simples ' y las dobles " en algun string
+
+ejemplo:
+
+
+const line = ` I Can't play with you i'm busy `
+
+

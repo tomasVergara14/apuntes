@@ -1,0 +1,54 @@
+
+Multer
+
+para que el usuario vea una opcion de cargar un archivo, debemos ingresar un input en la vista
+
+pero modificarle:
+
+<input type='file' name='avatar' >  //asi se crea el espacio para que se vea el espacio
+                                        para cargar el archivo
+
+a la etiqueta form hay que modificarla:
+
+
+<form action= '' method='post' enctype="multipart/form-data" />
+
+
+
+Lo primero que se hace es instalar el paquete Multer 
+
+
+npm install multer --save
+
+
+Luego lo requiero en el archivo de routes
+
+
+const multer = require('multer')
+
+
+
+luego se utiliza la funcion diskStorage
+
+
+let storage = multer.diskStorage({      //recibe como parametro un objeto literal con dos
+    
+    destination:function(req,file,cb){       propiedades 'destination' y 'filename' que son
+
+        //en que carpeta se almacena
+
+    },                     
+    filename:function(req,file,cb){
+
+        //con que nombre se guarda
+            en el servidor
+    }                              
+
+})
+
+
+
+luego se agrega la siguiente linea
+
+
+var upload = multer ({ storage:storage })

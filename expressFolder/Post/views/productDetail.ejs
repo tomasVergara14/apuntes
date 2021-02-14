@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Detalle del producto <%= buscador.title %></title>
+</head>
+<body>
+    <%- include('partials/header')%>
+    <p>detalle del producto <%= buscador.title %></p>
+    <p>Entre los productos podemos encontrar</p>
+    <ul>
+        <% for(let i = 0; i < buscador.products.lenght; i++) {%>
+            
+            <li><%= buscador.products[i] %></li>
+
+        <%}%>
+    </ul>
+    
+</body>
+</html>

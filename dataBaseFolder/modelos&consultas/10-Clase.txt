@@ -1,0 +1,46 @@
+CLASE
+
+
+
+todas las funciones de sequelize son promesas, debemos usar .then() .catch()
+
+
+
+Promesas
+
+    puedo ejecutar una funcion y que no este el resultado en el momento sin cortar la ejecucion
+    del resto, es asincronica
+
+    una promesa no es el resultado en si, si no que envuelve ese resultado
+
+    -then
+    -catch
+
+
+    el catch va siempre, si algo falla no puedo capturar el error para despues poder corregirlo
+
+necesito capturarlo y mostrarlo por consola
+
+el catch muestra algunos errores, una consulta vacia no devuelve cual es el error
+
+
+el then es "si esto sale bien que hago", un cb que sea la consecuencia de lo que quiero
+
+la logica siempre va dentro del then, el resultado esta dentro de la promesa, no puedo
+
+obtenerlo por fuera.
+
+una promesa es una funcion que se ejecuta pero no tiene el resultado en el momento
+
+cuando tenga el resultado me brinda la info que estoy esperando, siempre hay 1 solo resultado
+
+
+asincronismo:
+
+llegas a mc pedis una hamburguesa complicada, llega alguien despues que vos y pide simple sin queso
+
+la simple s/queso sale primero.
+
+Primero que entra primero que sale
+
+

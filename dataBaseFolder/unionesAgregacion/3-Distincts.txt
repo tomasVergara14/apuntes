@@ -1,0 +1,19 @@
+
+La clausula DISTINCT nos devuelve valores unicos. cuando se necesita un listado en el que
+
+no se repitan los valores, que los que estan repetidos no aparezcan dos veces
+
+ejemplo:
+
+
+partiendo de una tabla de usuarios
+
+
+SELECT pais FROM usuarios
+
+                                //obtendriamos 'peru', 'peru, 'argentina'. 'francia'. 'argentina'
+
+SELECT DINSTINCT pais FROM usuarios
+
+
+                                //obtenemos 'peru', 'argentina', 'francia
