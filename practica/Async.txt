@@ -1,0 +1,77 @@
+
+
+Define una funcion asincrona, devuelve un asyncfunction
+
+ejemplo:
+
+
+let conteo = function(){
+    setTimeout(function(){
+        console.log('3');
+        setTimeout(function(){
+            console.log('2');
+            setTimeout(function(){
+                console.log(1);
+            }, 1000)
+        }, 2000)
+    }, 3000)
+}
+
+//console.log(conteo())
+
+
+async function asyncCall (){
+    console.log('wainting');
+    const resultado = await conteo()
+}
+
+console.log(asyncCall())
+
+
+Esto va a mostrar por consola 'waiting' y una el conteo va a estar pendiente, una vez se ejecutan
+
+devuelve por consola 3 2 1
+
+
+
+La sintaxis es:
+
+
+async function 'nombreDeLaFuncion'('siTieneParametros'){
+    //codigo a ejecutar
+
+    se lo declara en una constante y se le asigna a una funcion con la palabra reservada await
+
+    const resultado = await hazAlgo()
+}
+
+
+Si quisiera reemplazar una cascada de los .then() que se usan en las promises deberiamos usar el try y al final el
+
+catch, ejemplo:
+
+
+async function hacer({
+
+    try{
+    
+        let resultado = await hazAlgo();
+    
+        let nuevoResultado = await hazAlgoMas(resultado);
+    
+        let resultadoFinal = await hazLaTercerCosa(nuevoResultado);
+    
+        console.log('El resultado es ${resultadoFinal}')
+    
+    } catch(err){
+    
+        console.log(err)
+    
+    }
+})
+
+
+no es necesario escribir el return ya que es implicito el promise.resolve()
+
+
+si deseo aplicar varias promesas al mismo tiempo debo utilizar promise.all

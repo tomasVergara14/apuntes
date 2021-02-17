@@ -1,0 +1,96 @@
+
+Los eventos son:
+
+- Esperar que se cargue la pagina por completo
+- hacer doble clic en alguna parte de la pantalla
+- chequear lo que envia un usuario en algun formulario
+- evitar que se envi un formulario
+- esperar unos segundos antes de lanzar un aviso en la pantalla del usuario
+
+
+manejarlos, nos permite tener un sitio mas amigable
+
+
+primero debemos:
+
+- saber que elementos va a estar siendo observado por JS - que parte de la pagina va a reaccionar
+    a nuestro evento
+
+- que evento puede suceder en el elemento 
+
+- que queremos que suceda cuando el evento se verifica
+
+
+
+JS nos da dos opciones para el manejo de eventos:
+
+
+
+1- Un set de eventos definidos por la palabra on + una accion
+
+
+estos estan acompañados de una funcion donde definiremos 
+
+ejemplo de eventos mas usados:
+
+- onload
+- onclick
+- ondclick
+- onmouseover
+- onmouseout
+- onmousemove
+- onscroll
+- onkeydown
+- onfocus
+- onblur
+- onchange
+- onsubmit
+
+
+***ONLOAD ***
+
+es un evento que permite que todo el script se ejecute cuando se haya cargado por completo el
+
+objeto document dentro del objeto window
+
+
+window.onload = function(){
+    console.log('el documento esta listo')
+}
+
+se suele escribir el codigo en esta funcion para evitar errores de que se cargue primero el js al document
+
+
+
+***ONCLICK***
+
+es un evento que nos permite ejecutar una accion cuando se haga clic sobre un elemento al cual le estamos aplicando
+
+la propiedad
+
+
+btn.onclick = function(){
+    console.log('hiciste click')
+}
+
+
+
+***PREVENT DEFAULT***
+
+nos permite evitar que se ejecute el evento predeterminado o nativo del elemento al que se lo estamos aplicando
+
+siempre tenemos que tener seleccionado el elemento al que queremos aplicarlo mediante los selectores()
+
+
+let hipervinculo= document.querySelector('a')
+
+hipervinculo.addEventListener('click', function(event){
+    
+    console.log('hiciste clic')
+
+    event.preventDefault()                  //esto evita que actue como hipervinculo
+})
+
+
+
+

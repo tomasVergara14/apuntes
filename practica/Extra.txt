@@ -1,0 +1,21 @@
+setTimeOut(function(){          //callback
+    
+    alert('hello');             //que escribe o que hace
+
+}, 3000)                        // 2° parametro cuanto espera en ms 
+
+ejemplo de conteo:
+
+let conteo = function(){
+    setTimeout(function(){
+        console.log('3');
+        setTimeout(function(){
+            console.log('2');
+            setTimeout(function(){
+                console.log(1);
+            }, 100)
+        }, 200)
+    }, 300)
+}
+
+console.log(conteo())

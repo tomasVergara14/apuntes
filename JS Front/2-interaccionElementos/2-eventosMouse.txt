@@ -1,0 +1,53 @@
+Eventos de click
+
+
+***click***
+
+es un evento que nos permite ejecutar una accion cuando se haga clic sobre un elemento al cual le estamos aplicando
+
+la propiedad
+
+
+btn.addEventListener('click', function(){
+    
+    console.log('hiciste click')
+
+}) 
+
+
+
+***double click***
+
+Al igual que el click pero al hacer doble click 
+
+
+btn.addEventListener('dbclick', function(){
+
+    console.log('hiciste doble click)
+
+})
+
+
+
+***mouse over***
+
+Es un evento que ejecuta una acción al pasar el mouse por encima de un elemento seleccionado
+
+
+btn.addEventListener('mouseover', function(){
+
+    console.log('pasaste el mouse por encima')
+
+})
+
+
+
+***mouse out***
+
+es un evento que se ejecuta al quitar el mouse del elemento seleccionado 
+
+
+btn.addEventListener('mouseout', function(){
+
+    console.log('quitaste el mouse')
+})

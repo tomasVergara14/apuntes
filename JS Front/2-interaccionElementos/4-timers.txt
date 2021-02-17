@@ -1,0 +1,184 @@
+
+
+*** Set time out***
+
+se ejecuta cuando queremos que nuestro codigo se ejecute una sola vez
+
+
+let conteo = function(){
+    setTimeout(()=>{
+        console.log(3)
+        setTimeout(()=>{
+            console.log(2)
+            setTimeout(()=>{
+                console.log(1)
+            },1000)
+        },2500)
+    }, 3000)
+}
+
+
+let asyncTest = async function(){
+    let pruebita = await conteo()
+
+    console.log('esperando al tiempo')
+}
+
+la sintaxis es 
+
+- la guardo en una variable
+
+- declaro una function y en el codigo va setTimeout con un cb adentro como primer parametro
+
+- como segundo parametro va el tiempo que deseamos en ms 
+
+
+
+
+
+*** Set interval***
+
+se ejecuta cuando queremos que nuestro codigo se ejecute varias veces cada un periodo de tiempo
+
+la sintaxis es similar, un cb como primer parametro y como segundo el tiempo de intervalo
+
+para detenerlo debo declarar una variable y almacenarle la funcion de set interval.
+
+Para luego utilizar clearInterval(y como parametro la variable donde almacenamos el set interval)
+
+
+
+
+
+
+***PG***
+
+
+1- 
+
+Investiguemos el potencal de los timers...
+
+Vamos a construir un pequeño juego con js: Habrá un contador de segundos oculto, y el objetivo será adivinar por qué segundo va ese contador.
+
+Para este ejercicio contamos con una estructura HTML ya definida:
+
+﻿un párrafo con una clase "titulo"
+un párrafo sin contenido
+un botón para mostrar los segundos
+un botón para ocultar los segundos
+
+<html>
+  <head>
+    <title>JS Front</title>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <p class="titulo">¿Cuántos segundos van?</p>
+    <p class="segundos"></p>
+    
+    <button class="mostrar-segundos" type="button">Mostrar segundos...</button>
+    <button class="ocultar-segundos" type="button">Ocultar segundos</button>
+  </body>
+</html>
+
+
+*script*
+
+window.addEventListener('load', () => {
+
+  let titulo = document.querySelector('.titulo');
+  let segundos = document.querySelector('.segundos');
+  
+  let botonMostrar = document.querySelector('.mostrar-segundos');
+  let botonOcultar = document.querySelector('.ocultar-segundos');
+  
+  botonMostrar.addEventListener('click', function(){
+    
+  })
+
+});
+
+
+2-
+
+En nuestro script.js ya le asignamos el evento "click" al botónMostrar. Ahora bien, ¿qué queremos que suceda cuando el usuario le haga click? Queremos que:
+
+﻿desaparezca el párrafo con clase "titulo"
+aparezca el párrafo con clase segundos, mostrando los segundos actuales
+No te preocupes... tenemos pensada una lista de tareas con los pasos necesarios.
+
+Dentro del callback del evento "click":
+
+Creá la variable segundero y asignale un intervalo que se dispare cada 0 segundos
+En el callback del intervalo, creá la variable fecha y almacená en ella la fecha actual. ¿No recordás cómo hacerlo? ¡Clickeá en la pista!
+Al párrafo que tenemos capturado en la variable segundos asignale los segundos actuales. ¿Te acordás cómo escribirle contenido html a una etiqueta desde javascript?
+A la variable titulo asignale un display:none para dejar de mostrarlo en el html
+A la variable segundos asignale un display:block.
+
+
+*script*
+
+window.addEventListener('load', () => {
+
+  let titulo = document.querySelector('.titulo');
+  let segundos = document.querySelector('.segundos');
+  
+  let botonMostrar = document.querySelector('.mostrar-segundos');
+  let botonOcultar = document.querySelector('.ocultar-segundos');
+  
+  botonMostrar.addEventListener('click', () => {
+
+    let segundero = setInterval(()=>{
+      var fecha = new Date()
+      
+      segundos.innerHTML = fecha.getSeconds()
+
+      titulo.style.display ='none'
+
+      segundos.style.display= 'block'
+
+    }, 0)
+
+  });   
+
+});
+
+
+3-
+
+Queremos que, cuando el usuario haga click sobre el botonOcultar:
+
+﻿Se deje de ver el párrafo que muestra los segundos
+Se muestre el párrafo con el título "¿Cuántos segundos van?"
+Se limpie el intervalo almacenado en la variable segundero al instante
+
+*script*
+
+window.addEventListener('load', () => {
+
+  let titulo = document.querySelector('.titulo');
+  let segundos = document.querySelector('.segundos');
+
+  let botonMostrar = document.querySelector('.mostrar-segundos');
+  let botonOcultar = document.querySelector('.ocultar-segundos');
+    
+    botonMostrar.addEventListener('click', () => {
+
+    var segundero = setInterval(function() {
+      var fecha = new Date();    
+      segundos.innerHTML = fecha.getSeconds();
+      titulo.style.display = 'none';
+      segundos.style.display = 'block';
+    }, 0);
+
+    botonOcultar.addEventListener('click', ()=>{
+
+      segundos.style.display='none';
+      titulo.style.display= 'block';
+      clearInterval(segundero)
+
+    })
+
+  });   
+
+});

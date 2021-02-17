@@ -1,0 +1,37 @@
+
+
+Eventos de teclado
+
+
+
+Para capturar que tecla se esta presionando debemos utilizar la variable e y usar el metodo .key
+
+
+*** key down***
+
+Es un evento que se ejecuta cuando se presiona una tecla del teclado , es lanzado tanto para las teclas que
+
+lanzan un caracter  y para las que no lo producen.
+
+
+text.addEventListener('keydown', function(e){
+
+    console.log('se presiono ' + e.key)
+})
+
+
+
+***key up***
+
+Es un evento que se ejecuta cuando se suelta la tecla
+
+
+text.addEventListener('keyup', function(e){
+
+    console.log('se presiono ' + e.key)
+})
+
+
+***key press***
+
+Es un evento que se ejecuta cuando se completa el recorrido, de presion y soltar la tecla 

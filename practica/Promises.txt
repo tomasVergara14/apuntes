@@ -1,0 +1,157 @@
+Las promesas son funciones que permiten ejecutar codigo asincronico de forma eficiente
+
+Un pedido asincronico son instrucciones que se ejecutan mediante un mecanismo especifico, lo que hace posible que
+
+la respuesta sea procesada en otro momento 
+
+
+tiene un comportamiento no bloqueante ya que el pedido se ejecuta en paralelo al resto del codigo 
+
+
+Se utiliza el .then()
+
+ejemplo:
+
+        obtenerUsuarios()               // funcion asincronica
+
+            .then(function (data){
+        
+                console.log (data)
+        
+            });
+
+        console.log('se sigue ejecutando')
+
+
+
+La mayoria usamos promesas ya creadas.
+
+
+Una promesa es un objeto al cual se adjuntan funciones cb, en lugar de pasar cb a una funcion
+
+
+
+tomemos la funcion crearArchivoAudioAsync(), la cual crea de forma asincrona un archivo de sonido en base a un 
+
+archivo de configuracion, y dos funciones cb, una que es llamada si el archivo de audio es creado satisfactoriamente
+
+y la otra si ocurre un error, :
+
+
+function exitoCb(resultado){
+    console.log(' Archivo creado satisfactoriamente disponible en  ' +  resultado)
+}
+
+function falloCb(err){
+    console.log( ' Error generando el archivo  de audio ' + err)
+}
+
+crearArchivoAudioAsync(audioconfig, exitoCb, falloCb)
+
+
+Las funciones modernas devuelven un objeto promise al que puedes adjuntar funciones cb , ejemplo:
+
+
+const promesa = crearArchivoAudioAsync(audioconfig)
+
+promesa.then(exitoCb, falloCb)          // esto es una funcion asincrona
+
+
+
+*** VENTAJAS ***
+
+- Garantias:
+            las funciones cb nunca seran llamadas antes de la terminacion de la ejecucion actual del bucle de eventos
+            
+            las funciones cb llamadas con el .then(), aun despues del exito o fracaso de la operacion asincrona sera
+            llamadas 
+
+            multiples funciones cb pueden ser añadidas con el .then() varias veces, y cada una de ellas es ejecutadas
+            una luego de la otra en el orden que fueron insertados 
+
+
+-Encadenamientos:
+                al ejecutar dos o mas operaciones asincronas, cada operacion se inicia cuando la anterior tiene exito
+                con el resultado del paso previo.
+
+                ejemplo:
+
+                const promesa = hazAlgo();
+
+                const promesa2 = promesa.then(exitoCb, falloCb)
+
+                
+                que es lo mismo que:
+
+                const promesa2 = hazAlgo().then(exitoCb, falloCb);
+
+
+                allí const promesa2 se va a resolver una vez que se resuelva el cb exitoCb o falloCb
+
+
+
+al hacer promises evitamos las cascadas de cb de iteraciones.
+
+ejemplo:
+
+
+
+hazAlgo().then(function(resultado){
+    return hazAlgoMas (resultado)
+})
+.then(function(nuevoResultado){
+    return hazLaTercerCosa(nuevoResultado)
+})
+.then(function(resultadoFinal){
+    console.log('El resultado final es ' + resultadoFinal)
+})
+.catch(function(err){
+    console.log(err)
+})
+
+
+
+es lo mismo que:
+
+
+hazAlgo().then(resultado=> hazAlgoMas(resultado))
+.then(nuevoResultado => hazLaTercerCosa(nuevoResultado))
+.then(resultadoFinal => { console.log('El resultado final es ' + resultadoFinal)})
+.catch(err=> {console.log(err)})
+
+
+Importante siempre se retornan resutados 
+
+Una cadena de promesas se detiene si hay una excepcion(error) y busca manejadores de captura (catch)
+
+
+Ahora se puede utilizar tambien el async await en vez de promesas, y quedaría algo asi:
+
+
+async function hacer({
+    try{
+        let resultado = await hazAlgo();
+        let nuevoResultado = await hazAlgoMas(resultado);
+        let resultadoFinal = await hazLaTercerCosa(nuevoResultado);
+        console.log('El resultado es ${resultadoFinal}')
+    } catch(err){
+        console.log(err)
+    }
+})
+
+
+
+
+si deseo aplicar varias promesas al mismo tiempo debo utilizar promise.all
+
+
+El promise.resolve('valor'), es un metodo que retorna un objeto promise que es resuelto con el valor dado, ejemplo:
+
+
+const promise1 = Promise.resolve(123);
+
+promise1.then((value)=> {
+    
+    console.log(value)
+
+})                          //devuelve 123 que pasamos en el resolve
