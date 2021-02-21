@@ -5,50 +5,119 @@ para que el usuario vea una opcion de cargar un archivo, debemos ingresar un inp
 
 pero modificarle:
 
+
+
+
+**En la etiqueta form hay que modificarla:
+
+
+<form action= 'a donde queremos que vaya' method='post' enctype="multipart/form-data" />
+
+
+
+
+**En la etiqueta input
+
+
 <input type='file' name='avatar' >  //asi se crea el espacio para que se vea el espacio
                                         para cargar el archivo
 
-a la etiqueta form hay que modificarla:
-
-
-<form action= '' method='post' enctype="multipart/form-data" />
 
 
 
-Lo primero que se hace es instalar el paquete Multer 
+**Lo primero que se hace es instalar el paquete Multer 
+
+
 
 
 npm install multer --save
 
 
-Luego lo requiero en el archivo de routes
+
+
+**Luego lo requiero en el archivo de routes de donde quiera subir el archivo
 
 
 const multer = require('multer')
 
 
 
-luego se utiliza la funcion diskStorage
+*y del paquete path
 
 
-let storage = multer.diskStorage({      //recibe como parametro un objeto literal con dos
+para extraer la extensión del file
+
+const path = require('path);
+
+
+
+**luego se utiliza la funcion diskStorage
+
+
+let storage = multer.diskStorage({                                                    //recibe como parametro un objeto literal con dos
     
-    destination:function(req,file,cb){       propiedades 'destination' y 'filename' que son
+                                                                                      propiedades 'destination' y 'filename' que son
 
-        //en que carpeta se almacena
+    
+    destination:function(req,file,cb){                                                   //en que carpeta se almacena 
+
+          cb(null, 'nombre de la carpeta donde se guardara')                          
 
     },                     
-    filename:function(req,file,cb){
+    filename:function(req,file,cb){                                                     //con que nombre se guarda
+          
+                                                                                         en el servidor
 
-        //con que nombre se guarda
-            en el servidor
+          cb(null, file.fieldname + '-' +   Date.now() +  path.extname(file.originalname))
+
     }                              
 
 })
 
 
 
-luego se agrega la siguiente linea
+*luego se agrega la siguiente linea
 
 
 var upload = multer ({ storage:storage })
+
+
+
+
+
+
+** En el archivo de routas en el de post , entre la ruta y el controlador se agrega:
+
+upload.any()            //como middleware
+
+
+
+
+**En el controller se debe agregar el next ademas del req, res, ya que es un middleware
+
+
+y para asociar el archivo que se acaba de crear al usuario o al producto, debo
+
+
+
+let producto = {
+    name: req.body.nombre,
+    pass: bcrypt.hashSync(req.body.password, 12)
+    avatar: req.files[0].filename 
+}
+
+
+
+Este es el archivo que contiene el codigo que se utiliza
+
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'tmp/my-uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' +   Date.now() +  path.extname(file.originalname))
+  }
+})
+ 
+var upload = multer({ storage: storage })
