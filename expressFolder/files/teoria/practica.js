@@ -47,13 +47,13 @@ if(  hash1 == hash2 ){
     return 'los hash son iguales' 
 }
 
-const bcrypt = require('bcrypt');
-const password = '123456';
-const passwordEncriptada = bcrypt.hashSync(password, 10);
+// //const bcrypt = require('bcrypt');
+// const password = '123456';
+// const passwordEncriptada = bcrypt.hashSync(password, 10);
 
-if ( bcrypt.compareSync(password, passwordEncriptada) == true){
-    console.log('El password es correcto')
-}
+// if ( bcrypt.compareSync(password, passwordEncriptada) == true){
+//     console.log('El password es correcto')
+// }
 
 
 //console.log(hash1);
@@ -65,4 +65,4 @@ let resultado = bcrypt.hashSync( password , 10)
 
 let validacion = bcrypt.compareSync(password, resultado);
 
-console.log(validacion)
+console.log('La validacion es ' + validacion)

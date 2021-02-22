@@ -47,7 +47,7 @@ const multer = require('multer')
 
 para extraer la extensión del file
 
-const path = require('path);
+const path = require('path');
 
 
 

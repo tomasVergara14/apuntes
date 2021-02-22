@@ -1,0 +1,52 @@
+
+Location
+
+
+Nos brinda una serie de metodos y atributos interesantes
+
+
+*** href ***
+
+location.href 
+
+nos devuelve toda la url
+
+
+
+*** reload ***
+
+location.reload();
+
+refresca la pagina
+
+
+
+*** search ***
+
+nos brinda todo el query string
+
+
+se puede utilizar con una interfaz que es URLSearchParams
+
+
+let queryString = new URLSearchParams(location.search)
+
+esto nos define metodos utiles para trabajar con los parametros de busqueda 
+
+
+
+
+** has **
+
+querystring.has('se introduce lo que se busca')
+
+
+nos devuelve true o false dependiendo si se encuentra o no
+
+
+
+** get **
+
+queryString.get('se obtiene lo que se busco en el query')
+
+devuelve el resultado de la busqueda del query

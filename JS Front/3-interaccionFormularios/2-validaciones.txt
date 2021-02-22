@@ -1,0 +1,163 @@
+ 
+
+ Lo primero que se debe hacer a la hora de querer hacer validaciones en un formulario es obtenerlo y agregarle un
+
+ comportamiento cuando queramos capturar el evento.
+
+ 
+ window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+
+     } )
+ })
+
+
+ se puede capturar cada campo y validar y devolver una alerta,
+ 
+ 
+ 
+ 
+window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+
+         let nombre = document.querySelector('.nombre')
+
+         if( nombre.value == '' ){
+             alert('el campo esta vacio')
+         }
+
+     } )
+ })
+ 
+ 
+ 
+ 
+ 
+ 
+pero esto no funciona con los select por lo que es recomendable hacer un array de errores para despues mostrarlos 
+
+en el documento y cada vez que hay un error pushearlo en este array
+
+
+
+
+window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+         let errores = []
+
+     } )
+ })
+
+
+Luego debemos validar los campos que contiene el formulario y pushear el error si hay alguno en algun campo
+
+
+window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+         let errores = []
+
+         let nombre = document.querySelector('.nombre')
+
+         if( nombre.value == '' ){
+             errores.push('el campo esta vacio')
+         }
+
+     } )
+ })
+
+
+
+ Para luego aclarar que si hay algun error ( errores.legth > 0 ) se usara preventDefault()
+
+
+ 
+window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+         let errores = []
+
+         let nombre = document.querySelector('.nombre')
+
+         if( nombre.value == '' ){
+             errores.push('el campo esta vacio')
+         }
+        
+        if(errores.legth > 0 ){
+
+            e.preventDefault()
+        }
+
+     } )
+ })
+
+
+
+ Luego podemos mostrar esos errores por pantalla, para eso debemos crear un div en el formulario con una clase que
+
+ podemos llamar 'errores' y adentro incluir un <ul>
+
+
+ 
+ Por ultimo en el script vamos a seleccionar el ul con
+
+
+ let ulErrores = document.querySelector('.errores ul')
+
+
+
+ Y haremos un for que recorra el array de errores 
+ 
+
+
+
+window.addEventListener('load', function(){
+
+     let formulario = document.querySelector('.formulario')
+
+     formulario.addEventListener('submit', function(e){
+
+         let errores = []
+
+         let nombre = document.querySelector('.nombre')
+
+         if( nombre.value == '' ){
+             errores.push('el campo esta vacio')
+         }
+        
+        if(errores.legth > 0 ){
+
+            e.preventDefault()
+
+            let ulErrores = document.querySelector('.errores ul')
+
+            for(let i = 0 ; i < errores.length ; i++){
+
+                ulErrores.innerHTML += '<li>' + errores[i] + '</li>'
+
+            }
+        }
+
+     } )
+ })
+
+
+ Así de esta forma se muestran por pantalla

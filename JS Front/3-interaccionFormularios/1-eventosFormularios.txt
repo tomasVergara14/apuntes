@@ -1,0 +1,74 @@
+
+Javascript tiene elementos que nos presenta una serie de eventos que identifican la interaccion
+
+del usuario sobre los campos del formulario para hacerlo mas amigable
+
+
+Podriamos esperar a que el formulario sea enviado y procesarlo del lado del servidor, al agregarlo del lado de JS 
+
+podemos dar feedback mucho mas rapido, sin hacer todo el camino de ida y vuelta del servidor hasta el navegador
+
+esto es mas fluido  para el usuario, pero esto no quita que debamos validar del lado del servidor tambien, ya que
+
+solo en el lado del navegador es inseguro
+
+
+
+Eventos:
+
+
+***FOCUS***
+
+
+sucede cuando el usuario ingresa con el cursor dentro de un campo
+
+
+nombre.addEventListener('focus', ()=>{
+         console.log(1);
+     })
+
+
+***BLUR***
+
+
+sucede cuando el cursor abandona el campo 
+
+
+nombre.addEventListener('blur', ()=>{
+         console.log(1);
+     })
+
+
+***CHANGE***
+
+
+permite identificar que el valor de un campo cambio, podemos aplicarlo sobre cualquier campo del formulario
+
+por ejemplo un elemento select  e incluso sobre formularios completos
+
+
+nombre.addEventListener('change', ()=>{
+         console.log(1);
+     })
+
+
+
+***SUBMIT***
+
+
+identifica en el momento que se clickea sobre un boton del tipo submit no permite interactuar para validar y evitar
+
+que se envie, usando el preventDefault()
+
+
+nombre.addEventListener('submit', (e)=>{
+         
+        if( formularioIncompleto){
+            
+            e.preventDefault();
+        
+        }else{
+
+            alert('se esta por enviar el formulario')
+        }
+     })
