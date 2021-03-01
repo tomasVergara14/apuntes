@@ -1,0 +1,80 @@
+
+Fetch
+
+
+Es una funcion que nos permite comunicarnos con API´s
+
+se pueden generar pedidos por el metodo GET o enviar datos mediante POST 
+
+
+
+
+Si es por GET, fetch recibe solo un parametro, este es el endpoint o url que queremos consultar
+
+es una funcion asincrona , no sabemos cuando nos va a responder el servidor, por eso nos devuelve una promesa
+
+
+
+La mayoria de las API´s devuelven el resultado en formato json, por eso lo mas comun es decodificarlo apenas responde
+
+la informacion de fetch, usando el metodo .json()  
+
+
+
+
+    fetch('https://restcountries.eu/rest/v2/all')
+        .then(respuesta=> {
+            return respuesta.json()
+        })
+        .then(informacion=> {
+            console.log(informacion)
+
+            });
+
+        })
+        .catch(err=>{console.log(err)})
+
+
+
+Con el async await quedaria
+
+
+
+    (async ()=>{
+
+            try{
+                const fet = await fetch('https://restcountries.eu/rest/v2/all')
+                const list = await fet.json()
+                
+                console.log(list)
+
+            }
+            catch{(err=>{console.log(err)})}
+
+        })();
+
+
+
+
+
+La mayoria de estructuras de fetch son iguales, lo unico que cambia es lo que se hace en el 2° cb, ya que ahi es
+
+donde trabajamos con la info que devuelve la API
+
+
+
+Al trabajar con el metodo POST enviando datos, es necesario incluir un 2° parametro, este es un objeto literal
+
+donde se configuran los datos para que la API entienda nuestra peticion 
+
+En el objeto literal se deben definir:
+
+
+- method: 'POST'
+
+- body: JSON.stringify(data)       //tiene el contenido del envio y siempre tiene que estar en formato json
+
+- headers: {
+
+    'Content-Type': 'application/json'              //puede configurar por ej el tipo de contenido que enviaremos
+}

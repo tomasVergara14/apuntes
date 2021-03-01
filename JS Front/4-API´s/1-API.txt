@@ -1,0 +1,51 @@
+API
+
+Application programming interface
+
+
+Es una URL que devuelve infor para que otro usuario la consuma
+
+
+las apis son desarrolladas para que otro sistema pueda utilizarlo.
+
+Suelen tener su propia documentación, hay distintos tipos:
+
+
+**Publicas**
+
+No se necesita registracion , ni ningun tipo de solicitud para usarlas
+
+Ejemplo: RESTCountries que devuelve informacion de todos los paises del mundo
+
+
+https://restcountries.eu/rest/v2/name/Argentina
+
+
+
+**Semipublicas**
+
+En estas es necesario registrarse en sus paginas para poder acceder a ellas
+
+Ejemplo: GIPHY o Marvel 
+
+
+https://developers.giphy.com/
+
+https://developer.marvel.com/
+
+
+
+
+**Privadas**
+
+Los endpoints no estan disponibles para el consumo publico, solo para productos internos 
+
+Ejemplo: Neflix
+
+
+
+Un ENDPOINT es el punto de conexión al que debemos apuntar para poder acceder a la informacion
+
+que queremos
+
+Las URL que usamos para obtener la informacion de la API 

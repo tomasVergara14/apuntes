@@ -1,0 +1,99 @@
+
+
+Sweet alert es una libreria que nos birnda un alert mas estetico
+
+
+
+*** Script ***
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+*** Backend ***
+
+npm install sweetalert --save
+
+
+
+*** funciones ***
+
+
+- Para mostrar una alerta:
+
+  
+    swal("Texto que queramos mostrar")
+
+
+- Para mostrar un subtitulo:
+
+
+    swal("titulo", "subtitulo")
+
+
+
+- Para mostrar una animacion de:
+
+
+    pasar un tercer parametro que puede ser:
+
+    - "warning"
+    - "success"
+    - "error"
+    - "info"
+
+    esto tambien puede escribirse:
+
+    swal({
+        title: "titulo",
+        text: "subtitulo",
+        icon: "success",
+        button: "vos dale"              //esto es el texto que tiene el boton
+    })
+
+
+
+
+- se puede agregar un boton para cancelar:
+
+    se hace escribiendo el valor buttons: true
+
+    y se puede dar logica, por ejemplo si quisieramos cancelar una modificación, primero podríamos
+
+    validar si esta seguro con un warning, una vez decidido mostrar un success si eligio ok y un texto
+
+    si cancelo la operacion
+
+
+    Escribiendo dangerMode: true , el alert va a estar seleccionado la opción de cancelar
+
+   
+    swal({
+     
+        title: "Are you sure?",
+     
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+     
+        icon: "warning",
+     
+        buttons: true,
+     
+        dangerMode: true,
+     
+        })
+     
+        .then((willDelete) => {
+     
+        if (willDelete) {
+     
+            swal("Poof! Your imaginary file has been deleted!", {
+     
+            icon: "success",
+     
+            });
+     
+        } else {
+     
+            swal("Your imaginary file is safe!");
+        }
+    });

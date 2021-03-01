@@ -1,0 +1,79 @@
+
+
+Local storage y session storage
+
+Nos permiten almacenar datos en el navegador de cada usuario, no importa a la pagina que vaya
+
+se mantiene, si almacene info en mi storage puedo recuperarla en cualquier lado de mi sitio
+
+
+Funcionan similar a las cookies
+
+
+*** Local storage ***
+
+permite almacenarlo por tiempo indeterminado
+
+es por usuario, por navegador
+
+
+Solo se guarda informacion de texto, si estas trabajando con arrays u objetos literales, debes pasarla primero a texto
+
+con JSON.stringify()
+
+Esto nos permite transformar el array o el objeto literal en texto que si lo podemos almacenar
+
+
+** Session storage ***
+
+guarda por sesion, si cerramos el navegador se pierden
+
+
+
+utilizan los mismo metodos, La diferencia es en cuanto tiempo se guarda la informacion
+
+
+
+JS nos da ciertos metodos para utilizar en nuestro objeto con el que queramos trabajar 
+
+
+
+
+*** setItem ***
+
+Sirve para guardar un nuevo valor en storage
+
+crea nuevos atributos en nuestro storage y le asigna valores para ellos
+
+recibe dos parametros:
+
+el 1° sera el nombre de la clave que deseamos guardar
+
+el 2° sera el valor que le demos 
+
+
+localStorage.setItem('nombre', 'tomi')
+
+
+
+*** getItem ***
+
+Sirve para devolver el valor de la clave que le pasemos
+
+
+localStorage.getItem('nombre')          //devolvera tomi
+
+
+
+*** removeItem ***
+
+Sirve para eliminar un dato de localStorage
+
+recibe un parametro, la clave que va a eliminar
+
+localStorage.removeItem('nombre')               //nombre : undefined
+
+
+*** clear ***
+
+borra todo el contenido que hayamos almacenado en nuestro storage
