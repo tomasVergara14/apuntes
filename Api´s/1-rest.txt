@@ -1,0 +1,113 @@
+
+HTTP
+
+es un protocolo de transferencia que permite de manera standarizada la comunicacion entr el cliente y servidor
+
+
+
+
+REST
+
+Es un tipo de arquitectura de servicios que proporciona standares entre sistemas informaticos para establecer como 
+
+se van a comportar entre si 
+
+
+Uno de los standares es el de:
+
+
+CLIENTE-SERVIDOR 
+
+indica que la aplicacion del cliente y la aplicacion del servidor deben poder desarrollarse, extenderse, cambiarse
+
+sin interferir una con la otra
+
+el cliente nunca deberia enterarse que se cambio algo en el lado del servidor, y el servidor no deberia tener incon-
+
+venientes con los cambios del cliente 
+
+
+
+Lo unico que el cliente deberia conocer del servicio son los accesos: Endpoints o URIs
+
+
+Caracteristica:
+
+
+
+** Recursos uniformes **
+
+
+un recurso en el sistema, deberia de tener solo un identificador logico, y este proveer toda la informacion necesaria
+
+ej:
+
+Productos       
+    
+    -productos/crear
+    -productos/modificar
+    -productos/eliminar
+
+
+
+** Stateless **
+
+
+Propone que todas las interacciones entre cliente y servidor deben ser tratadas como nuevas y de forma absolutamente
+
+independiente
+
+Por lo tanto si quisieramos tener una aplicacion que distinga entre usuarios logueados e invitados, debemos mandar
+
+toda la informacion de autenticacion en cada peticion
+
+
+esto permite desarrollar aplicaciones mas confiables, performantes y escalables, ya que permiten que puedan ser
+
+dirigidar y actualizadas incluso cuando se encuentran funcionando
+
+
+
+** Cacheables **
+
+
+Es una herramienta muy importante que se utiliza del lado del cliente para mejorar la performance y reducir la demanda
+
+al servidor
+
+Debe aplicarse tanto como sea posible.
+
+Se utiliza para guardar información que no suele cambiar usualmente en el equipo del cliente.
+
+
+
+
+FORMATOS DE ENVIOS DE DATOS
+
+
+- JSON 
+        Es el formato mas comun para el envio de datos, es necesario agregar un encabezado en el headers que diga
+
+        "Content-type":"application/json"
+
+
+
+- RAW
+        Se utiliza para mandar datos sin un formato en particular, no suele ser utilizado
+
+
+- TEXT
+        Se utiliza para enviar datos que no sean en formato JSON, como por ej HTML, CSS
+
+
+- URL-encoded
+       Indica que nos van a enviar datos codificados en forma de URL, algo similar a un query string
+
+
+
+
+El metodo HEAD es un metodo de}l protocolo HTTP que nos permite conocer la fecha de ultima modificacion de un recurso
+
+se utiliza en conjunto con el metodo GET, de modo que si la fecha de modificacion no coincide con la fecha del recurso
+
+que el cliente tiene cacheada localmente, pueden pedir los datos para actualizarlos

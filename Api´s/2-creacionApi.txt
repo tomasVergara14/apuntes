@@ -1,0 +1,28 @@
+
+Primero debemos identificar los objetos que seran presentados como recursos
+
+Encontrar un sustantivo relacionado a nuestro negocio. Por ejemplo: PRODUCTOS
+
+Es buena practica utilizar sustantivos y encontrar uno que pueda englobar la mayor cantidad de pedidos a nuestro sitio
+
+
+
+
+Creando las URLs o Endpoints son los identificadores de los recursos de nuestro sitio. Y mediante ellos accedemos a estos
+
+
+Las colecciones en rest son un recuros por el cual puedo acceder a un conjunto de recursos o elementos 
+
+A cada elemento por separado se le llama recurso 
+
+A las colecciones se las suele escribir en plural mientras que a los recursos en singular
+
+
+
+Los URL nos devuelven datos por lo general en formato JSON, podemos armar la respuesta y algunas claves:
+
+- "link" que apunta al mismo endpoint que acabamos de acceder
+
+- "informacion generica" la cantidad de data 
+
+- "datos basico" 
