@@ -1,0 +1,108 @@
+
+Se encarga de hacer comunicaciones HTTP a traves de codigo, configura las solicitudes como objetos de JS 
+
+
+Para utilizarlo primero debemos:
+
+
+- Incorporarlo a la libreria del BackEnd:
+
+        npm install axios
+
+
+
+- O Incorporarlo a la libreria del FrontEnd
+
+        <script src="cdn y todo el codigo de cdn"></script>
+
+
+
+
+Para armar las peticiones:
+
+
+ Tiene dos lados, el de:
+
+
+** Creacion **
+** Consumo **
+
+
+
+Primero se debe crear una carpeta en src llamada "requests" allí almacenaremos todas las peticiones dentro del mismo
+
+directorio
+
+Luego en la carpeta requests crearemos el archivo "default.js" donde vamos a crear un objeto que va a representar
+
+todos los parametros por default que vamos a utilizar por cada pedido
+
+
+
+    ** Default.js **
+
+cost default = {
+
+    baseURL: "www.baseDeLaURL"      // todas las peticiones van a compartir esta base, ej: "www.spotify.com/api"
+    timeOut: 4000                   // Es el tiempo maximo de espera de respuesta para una peticion , si demora mas
+                                         axios cancelara la solicitud
+}
+
+
+
+
+
+
+Para armar un request:
+
+- Primero hay que identificar a que recurso queremos acceder y asi poder crear un archivo, que va a contener nuestro
+
+pedido y todos los que interactuen con este recurso
+
+- En este archivo tendremos dos partes:
+
+    - la primera tiene un URL que identifica el recurso y ademas la importacion de AXIOS y del default 
+
+    - la segunda sera un objeto literal que representara los servicios que seran funciones a las cuales podremos 
+
+    con los nombres de las claves
+
+
+
+
+    ** get request **
+
+
+const axios = require('axios')
+const default = require('./default')
+
+const url = "artista"
+
+const artistaRequest = {
+
+    getArtista = function (id){
+        return axios({
+            ...defaults,
+            method: 'get',
+        url: `${url}/${id}`
+        })
+    }
+
+}
+
+module.exports = artistaRequest
+
+
+
+ ** consumir request **
+
+  - vamos a requerirlo donde lo necesitemos usar y lo almacenamos en una variable para invocar sus metodos
+
+    const artistasRequest = require("./request/artistasRequest")
+
+
+  - Luego llamamos al metodo que necesitamos para que nos devuelva los datos 
+
+    artistaRequest.getArtista(22)
+    .then(response => {console.log(response.data)})
+    .catch(err => {console.log(err)})
