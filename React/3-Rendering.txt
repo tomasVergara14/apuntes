@@ -1,0 +1,62 @@
+
+Un elemento describe lo que ves en la pantalla
+
+        const element = <h1>Hello, world</h1>
+
+
+Los "componentes" estan hechos de "elementos"
+
+
+
+** Renderizar un elemento en el DOM **
+
+digamos que tenes un <div> en algun lado del archivo HTML
+
+        <div id ="root"></div>
+
+Esto se llama "root" DOM node porque todo adentro de este va a ser manejado por React DOM
+
+
+Las aplicaciones creadas solo con React suelen tener solo un "root" DOM node, pero si integrando
+
+React en una aplicacion existente podes tener tantos "root" DOM node aislados como quieras
+
+
+Para renderizar un elemento React en el "root" DOM node, debes pasar ambos a ReactDom.render()
+
+        const element = <div> Hello, world </div>
+        ReactDOM.render(element, document.getElementById("root"));
+
+
+Los elementos de React (react elements) son inmutables 
+
+Una vez creado este elemento no pueden cambiarse sus childrens ni atributos, lo que se puede
+
+hacer es crear un nuevo elemento que lo pise, ejemplo:
+
+
+        function tick(){
+            const element =(
+                <div>
+                <h1>Hello</h1>
+                <h2>It is {new Date().toLocaleTimeString()}</h2>
+                </div>
+            )
+            
+            ReactDOM.render(element, document.getElementById('root'));
+            }
+
+        setInterval(tick, 1000)
+
+
+
+
+
+** React solo actualiza lo necesario **
+
+
+React DOM compara los elementos y sus childrens a los elementos anteriores y solo aplica las actualizaciones al DOM
+
+necesarias para mantenerlas en el estado deseado
+
+En el ejemplo superior por ejemplo solo se actualiza el text node que contiene los cambios 

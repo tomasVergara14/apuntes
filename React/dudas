@@ -1,0 +1,17 @@
+
+
+Components&Props:
+
+        - Puedo ponerle el nombre que quiera al prop?
+
+            function Avatar(props) {
+                return (
+                    <img className="Avatar"
+                    src={props.user.avatarUrl}              //Antes user se llama author
+                    alt={props.user.name}                   //Antes user se llama author
+                    />
+                );
+                }
+
+            "The Avatar doesn’t need to know that it is being rendered inside a Comment. 
+             This is why we have given its prop a more generic name: user rather than author."

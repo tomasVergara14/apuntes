@@ -21,4 +21,23 @@ async function asyncCall (){
     const resultado = await conteo()
 }
 
-console.log(asyncCall())
+//console.log(asyncCall()
+
+// parseInt()
+let convertido = parseInt("26")
+
+//console.log(convertido)
+
+
+//objects
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  // Define an object
+  var you = new Person('juan', 24);
+
+  //console.log(you.name)
+

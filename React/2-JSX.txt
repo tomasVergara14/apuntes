@@ -1,0 +1,94 @@
+
+
+        const element = <h1>Hello, world!</h1>
+
+
+Esta frase no es ni un string ni HTML
+
+
+Es una syntax extension de JS, se recomienda utilizar con REACT para describir como deberia lucir la interfaz de 
+
+usuario (UI)
+
+Es similar al templates pero con todos los beneficios de JS 
+
+Produce Componentes de REACT
+
+
+En este ejemplo declaramos una variable y la utilizamos adentro de JSX conteniendola en {}
+
+
+        const name = "Juan Perez"
+        const element = <h1>Hello {name}</h1>
+
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        );
+
+
+Se  puede utilizar cualquier formato valido de JS dentro de {} en JSX 
+
+
+Las expresiones en JSX se vuelven validas como JS y pueden ser utilizadas en ciclos for y tambien en los if 
+
+
+        function getGreeting(user){
+            if(user){
+                return <h1>Hello, {formatName(user)}!</h1>;
+            }
+            return <h1>Hello, stranger</h1>
+        }
+
+
+
+JSX usa el formato camelCase como JS, por ejemplo class es className 
+
+
+Los tags de JSX pueden contener hijos(childrens)
+
+        const element=(
+            <div>
+                <h1>Hello!</h1>
+                <h2>good to see you around.</h2>
+            </div>
+        )
+
+
+
+
+Hay diferentes formas de escribir en JSX, BABEL JS es un transcopilador de JS que transforma tu codigo en un formato
+
+que pueda ser leido por cualquier navegador
+
+un ejemplo de diferentes sintaxis:
+
+
+        const element=(
+            <h1 className = "greeting">
+                Hello, world
+            </h1>
+        );
+
+
+otra forma identica es:
+
+        const element = React.creatElement(             //babel lo escribe de esta forma y es lo mismo
+            'h1',
+            {className: 'greeting'},
+            'Hello, world'
+        );
+
+
+React.creatElement() realiza ciertos chequeos para escribir bug-free pero crea un objeto de esta forma:
+
+        const element = {
+            type: 'h1',
+            props: {
+                className: 'greeting',
+                children: 'Hello, world'
+            }
+        };
+
+
+Estos elementos se llaman "React elements" son descripciones de lo que queres ver en la pantalla 
