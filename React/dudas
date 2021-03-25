@@ -15,3 +15,15 @@ Components&Props:
 
             "The Avatar doesn’t need to know that it is being rendered inside a Comment. 
              This is why we have given its prop a more generic name: user rather than author."
+
+
+
+
+State & LifeCycle
+
+        - En que beneficia que sea una clase en vez de una funcion? Por que convertirlo?
+
+
+
+
+

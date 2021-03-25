@@ -63,7 +63,7 @@ los hijos a este componente, todo como un solo objeto. Y a este objeto lo llamam
     )
 
 
-1- llamamos a ReactDOM.render() con el elemento  "< Welcome name = "Sara" />"
+1- llamamos a ReactDOM.render() con el elemento "element" que es "< Welcome name = "Sara" />"
 
 2- React llama el componente Welcome con {name = "Sara"} como props 
 
@@ -244,6 +244,106 @@ Luego lo que podemos hacer es extraer el componente "UserInfo" y asi renderizar 
 
                 <div className="UserInfo" >
                     <Avatar user={props.user} />
+                    <div className="UserInfo-name" >
+                        {props.user.name}
+                    </div>
                 </div>
             )
         }
+
+
+Y simplificar aun mas nuestro component Comment
+
+
+        function Avatar(props){
+
+            return(
+
+                <img 
+                    className="Avatar" >
+                    src= {props.user.AvatarUrl}
+                    alt= {props.user.name}    
+                />
+            )
+        };
+
+        function UserInfo(props){
+
+            return(
+
+                <div className= "UserInfo">
+                    
+                    <Avatar user={props.user} />            //recorda que va de abajo para arriba, 
+                    <div className= "UserInfo-name">        primero el ReactDOM.render() lee el elemento que pasemos                                        
+                        {props.user.name}                   por eso podemos usar el props.user que despues declaramos
+                    </div>
+                </div>                                      
+            )
+        }
+
+
+        function Comment(props){
+            
+            return(
+
+                <div className= "Comment">
+                    
+                    <UserInfo user={props.author} />        //aca declaramos user para usarlo en los components de
+                                                              arriba (UserInfo y Avatar)
+                </div>
+                
+                <div className= "CommentText">
+
+                    {props.text}
+
+                </div>
+            )
+        }
+
+        const comment ={
+            
+            text: "Hey there!",
+          
+            author:{
+                name: "Tom",
+                avatarUrl:"http://algoEscritoAsiNomas.com"
+            }
+        };
+
+
+        ReactDOM.render(
+            <Comment 
+                text={comment.text},
+                author={comment.author}
+            />,
+            document.getElementById('root')
+
+        )
+
+
+
+
+Asi declares tu components de React como una funcion o como una className, nunca deben modificar sus propias props
+
+Existen las funciones "puras" y las "impuras" 
+
+Las puras no cambian sus inputs y siempre devuelven los mismos resultados con los mismos inputs
+
+ej:
+
+        function sum (a,b){
+            return a + b
+        }
+
+
+Una funcion impura si cambian el valor de sus inputs
+
+ej:
+
+        function sumatoria (account, amount){
+            account.total += amount
+        }
+
+
+
+TODOS LOS COMPONENTES DE REACT DEBEN ACTUAR COMO FUNCIONES PURAS CON RESPECTO A SUS PROPS

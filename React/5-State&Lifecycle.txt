@@ -1,0 +1,230 @@
+
+
+    State and LifeCycle
+
+
+Antes para actualizar el Dom llamabamos a ReactDom.render() y pisaba lo anterior
+
+ej:
+
+        function Tick() {
+            
+            const element=(
+
+                <div>
+
+                    <h1>Hello there</h1>
+                    <h2>its {new Date().toLocaleTimeString()}. </h2>
+                </div>
+            );
+
+            ReactDOM.render(
+                element,
+                document.getElementById('root')
+            )
+        }
+
+        setInterval(tick, 1000)
+
+
+
+Para hacer un component realmente reutilizable vamos a separarlo
+
+
+        function Clock(){
+
+            return(
+
+                <div>
+                    <h1>Hello there</h1>
+                    <h2>Its {props.date.toLocaleTimeString()}. </h2>
+                </div>
+            )
+        }
+
+        function Tick(){
+            ReactDOM.render(
+                <Clock date={new Date()} />,
+                document.getElementById('root')
+            );
+        }
+
+        setInterval(tick, 1000)
+
+
+El problema de este codigo es que el update deberia depender pura y exclusivamente de Clock y no es asi, lo ideal
+
+seria que quede:
+
+        ReactDOM.render(
+            <Clock />,
+            document.getElementById('root')
+        )
+
+
+Para esto debemos agregar el State al component Clock
+
+State es similar al props pero es privado y solo es controlado por el component
+
+
+
+
+
+** Convertir una funcion en Clase **
+
+
+Se puede hacer en unos simples pasos:
+
+        function Clock(){
+
+            return(
+
+                <div>
+                    <h1>Hello there</h1>
+                    <h2>Its {props.date.toLocaleTimeString()}. </h2>
+                </div>
+            )
+        }
+
+1- Creamos la class con el nombre que le queramos poner, y le extendemos React.Component:
+
+        class Clock extends React.Component {
+
+        }
+
+
+2- Adentro de esta clase llamamos a un metodo render() vacio
+
+        class Clock extends React.Component{
+
+            render(){
+
+            }
+        }
+
+3- Movemos todo lo que se encontraba en el body de la funcion, adentro del render()
+
+        class Clock extends React.Component{
+
+            render(
+                return(
+
+                    <div>
+                        <h1>Hello there</h1>
+                        <h2>Its {props.date.toLocaleTimeString()}. </h2>
+                    </div>
+                )
+            )
+        }
+
+
+4- Reemplazamos los "props" por "this.props" en el body del render()
+
+        class Clock extends React.Component{
+
+                    render(
+                        return(
+
+                            <div>
+                                <h1>Hello there</h1>
+                                <h2>Its {this.props.date.toLocaleTimeString()}. </h2>
+                            </div>
+                        )
+                    )
+                }
+
+
+
+De esta forma queda definido Clock como una clase en vez de una funcion
+
+
+De esta forma el render() que contiene todo el body va a ser llamado cada vez que se produzca una actualizacion
+
+Siempre y cuando rendericemos <Clock /> en el mismo nodo DOM Una sola instancia de la clase Clock va a ser usada
+
+
+
+
+** Adding Local State to a Class **
+
+
+Ahora vamos a cambiarle a Date el props por state en 3 pasos
+
+
+1- Reemplazar "this.props.date" con "this.state.date" en el metodo render()
+
+        class Clock extends React.Component{
+
+            render(){
+
+                return(
+
+                    <div>
+                        <h1>Hello there</h1>
+                        <h2>its {this.state.date.toLocaleTimeString()}. </h2>
+                    </div>
+                )
+            }
+        }
+
+
+
+2- Agregar un "class constructor"  que asigne el "this.date" inicial
+
+
+        class Clock extends React.Component{
+
+            constructor(props){
+                
+                super(props);
+                this.state= {date: new Date()};
+
+            }
+
+            render(){
+
+                return(
+
+                    <div>
+                        <h1>Hello there</h1>
+                        <h2>its {this.state.date.toLocaleTimeString()}. </h2>
+                    </div>
+                )
+            }
+        }
+
+
+A la base del constructor le pasamos props
+
+        constructor(props){
+
+            super(props);
+            this.state = {date: new Date()}
+        }
+
+
+Los "class components" deberian siempre llamar a la base del constructor con props
+
+
+3- Solo quedaria remover el date={ new Date()} del <Clock /> en el ReactDOM.render()
+
+        class Clock extends React.Component {
+
+            constructor(props){
+
+                super(props);
+                this.state = {date: new Date()};
+
+            }
+
+            render(){
+
+                return(
+
+                    <div>
+                        <h1>Hello there</h1>
+                        <h2>Its {this.state.date.toLocaleTimeString()}. </h2>
+                    </div>
+                )
+            }
+        }
