@@ -1,0 +1,58 @@
+
+La instalacion se puede hacer directo desde la terminal ya que se encuentra en npm
+
+
+Te ubicas en el directiorio donde deseas crear el proyecto y realizas el siguiente comando:
+
+- npm creat-react-app "nombre-proyecto"
+
+o sino
+
+- npm init react-app "nombre-proyecto"
+
+
+Es uno o el otro, no ambos, se recomienda escribir todo en minusculas separados por guiones, demora en descargarse
+
+
+
+Una vez instalado todo, la carpeta tiene una estructura similar a como veniamos trabajando
+
+
+En las diferentes carpetas vamos a encontrar archivos importantes:
+
+
+** PUBLIC **
+
+ - index.html
+            tiene un html tradicional que tiene un div con id="root" que es muy importante ya que alli se renderiza
+
+            toda la aplicacion, No se toca ni modifica
+
+
+** SRC **
+
+ -index.js
+            alli vamos a encontrar varias lineas con la sentencia import, es como el require de NODE, de la cual se 
+
+            trae algo desde otra libreria y se lo almacena para poder utilizarlo
+
+            Tambien tiene el metodo .render del objeto ReactDom allí se  indica que se utilizara el element con 
+            
+            ID "root"
+
+            ReactDom.render(<App />, document.getElementById('root'))
+
+            
+            App es un componente y se esta importando al archivo index.js en esa linea
+
+
+ -app.js
+            hay una estructura similar a la de index.js pero tiene una funcion app que se importa al final del
+            
+            archivo y dentro de la funcion se retorna una estructura "html" es una interpretacion del lenguaje html
+
+
+
+Con npm start vamos a ejecutar la aplicacion y la vamos a poder ver desde un navegador, este toma los cambios
+
+automaticamente

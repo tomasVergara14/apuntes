@@ -1,0 +1,96 @@
+
+
+Props
+
+
+Un componente es un bloque de codigo que puede ser reutilizable, pero de nada nos sirve si siempre nos devuelve 
+
+lo mismo, para solucionar esto existen las "props"
+
+
+Las "Props" son las propiedades del componente, una propiedad es un valor que se envia al componente al momento
+
+que este mismo se llama o implementa, todos los componentes tienen la posibilidad de recibir sus props al momento
+
+que se esta creando.
+
+
+Las props son objetos literales que contienen todas las propiedades que contiene el componente al momento de su uso
+
+
+Al momento de crear el componente debemos pasar un parametro que se llama "props" , el nombre es por buenas 
+
+practicas
+
+Luego se debe imprimir la propiedad deseada en el lugar indicado
+
+ej:
+
+        function Saludo (props){
+
+            return(
+
+                <div>
+                    <h1> {props.titulo} </h1>
+                    <h2> {props.nombre} </h2>
+                </div>
+            )
+        }
+
+
+De esta forma el componente Saludo es una pieza 100% reutilizable, ahora ya no esta atado a un texto fijo, sino 
+
+que varia segun el valor de sus propiedades
+
+
+Las propiedades de un componente reciben sus valores cuando el componente es invocado por la aplicacion
+
+
+Una forma es indicarle al componente le configures en forma de HTML el nombre de la propiedad y el valor que 
+
+quieras darle
+
+ej:
+
+
+        <Saludar                        // esto es donde se este invocando Saludar, en 
+                                            App.js por ejemplo
+                                          
+            titulo="Here´s "
+            nombre ="Jhony"
+        />
+
+
+De esta forma podemos utilizar el componente Saludar en varios lugares y modificar sus atributos
+
+
+
+
+** Definiendo una Props **
+
+
+El componente de React acepta como argumento un props 
+
+        function Bienvenido (props){
+
+        }
+
+props es un objeto con datos que permiten definir las propiedades 
+
+la forma mas sencilla de definir una props es escribir una funcion de JS, el componente no retornara texto fijo 
+
+sino que el mismo retornara el contenido de acuerdo al valor de sus propiedades 
+
+
+        function Bienvenido (props){
+
+            return(
+
+                <div>
+                    <h1>Hello {props.name} </h1>
+                </div>
+                
+            )
+        }
+
+

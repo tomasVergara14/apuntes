@@ -1,0 +1,57 @@
+
+Hay diversas librerias para diferentes cosas, por ej si queres iniciar un proyecto 
+
+y no involucrarte demasiado con  CSS podes usar bootstrap
+
+Si necesitas encriptar datos podes usar bcrypt o crypto que se encargar de esto
+
+Así como tambien existen diferentes motores de vista como EJS, Handlebars o mustache
+
+
+Muchas veces estos no bastan para terminar de optimizar la aplicacion del lado del front.
+
+
+Sitios como facebook, ig  o netflix funcionan muy rapido, esto se debe a que el front esta optimizado con REACT
+
+
+
+REACT
+
+es una biblioteca escrita en JS
+
+para facilitar la creacion de componentes interactivos  reutilziables en el front de tu aplicacion
+
+Se puede usar del lado del cliente y tambien del servidor
+
+
+Esta construido en torno a hacer funciones, las cuales van a tomar actualizaciones del estado de la aplicacion
+
+y van a traducir estos cambios en una representacion vitual de la misma
+
+
+Siempre que react es informado de un cambio, va a ejecutar todas las funciones necesarias para realizar una nueva
+
+representacion virtual del documento 
+
+
+Ese cambio se ve reflejado directamente en el DOM, la pagina muestra info actualizada 
+
+
+La libreria trabaja con un concepto llamado VIRTUAL DOM, esti lo que hace es hacer una copia exacta del DOM y hacer
+
+una comparacion del VIRTUAL DOM y del DOM actual y cuando se modifica el DOM real, se modifica el VIRTUAL DOM
+
+
+La libreria trabaja con un concepto llamado VIRTUAL DOM, esti lo que hace es hacer una copia exacta del DOM y hacer
+Lo hace de manera automatica y optimiza mucho el rendimiento ya que solo actualiza ese componente.
+
+
+** DIFFING **
+
+ El proceso de comparar el virtual DOM y el DOM actual
+
+
+** RECONCILIATION **
+
+ El proceso de actualizacion 
+

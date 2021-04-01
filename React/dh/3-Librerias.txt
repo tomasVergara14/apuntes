@@ -1,0 +1,23 @@
+
+
+Dentro de React se ejecutan dos librerias muy importantes, una permite empaquetar todos los archivos de JS que
+
+pueda ser ejecutado por el navegador y la otra traducir novedosa en una sentencia de JS mas antigua pero 
+
+que sean estables y puedan ser interpretadas por todos los navegadores
+
+
+
+** Empaquetar **
+
+Para empaquetar se utiliza "webpack", conocido como Module Bundler o empaquetador de modulos, permite compilar
+
+muchos archivos de JS en 1 solo 
+
+
+** Traduccion **
+
+React utiliza "Babel", es un compilador  que se encarga de la transpilacion, que es un proceso de traduccion de 
+
+versiones mas nuevas a versiones antiguas que son estables y pueden ser comprendidas por los navegadores
+

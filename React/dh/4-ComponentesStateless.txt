@@ -1,0 +1,73 @@
+
+** Componentes Stateless **
+
+
+Tambien se les llama componentes funcionales, internamente implementan un return con logica sencilla que entrega
+
+una estructura HTML
+
+Solamente pueden devolver 1 elemento HTML
+
+Dentro de la logica sencilla podemos encontrar estructuras de control como un "if" y varios metodos de arrays
+
+
+ej:
+
+        function Navbar(){
+
+            return(
+
+                <nav>
+                    <a href="/home">Home</a>
+                    <a href="/products">Products</a>
+                </nav>
+            )
+        }
+
+
+
+
+** Crear un Componente Stateless **
+
+
+Primero crear un archivo .js con el nombre de la funcion que llevara dentro 
+
+Todos tienen la misma estructura:
+
+    **    import React from "react";          //Es necesario en todos los componentes
+
+    **    function Navbar(){                  // Se declara la funcion con el nombre del componente en Mayuscula
+            
+              return(){                       // Se llama un return y adentro va el elemento html, solo puede ir 1
+
+                  <nav>
+                      <a href="/home">Home</a>
+                      <a href="/products">Products</a>
+                  </nav>
+              }
+
+          }
+
+    ** export default Navbar                  // Aqui se exporta el componente para que pueda ser utilizado 
+
+
+
+** Utilizar un Componente Stateless **
+
+En el archivo App.js importamos el componente Navbar
+
+Luego se implementa como si fuese una etiqueta HTML dentro de la estructura del return  y se cierra con />
+
+ej: 
+
+        import Navbar from "./components/Navbar"
+
+        function App(){
+
+            return(
+
+                <div>
+                    <Navbar />
+                </div>
+            )
+        }
