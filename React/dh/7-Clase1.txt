@@ -1,0 +1,106 @@
+
+Libreria != Framework
+
+Libreria:
+        Una serie de funcionalidades que tenes disponibles en algun lugar y se pueden implementar dentro de un 
+
+        proyecto
+
+
+Framework:
+        Te crean una estructura que vos necesitas basarte en esa estructura para escribir codigo, ejemplo Laravel
+
+        de PHP, por lo general no aprendes tanto como si lo hicieras desde cero
+
+        Tienen cosas ya definidas, te permite hacer cosas rapidas, esta conectada a muchas librerias
+
+
+
+REACT esta compuesto por muchas librerias
+
+Las principales son:
+
+- WEBPACK:
+        un empaquetador de modulos
+
+- BABEL:
+        Transpilador o traductor de codigo
+
+
+
+
+React utiliza JSX que es una mezcla de HTML con JS, te permite escribir con la sintaxis de HTML y darle la 
+
+funcionalidad de JS
+
+
+En REACT esta el render(). se llama al ReactDom y se aplica el metodo render(); ReactDom.render(), este va a recibir
+
+el elemento que se esta renderizando y lo imprime en el elemento que vos le señales.
+
+Ej:
+
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Se agrega aqui el CDN de React -->
+            <title>React</title>
+        </head>
+        <body>
+
+            <!-- sE HACE UN DIV CON ID "root" -->
+            
+            <div id="root"></div>
+
+            <!-- Se hace el script para pode utilizar JS -->
+
+            
+            <script type= 'text/babel">
+
+            //se captura el elemento root
+
+            let root =document.querySelector("#root");
+
+            //se guarda el elemento que queremos renderizar
+
+            let tagH1 = React.createElement('h1', null, 'hola bienvenidos')// El primer parametro es el tag
+                                                                            // el segundo null
+                                                                            // el tercero lo que queremos que 
+                                                                            renderice
+
+            //Aplicamos el ReactDom.render()
+            ReactDom.render(
+                tagH1,                                                      // El elemento a renderizar
+                root                                                        //Donde lo renderizamos
+            )
+            </script>
+            
+        </body>
+        </html>
+
+
+Al hacerlo manual hay que especificar al script que sea type= 'text/babel"
+
+Si no configuramos babel debemos escribirlo con:
+
+       
+        let tagH1 = React.createElement('h1', null, 'hola bienvenidos')
+
+
+Si lo configuramos podemos escribir directamente
+
+
+        let tagH1 = <h1>Hola bienvenidos</h1>
+
+
+
+
+Para crear un proyecto de React utilizamos el comando:
+
+        npm init react-app nombre-proyecto
+
+
+Es importante que para todo utilicemos guion medio, no acepta otra sintaxis
