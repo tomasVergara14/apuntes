@@ -104,3 +104,29 @@ Para crear un proyecto de React utilizamos el comando:
 
 
 Es importante que para todo utilicemos guion medio, no acepta otra sintaxis
+
+
+
+
+
+Al crear un pryecto con React el "name" del package.json va escrito con guion medio, en caso de que quisiera hacer
+
+un modulo y cargarlo a npm, ya que todos van con esa sintaxis
+
+
+
+** index.html **
+
+De aqui se renderiza la aplicacion 
+
+trae un monton de configuraciones extras que nos sirven para cosas como crear una app para apple o IOS, muchos 
+
+comentarios
+
+
+
+Trae para hacer testing, la libreria que se utiliza es Chest
+
+
+
+reportWebVital.js es para configurar servers
