@@ -1,0 +1,133 @@
+
+PropTypes & Default Props
+
+
+Sirve para tener control sobre las propiedades que los componentes reciben para asegurar el correcto funcionamiento
+
+de tu App
+
+Las propTypes es una manera en la que podes definir el tipo de dato que se espera recibir para una determinada
+
+prop de un componente 
+
+
+Para comenzar a utilizarlo, primero se instala un paquete que te da acceso a ellas
+
+En la raiz del proyecto se escribe el comando
+
+        npm install prop-types --save
+
+
+Es un paquete liviano
+
+Luego debes importar el paquete en el componente que desees utilizar 
+
+        import propTypes from 'prop-types';
+
+
+
+Para definir el tipo de dato que va a utilizar tu componente, debes escribir en el archivo del componente, antes
+
+de exportarlo, MiComponente.propTypes = {...}
+
+Y le asignas como valor un objeto literal, dentro de este objeto, debes especificar a la prop que queres asignarle
+
+el tipo de dato
+
+        Navbar.propTypes ={                 //Aqui propTypes va en minuscula
+            enlace: PropTypes.array         // Aqui antes de aclarar el tipo de dato va en Mayusculas
+        }
+
+
+ej: 
+
+        import React from 'react'
+        import propTypes from 'prop-types';
+
+        function Navbar(props){
+            
+            return(
+                <nav>
+                    <ul>
+                        {
+                            props.enlaces.map((enlace, i) =>{
+                                return ( <li key={enlace + i} ><a href= {enlace.url}> {enalce.text} ></a></li> )
+                            } )
+                        }
+                    </ul>
+                </nav>
+            )
+        }
+
+        Navbar.propTypes= {
+            enlaces: PropTypes.array
+        }
+
+        export default Navbar
+
+
+
+
+Otra cosa que se puede hacer es definir los valores que tendra por defecto una prop de un componente 
+
+Para esto no es necesario instalar ningun paquete, ya que viene con cualquier componente de React
+
+
+Lo unico que es necesario es definir una defaultProps = { } para tu componente
+
+        Navbar.defaultProps={}
+
+Tambien le vas a asignar un objeto literal como valor, y dentro de este objeto vas a hacer referencia al nombre de
+
+la propiedad y le asignas el valor por defecto que queres que tenga
+
+        Saludo.defaultProps = {
+            titulo: "Hola mundo!"
+            texto: "Saludos, aca practicando React"
+        }
+
+
+Esto te permite definir valores por defecto para cada propiedad que quieras en el caso de que las mismas no reciban
+
+un valor al momento en el que el componente es utilizado 
+
+Es util para evitar que la renderizacion falle por la omision de sus props 
+
+
+
+
+A medida que la aplicacion crece se pueden capturar una gran cantidad de errores con verificacion de tipos.
+
+Con React podemos verificar algunos tipos de datos con propTypes
+
+
+Una vez instalado con 
+
+        npm install prop-types --save
+
+
+debemos importarlo en el componente donde vayamos a utilizarlo 
+
+        import PropTypes from 'prop-types'
+
+
+Luego de importarlo podemos utilizarlo en el componente, se utiliza con el nombre del componente antes de ser 
+
+exportado
+
+
+        import React from 'react'
+        import PropTypes from 'prop-types'
+
+        function Saludar(props){
+            return(
+
+                <h1> Hola, {props.name} </h1>
+            )
+        }
+
+        Saludar.propTypes={
+            name: PropTypes.string
+        }
+
+        export default Saludar;

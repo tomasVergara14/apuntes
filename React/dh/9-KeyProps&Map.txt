@@ -1,0 +1,46 @@
+
+
+Cuando pasamos un array como propiedad, debemos escribirlo dentro de { } y [], o sea 
+
+        gender={["drama","accion" ]}
+
+
+Ej:
+
+        const usuarios = ["Tomi", "Lu", "Nico", "Lucas"]
+
+        <MiLista
+            items={usuarios}
+        />
+
+
+El metodo que se recomienda utilizar para recorrer arrays es .map() en el componente seria:
+
+        function MiLista(props){
+
+            return(
+                <>
+                    <ol> {items.map((usuario, i) => <li key= {usuario + i} > {usuario} </li> )} </ol>
+                </>
+            )
+        }
+
+
+
+Aca en " items.map((usuario, i) => <li key= {usuario + i} > {usuario} </li> )} " iteramos items
+
+el metodo .map() nos permite dos parametros, el del valor que toma en cada vuelta y el indice que podemos utilizar
+
+luego devolvemos un <li> con el atributo "key" que le indicamos que es el valor que toma + el indice
+
+
+
+El key es importante ya que le permite a React identificar que elementos han cambiado, agregado o eliminado 
+
+por medio de las key determina si es del mismo elemento o no
+
+
+Solo es necesario agregar key cuando devolvemos un array de elementos iguales
+
+
+La key debe ser unica entre elementos hermanos

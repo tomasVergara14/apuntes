@@ -1,0 +1,33 @@
+
+
+Cuando no sabemos todas las propiedades del componente al momento de crearlo podemos utilizar Children
+
+Children
+        son todos los elementos que son pasados entre sus etiquetas, no como props si no como hijos del componente
+
+Para preparar el componente para poder utilizarlo debemos usar las props
+
+La propiedad children trae consigo todos los elementos que se hayan dispuesto entre las etiquetas del componente 
+
+al momento de ser utilizado
+
+
+Lo que debemos hacer en el componente es:
+
+
+        function Saludar (props){
+            return(
+
+                <>
+                    <h1>Hello {props.name} </h1>
+                    <p> {props.message} </p>
+                    {props.children}                    // se indica que puede recibir hijos y que los imprima aca
+                </>
+            )
+        }
+
+
+Los children se imprimen en el orden que fueron enviados en el lugar donde se colocan
+
+
+Es muy util cuando no sabemos bien del todo que es lo que lleva nuestro componente

@@ -1,0 +1,66 @@
+
+PROPS
+
+Son las propiedades del componente
+
+Es un valor que se le envia al componente al momento que este mismo se llama o implemente, todo componente puede
+
+recibir sus props por parametro al momentoq ue se esta creando
+
+Este parametro sera un objeto literal que contendra todas las propiedades que sean pasadas al momento de su uso
+
+
+Al crear un componente hay que pasar un parametro llamado props
+
+
+        function Saludo (props){
+            
+            return(
+
+                <div>
+                    <h1>Hello World</h1>
+                    <p>Let´s learn about React</p>
+                </div>
+                
+            )
+        }
+
+
+
+Esto con props quedaria
+
+
+        
+        function Saludo (props){
+            
+            return(
+
+                <div>
+                    <h1> {props.title} </h1>
+                    <p> {props.text} </p>
+                </div>
+                
+            )
+        }
+
+
+De esta forma el componente Saludo es una pieza 100% reutilizable, ya no esta atado a un texto fijo, si no que varia
+
+segun sus propiedades
+
+Las propiedades reciben el valor cuando es invocado en donde sea utilizado
+
+Por ejemplo en App.js vamos a usar Saludo
+
+se escribe de la siguiente forma
+
+        <Saludo 
+            title="Hello world"
+            text= "Let´s learn React"
+        />
+
+
+
+React trata los componentes que comienzan con minusculas como tags de HTML <div> del DOM, en cambio los que 
+
+comienzan con Mayuscula los toma como componentes y requiere que el mismo este definido

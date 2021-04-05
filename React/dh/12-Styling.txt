@@ -1,0 +1,15 @@
+
+STYLING
+
+para manejar el css de nuestra aplicacion con React, es recomendable atomizarlo como estamos haciendo con todos 
+
+los componentes, que cada componente tenga su carpeta y dentro de esta su archivo css
+
+
+
+Luego para utilizarlo importamos en el componente
+
+        import './Pelicula.css'
+
+
+Y es importante aclarar que no se utiliza class, se utiliza className ya que class es una palabra reservada de JS

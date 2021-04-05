@@ -17,7 +17,7 @@ let conteo = function(){
 
 
 async function asyncCall (){
-    console.log('wainting');
+    console.log('waiting');
     const resultado = await conteo()
 }
 
