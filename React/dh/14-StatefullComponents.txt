@@ -1,0 +1,29 @@
+
+
+Los componentes pueden ser sin Estado "Stateless" o con Estado "Statefull"
+
+
+Los componentes con Estado o Statefull son aquellos que te permiten modificar su informacion interna a partir de
+
+eventos o interacciones con el mismo
+
+Los componentes Stateless le brindan la informacion al momento de ser creados y no le permiten modificarlo luego
+
+
+Los componentes Statefull permiten reaccionar a eventos , estos dejan de ser funciones nativas de JS, ahora pasan
+
+a ser clases.
+
+
+
+
+Para crear un componente con estado y volver las funciones a clases:
+
+        import React, {Component} from 'react'
+
+        class Saludar extends Component{
+
+            render
+        }
+
+
