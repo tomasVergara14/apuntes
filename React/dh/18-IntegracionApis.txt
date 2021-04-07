@@ -1,0 +1,23 @@
+
+
+El uso de API´s
+
+Los llamados asincronos de API´s se realizan en los metodos de los componentes, y se va a disparar cuando cualquier
+
+evento invoque dicho metodo
+
+Si se quiere mostrar el contenido de dicha API desde que se renderiza la pagina, aqui se utiliza el ciclo de vida
+
+en el montaje con el metodo componentDidMount
+
+
+Los datos que se obtienen se deben almacenar en el estado interno del componente 
+
+Al momento de iniciarlizar  el estado interno estara vacio, recien cuando el componente sea "montado" es que 
+
+recibira informacion 
+
+
+Adentro del metodo componentDidMount() haras uso del setState para pasarle la informacion que se recibio en el
+
+llamado a la API

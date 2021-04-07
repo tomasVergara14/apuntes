@@ -1,0 +1,248 @@
+
+
+Los estados de un componente
+
+Los componentes con estado son todos aquellos que almacen datos de manera local, y estos datos pueden variar a lo
+
+largo del tiempo bajo diversas circunstancias (ej interaccion usuario con el componente)
+
+
+Un ejemplo para este tipo de componentes, podría ser un contador, que puede incrementarse o decrementarse
+
+Podría pasar como prop, el valor inicial de dicho contador, y el valor actual se guarda en su estado interno 
+
+
+Primero hay que definir que usara dicho estado
+
+
+** Estado Interno **
+
+
+Para definir que va a usar ese estado, es necesario que el componente inicialice dicho estado en un valor
+
+determinado
+
+Dentro de la clase vamos a necesitar utilizar un metodo llamado "Constructor"
+
+El Constructor tomara logica del paquete Component que importamos
+
+Dentro del Constructor vamos a tener que escribir dos cosas:
+
+    - El metodo super(), este le va a pasar toda la logica que nos trae Component
+
+    - El estado en si, usas la palabra "this" y le asignas una propiedad llamada "state" que le asignas un objeto
+
+    literal con todas las propiedades y sus correspondientes valores
+
+
+ej:
+
+        import React, {Component} from 'react;
+
+
+        class Contador extends Component{
+
+            constructor(){
+
+                super()
+                this.state = {
+                    valor : 1,
+                }
+            }
+            
+            render(){
+                
+                return(
+
+                    <h1> ¿? </h1>               // Aqui es donde queres que se imprima el estado para visualizarlo
+                                                en la pantalla cuando el componente se renderice
+                )
+            }
+        }
+
+        export default Contador;
+
+
+
+Para imprimir el estado del componente cambiamos esos ¿? por {this.state.valor}
+
+
+        import React, {Component} from 'react';
+
+
+        class Contador extends Component{
+
+            constructor(){
+
+                super()
+                this.state= {
+                    valor : 1
+                }
+            }
+
+            render(){
+
+                return(
+
+                    <h1> {this.state.valor} </h1>
+                )
+            }
+        }
+
+        export default Contador;
+
+
+
+Para mutar o cambiar el estado de dicho componente, hay que hacer uso de los metodos y eventos del componente
+
+Adentro del componente va a existir un boton que al ser clickeado aumentara el valor almacenado en el estado
+
+Lo primero es escribir el metodo que implemente dicha logica.
+
+
+Para actualizar la informacion dentro de un componente se utiliza el metodo "setState"
+
+setState() actualiza todas aquellas propiedades del estado interno del componente que sean escritas dentro de el
+
+Recibe como parametro un objeto literal con propiedades y valores, en donde cada propiedad sera igual a la propiedad
+
+del estado interno que se desea actualizar, y el valor sera el dato correspondiente que se quiere asignar
+
+
+ej:
+
+        import React, {Component} from 'react';
+
+        class Contador extends Component{
+
+            constructor(){
+
+                super()
+
+                this.state = {
+
+                    valor: 1
+                }
+            }
+
+            aumentarValor(){
+
+                this.setState({
+
+                    valor: this.state.valor + 1             //aca aclaramos que queremos que al valor actual se le
+                                                            sume 1
+                })
+            }
+
+            render(){
+
+                return(
+                    
+                    <>
+                        <h1> {this.state.valor} </h1>
+                        <button> Aumentar </button>
+                    </>
+                )
+            }
+        }
+
+        export default Contador;
+        
+
+Así se define el "como" hacer para que aumente en 1, pero para definir el "Cuando" aumente ese valor, debemos 
+
+utilizar los eventos
+
+
+El evento se escribe en el boton que sea clickeado, en React los metodos que ejecutan eventos deben ser pasados
+
+en una funcion que retorne los mismos
+
+
+Ej:
+
+        import React, {Component} from 'react'
+
+        class Contador extends Component{
+
+            constructor(){
+
+                super()
+                this.state ={
+                    valor: 1,
+                }
+            }
+
+            aumentarValor(){
+
+                this.setState({
+
+                    valor: this.state.valor + 1
+                })
+            }
+
+            render(){
+
+                return(
+
+                    <>
+                        <h1> {this.state.valor} </h1>
+                        <button Onclick = { () => this.aumentarValor() } > Aumentar </button>       //Aqui se escribe
+                                                                                                    el evento
+                    </>
+                )
+            }
+        }
+
+
+
+
+
+** Constructor **
+
+el metodo constructor es necesario para poder definir la estructura del componente
+
+        
+        
+        constructor(props){
+
+            super(props);                    // El metodo super() es necesaria ya que hereda de su clase padre, lleva
+                                            logica
+
+                this.state = {              // El unico lugar donde definis el "this.state" que es un objeto literal
+                                            toma el valor de lo que le asignemos. Es de buena practica asignarle las
+                                            props
+
+                valor: props.valor
+            }
+        }
+
+
+
+** Metodos a utilizar **
+
+        
+        incrementar(){                          // En el resto de los metodos que no sean el constructor se debe 
+                                                utilizar "this.setState" 
+            
+            this.setState({
+
+                valor: this.state.valor + 1
+
+            })
+        }
+
+
+
+** En el render **
+
+
+        render(){
+
+            return(
+
+                <button onClick = { ()=> this.incrementar() } > Aumentar </button>      // Con el evento onClick
+                                                                                        vamos a estar modificando
+                                                                                        con el metodo incrementar()
+            )
+        }

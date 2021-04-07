@@ -23,7 +23,30 @@ Para crear un componente con estado y volver las funciones a clases:
 
         class Saludar extends Component{
 
-            render
+            render(){
+                
+                return(
+                    <h1>Hello </h1>
+                )
+            }
         }
 
 
+
+Son los componentes que estan atentos a los eventos que los rodean y pueden reaccionar a los mismos 
+
+En funcion de esos eventos el componente podra cambiar su contenido interno
+
+Dejan de ser funciones nativas de JS para empezar a comportarse como clases
+
+        class Manolo extends Component{         // aca usamos las palabras claves class y extends y usamos el 
+                                                    Component que lo requerimos en la primer linea junto a React
+
+            render(){                           // utilizamos el metodo render(){}
+
+                return(                         // y adentro del render usamos el return () con las etiquetas de
+                                                lo que vayamos a usar
+
+                )
+            }
+        }

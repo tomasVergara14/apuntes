@@ -1,0 +1,99 @@
+
+
+Eventos
+
+Dentro de un componente Statefull contas con la posibilidad de asociar metodos que manejan los eventos de dicho
+
+componente, estos guardan toda la logica de lo que queres hacer con el componente, cuando el mismo es afectado por
+
+un evento (click, dobleclick o un mouseOver) 
+
+
+Primero hay que definir un metodo que almacene toda la logica
+
+
+        class Imagen extends Component {
+
+            constructor(props){
+
+                super(props);
+                this.state{
+                    valor:"
+                }
+            }
+
+            lanzarAlerta(){                             //En este metodo se define lo que va a suceder, 
+                                                        no el cuando
+
+                alert('Pasaste por encima')
+            }
+
+            render(){
+
+                return(
+
+                    <img src="" width="200" alt="" />
+                )
+            }
+        }
+
+
+
+Para determinar cuando se ejecutan, hay que hacer uso de los Eventos, estos se manejan directamente sobre el JSX
+
+del componente, y se escriben como si fuesen atributos 
+
+Son los mismo eventos que existen en JS 
+
+
+Para hacer uso de los eventos, hay que escribir el nombre del evento precedido por "on" (onClick, onMouseOver, 
+
+onSubmit, onBlur, etc) todo va con formato camelCase
+
+
+ej:
+
+        class Imagen extends Component{
+
+            constructor(props){
+                super(props);
+                this.state={
+                    valor=""
+                }
+            }
+
+            lanzarAlerta(){
+
+                alert("Pasaste por encima")
+            }
+
+            render(){
+
+                return(
+
+                    <img src="" 
+                    width="200" 
+                    alt="react/logo" 
+                    onMouseOver= { () => this.lanzarAlerta()}
+                    />
+                )
+            }
+        }
+
+
+La sintaxis del evento puedo escribirla sin llamar a todo el metodo como funcion
+
+        onMouseOver = { this.lanzarAlerta }     //debo escribirlo sin los parentesis
+
+
+
+
+
+Para definir un Metodo usamos la misma sintaxis que al escribir una function, solo que no incluimos la palabra 
+
+reservada function, solo el nombre del metodo.
+
+Alli definimos la logica de lo que queremos que suceda cuando se aplique el metodo
+
+
+Si el evento modifica el estado del componente debe ser un estado Statefull (o sea tener estado)

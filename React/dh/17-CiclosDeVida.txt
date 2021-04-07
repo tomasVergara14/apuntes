@@ -1,0 +1,80 @@
+
+
+Ciclos de vida
+
+
+
+Los componentes tienen diferentes estados, estos cambios de estados son el ciclo de vida, los diferentes estados
+
+por los cuales pasa todo componente en su existencia.
+
+Tienen correspondencia con diferentes metodos que podemos implementar para realizar acciones cuando los mismos se
+
+van a ejecutar
+
+
+Son caracteristicas de componentes con estado, o sea Statefull
+
+
+El ciclo de vida consta de 3 puntos clave en todo componente
+
+
+1- Montaje
+
+2- Actualizacion
+
+3- Desmontaje
+
+
+** Montaje ** 
+
+El metodo del ciclo de vida es "componentDidMount" solo se ejecuta en el cliente, y se produce inmediatamente 
+
+despues del primer renderizado del componente 
+
+Si se necesitan realizar llamadas asincronicas a una API para contar con esa informacion desde el momento inicial
+
+en que se renderiza el componente en pantalla, este es el metodo indicado para renderizarlas
+
+se debe ver:
+
+            componentDidMount(){
+
+                console.log('Metodo componentDidMount')
+            }
+
+
+
+** Actualizacion **
+
+El metodo del ciclo de vida es "componentDidUpdate" se ejecutara cada vez que el componente sufra algun cambio
+
+de estado
+
+Puede recibir dos parametros, el 1°: props existentes antes de la Actualizacion, 2°: el estado previo del componente
+
+En los dos casos son objetos literales con la informacion mencionada
+
+se debe ver:
+
+            componentDidUpdate( prevProps, prevState ){
+
+                console.log('Metodo componentDidUpdate')
+            }
+
+
+
+
+** Desmontaje **
+
+El metodo del ciclo de vida "componentWillUnmount" se invoca inmediatamente antes de desmontar y destruir un 
+
+componente 
+
+Aqui se realizan las tareas de limpieza, como por ejemplo la eliminacion de un temporizador, o la cancelacion a 
+
+solicitudes asincronas de las API
+
+Aqui no se debe invocar el metodo setState, ya que cuando pase por el metodo de Desmontaje, ese componente no se
+
+va a renderizar nunca mas, cualquier seteo de stado no tiene mucho sentido
