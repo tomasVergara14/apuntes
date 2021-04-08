@@ -24,9 +24,13 @@ Para armar las peticiones:
  Tiene dos lados, el de:
 
 
-** Creacion **
-** Consumo **
+1- Creacion
 
+2- Consumo 
+
+
+
+** Creacion **
 
 
 Primero se debe crear una carpeta en src llamada "requests" allí almacenaremos todas las peticiones dentro del mismo
@@ -44,6 +48,7 @@ todos los parametros por default que vamos a utilizar por cada pedido
 cost default = {
 
     baseURL: "www.baseDeLaURL"      // todas las peticiones van a compartir esta base, ej: "www.spotify.com/api"
+
     timeOut: 4000                   // Es el tiempo maximo de espera de respuesta para una peticion , si demora mas
                                          axios cancelara la solicitud
 }
@@ -55,17 +60,41 @@ cost default = {
 
 Para armar un request:
 
+
 - Primero hay que identificar a que recurso queremos acceder y asi poder crear un archivo, que va a contener nuestro
 
 pedido y todos los que interactuen con este recurso
+
+        ej: artistasRequest.js              //Alli contenemos todos metodos HTTP que modifiquen artistas 
+                                            es como un controlador que se va a encargar de manejar toda la logica
+                                            de un artista
+                                            Pero cada metodo realiza una conexion con otro sistema
+
 
 - En este archivo tendremos dos partes:
 
     - la primera tiene un URL que identifica el recurso y ademas la importacion de AXIOS y del default 
 
+                const axios = require('axios');
+                const default = require('./defaults')
+
+                const url= 'artista'
+
+
+
     - la segunda sera un objeto literal que representara los servicios que seran funciones a las cuales podremos 
 
     con los nombres de las claves
+
+
+                const artistasRequest = {
+
+
+                        //aqui van los metodos para manejar la logica
+                };
+
+                module.exports = artistasRequest
+
 
 
 
@@ -73,36 +102,47 @@ pedido y todos los que interactuen con este recurso
     ** get request **
 
 
-const axios = require('axios')
-const default = require('./default')
+            const axios = require('axios')
+            const default = require('./default')
 
-const url = "artista"
+            const url = "artista"
 
-const artistaRequest = {
+            const artistaRequest = {
 
-    getArtista = function (id){
-        return axios({
-            ...defaults,
-            method: 'get',
-        url: `${url}/${id}`
-        })
-    }
+                getArtista = function (id){
 
-}
+                    return axios({                  // axios retorna una promesa
+                    
+                        ...defaults,
 
-module.exports = artistaRequest
+                        method: 'get',              // se especifica el metodo HTTP
+                    
+                        url: `${url}/${id}`         // url que agregando al base va a permitir la comunicacion
+                    
+                    })
+                }
 
+            }
 
-
- ** consumir request **
-
-  - vamos a requerirlo donde lo necesitemos usar y lo almacenamos en una variable para invocar sus metodos
-
-    const artistasRequest = require("./request/artistasRequest")
+            module.exports = artistaRequest
 
 
-  - Luego llamamos al metodo que necesitamos para que nos devuelva los datos 
 
-    artistaRequest.getArtista(22)
-    .then(response => {console.log(response.data)})
-    .catch(err => {console.log(err)})
+ 
+    ** consumir request **
+
+
+- vamos a requerirlo donde lo necesitemos usar y lo almacenamos en una variable para invocar sus metodos
+
+        
+        const artistasRequest = require("./request/artistasRequest")
+
+
+- Luego llamamos al metodo que necesitamos para que nos devuelva los datos 
+
+    
+        artistaSRequest.getArtista(22)
+    
+        .then(response => {console.log(response.data)})
+    
+        .catch(err => {console.log(err)})
