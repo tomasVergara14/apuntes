@@ -45,7 +45,9 @@ ej:
 Productos       
     
     -productos/crear
+
     -productos/modificar
+    
     -productos/eliminar
 
 
@@ -53,9 +55,9 @@ Productos
 ** Stateless **
 
 
-Propone que todas las interacciones entre cliente y servidor deben ser tratadas como nuevas y de forma absolutamente
+Propone que todas las interacciones entre cliente y servidor deben ser tratadas como nuevas y de forma 
 
-independiente
+absolutamente independiente
 
 Por lo tanto si quisieramos tener una aplicacion que distinga entre usuarios logueados e invitados, debemos mandar
 
@@ -71,9 +73,9 @@ dirigidar y actualizadas incluso cuando se encuentran funcionando
 ** Cacheables **
 
 
-Es una herramienta muy importante que se utiliza del lado del cliente para mejorar la performance y reducir la demanda
+Es una herramienta muy importante que se utiliza del lado del cliente para mejorar la performance y reducir 
 
-al servidor
+la demanda al servidor
 
 Debe aplicarse tanto como sea posible.
 
@@ -106,8 +108,8 @@ FORMATOS DE ENVIOS DE DATOS
 
 
 
-El metodo HEAD es un metodo de}l protocolo HTTP que nos permite conocer la fecha de ultima modificacion de un recurso
+El metodo HEAD es un metodo del protocolo HTTP que nos permite conocer la fecha de ultima modificacion de un 
 
-se utiliza en conjunto con el metodo GET, de modo que si la fecha de modificacion no coincide con la fecha del recurso
+recurso se utiliza en conjunto con el metodo GET, de modo que si la fecha de modificacion no coincide con la 
 
-que el cliente tiene cacheada localmente, pueden pedir los datos para actualizarlos
+fecha del recurso que el cliente tiene cacheada localmente, pueden pedir los datos para actualizarlos
