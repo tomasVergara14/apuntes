@@ -1,0 +1,228 @@
+
+
+** Hooks **
+
+Te permiten utilizar state y algunos componentes del ciclo de vida de React, en componentes funcionales, sin tener
+
+que escribir clases 
+
+
+Ventajas:
+
+        - 100% de retrocompatibilidad
+
+        - No se borra nada de la Api
+
+        - puedes seguir escribiendo con clases
+
+
+Busca resolver:
+
+        - Utilizar logica para mantener el estado en los componentes de clase es dificil de reutilizar
+
+        - Los componentes complejos de clase, se vuelven mas dificiles de entender
+
+        - La palabra reservada "this" no funciona igual que en los otros lenguajes que en las clases
+
+        - Con funciones no es necesario el uso de this
+
+
+
+
+
+** UseState **
+
+
+Primero creamos un proyecto con " npm init react-app "nombre-proyecto "
+
+
+Creamos un proyecto simple con un componente que muestre:
+
+
+                import React, { Fragment, useState } from 'react';
+                import './App.css';
+
+                        function App() {
+                                return (
+                                        <div className="App">
+                                        <p>Hello there</p>
+                                                <div className="botones">
+                                                        <button> - </button>
+                                                        <span> 0 </span>
+                                                        <button> + </button>
+                                                </div>
+                                        </div>
+                                );
+                        }
+
+                export default App;
+
+
+
+Lo primero que haremos es importar el Hook que queramos usar, para eso desestructuramos React y llamamos al que 
+
+vatamos a utilizar, en este caso "useState"
+
+
+                import React, {useState} from 'react
+
+
+
+
+
+
+
+** Video **
+
+Diferencia entre componente de clase y funcional 
+
+
+        Componente de Clase
+
+
+                - Se declara con la keyword class
+                - El nombre del componente
+                - Se extiende del "Component" que se importa de la libreria React
+                - Adentro tiene su render() y dentro de este el return() los tags que quiera devolver
+
+
+
+        Componente Funcional
+
+                - Es una funcion
+                - Puede ser con la keyword function + el nombre del componente " function 'nombre' () {} "
+                - Puede declararse como una constante que albergue esa funcion 
+                 const 'nombre' = () => {}
+                - No pueden tener state, no pueden acordarse y mantener variables, los de clase si son Statefull
+
+
+
+
+** State **
+
+import React, {Component} from 'react';
+
+class SimpleState extends Component{
+
+        state= {
+                cuenta:0
+        };
+
+        render(){
+                return(
+                        <>
+                                <p>La cuenta es {this.state.cuenta} </p>
+                                <button onClick={ ()=> this.setState({cuenta: this.state.cuenta + 1})}> Aumentar
+                                </button>
+                                
+                        </>
+                )
+        }
+}
+
+
+Si quisiera hacerlo con function deberia ser:
+
+
+const SimpleState = ()=>{
+        
+        return(
+                 <>
+                        <p>La cuenta es {this.state.cuenta} </p>
+                        <button onClick={ ()=> this.setState({cuenta: this.state.cuenta + 1})}> Aumentar
+                        </button>
+                                
+                </>
+        )
+}
+
+pero las clases funcionales no pueden tener state, para guardarlo y leerlo debemos utilizar los Hooks
+
+
+se debe importar funciones de React
+
+                import React, {useState} from 'react'
+
+
+
+
+
+        ** USESTATE **
+
+
+Esto nos va a permitir utilizar y almacenar una variable 
+
+
+                import React, {useState} from 'react'
+
+                function SimpleState(){
+
+                        const [cuenta, setCuenta]= useState(0)    //esto es un hook, la funcion que importamos
+                                                                  se le pasa por parametro el valor inicial
+                                                                  
+                        return(
+                                <>
+                                        <p>La cuenta es {cuenta} </p>
+                                        <button onClick={ ()=> setCuenta(cuenta  + 1)}> Aumentar
+                                        </button>
+                                
+                                </>
+
+                        )
+
+                }
+
+
+el primer valor de la funcion useState desestructurada es el valor inicial donde lo almacenamos y se lo damos como
+
+parametro en el useState('valor inicial')
+
+El segundo, es un metodo para guardar y actualizar el estado, en vez de setState se utiliza ese segundo valor y no
+
+hace falta pasarlo como objeto
+
+
+
+        ** USEEFFECT **
+
+
+Para utilizar los metodos "componentDidMount" y "ComponentWillUnmount" debemos importar "useEffect"
+
+        import React, {useState, useEffect} from 'react'
+
+
+Un efecto ocurre cuando montas un componente en el DOM, react hace el render(), un efecto significa algo que react
+
+no controla, por ejemplo solicitar unas coordenadas, sabe como mostrar cosas en la pantalla pero no sabe como buscar
+
+coordenadas
+
+
+Puedes crear tu hook para utilizarlo, siempre que lo crees debes llamarlo con use + el nombre de lo que quieras
+
+ej:
+
+        function useCoordenadas (){
+
+                const [coordenadas, setCoordenadas] = useState({
+                        latitud: null,
+                        longitud: null
+                });
+
+                let geoId = ;           //metodo utilizado para limpiar y no mostrar mas, una variable vacia
+
+                useEffect(()=>{
+                        geoId = window.navigator.geolocation.watchPosition(position => {
+                                setCoordenadas({
+                                        latitud:position.coords.latitude,
+                                        longitud: position.coords.longitude
+                                });
+                        }) ;
+
+                        return()=>{
+                                navigator.geolocation.clearWatch(geoId)
+                        }
+                })
+
+                return coordenadas
+        }
